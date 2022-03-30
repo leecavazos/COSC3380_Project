@@ -11,7 +11,51 @@
 	font-family: Arial, Helvetica, sans-serif;
 }
 
+/* CSS for header (including the navbar) */
+header img {
+	height: 100px;
+	margin-left: 40px;
+}
+
+header {
+	/* border: 1px solid blue; */
+	background-color: whitesmoke;
+	position: fixed;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	height: 100px;
+	display: flex;
+	align-items: center;
+	box-shadow: 0 0 25px 0 black;
+}
+
+header * {
+	display: inline;
+}
+
+header li {
+	margin: 20px;
+}
+
+header li a {
+	color:black;
+	font-size: large;
+	text-decoration: solid;
+}
+
+/* END CSS for header (including the navbar) */
+
+body {
+	height: 125vh;
+	margin-top: 80px;
+	padding: 30px;
+}
+
+
 .container{
+	/*use for checking container */
 	border: 1px solid red;
 	width: 80%;
 	margin: 0 auto;
@@ -70,7 +114,7 @@ a:hover{
 /* CSS for navbar section */
 
 .logo{
-	border: 1px solid black;
+	/* border: 1px solid black; */
 	width: 10%;
 	float: left;
 }
@@ -113,14 +157,37 @@ h3{
 
 /* CSS for Food Search Section */
 .food-search{
-	background-image: url(../images/pic.jpeg);
-	background-size: cover;
+	position: relative;
+	/* background-image: url(../images/cover_page.jpeg); */
+	background-size: contain;
 	background-repeat: no-repeat;
 	background-position: center;
-	padding: 7% 0;
+	justify-content: center;
+	/* width: auto; */
+	/* height: 100%; */
+	align-items: center;
+	padding: 5% 0;
+}
+.food-search::before{
+	content: "";
+	position: absolute;
+	top: 0px;
+	right: 0px;
+	bottom: 0px;
+	left: 0px;
+	background-color: rgba(0,0,0,0.25);
 }
 
 .food-search input[type="search"]{
+	position: relative;
+	width: 50%;
+	padding: 1%;
+	font-size: 1rem;
+	border: none;
+	border-radius: 5px;
+}
+.food-search submit[type="submit"]{
+	position: relative;
 	width: 50%;
 	padding: 1%;
 	font-size: 1rem;
