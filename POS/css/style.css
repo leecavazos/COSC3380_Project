@@ -29,6 +29,17 @@ header {
 	display: flex;
 	align-items: center;
 	box-shadow: 0 0 25px 0 black;
+	/* overflow: hidden; */
+	z-index: 10;
+}
+
+/* CSS for Order Now button */
+.order-btn {
+	position: absolute;
+	top: 30%;
+	right: 16px;
+	font-size: 18px;
+	color: white;
 }
 
 header * {
@@ -52,6 +63,47 @@ body {
 	margin-top: 80px;
 	padding: 30px;
 }
+
+/* CSS for Food Search Section */
+.food-search{
+	position: relative;
+	background-image: url(../images/cover_page.jpeg);
+	/* background-size: contain; */
+	/* background-repeat: no-repeat; */
+	background-position: center;
+	justify-content: center;
+	/* width: auto;
+	height: 100%; */
+	align-items: center;
+	padding: 5% 0;
+}
+.food-search::before{
+	content: "";
+	position: absolute;
+	top: 0px;
+	right: 0px;
+	bottom: 0px;
+	left: 0px;
+	background-color: rgba(0,0,0,0.25);
+}
+
+.food-search input[type="search"]{
+	position: relative;
+	width: 50%;
+	padding: 1%;
+	font-size: 1rem;
+	border: none;
+	border-radius: 5px;
+}
+.food-search submit{
+	position: relative;
+	width: 50%;
+	padding: 1%;
+	font-size: 1rem;
+	border: none;
+	border-radius: 5px;
+}
+/* End CSS for Food Search Section */
 
 
 .container{
@@ -110,15 +162,8 @@ a:hover{
 
 .btn-primary:hover{
 	background-color: #d63031;
+	color: white;
 }
-/* CSS for navbar section */
-
-.logo{
-	/* border: 1px solid black; */
-	width: 10%;
-	float: left;
-}
-
 
 .menu{
 	line-height: 60px;
@@ -154,47 +199,6 @@ h3{
 	left: 40%;
 }
 /* End CSS for All */
-
-/* CSS for Food Search Section */
-.food-search{
-	position: relative;
-	/* background-image: url(../images/cover_page.jpeg); */
-	background-size: contain;
-	background-repeat: no-repeat;
-	background-position: center;
-	justify-content: center;
-	/* width: auto; */
-	/* height: 100%; */
-	align-items: center;
-	padding: 5% 0;
-}
-.food-search::before{
-	content: "";
-	position: absolute;
-	top: 0px;
-	right: 0px;
-	bottom: 0px;
-	left: 0px;
-	background-color: rgba(0,0,0,0.25);
-}
-
-.food-search input[type="search"]{
-	position: relative;
-	width: 50%;
-	padding: 1%;
-	font-size: 1rem;
-	border: none;
-	border-radius: 5px;
-}
-.food-search submit[type="submit"]{
-	position: relative;
-	width: 50%;
-	padding: 1%;
-	font-size: 1rem;
-	border: none;
-	border-radius: 5px;
-}
-/* End CSS for Food Search Section */
 
 /*CSS for Categories*/
 .categories{
