@@ -64,6 +64,16 @@ body {
 	padding: 30px;
 }
 
+a{
+	color: #ff7675;
+	font-weight: bold;
+	text-decoration: none;
+}
+a:hover{
+	color: #d63031;
+	/* color: burlywood; */
+}
+
 /* CSS for Food Search Section */
 .food-search{
 	position: relative;
@@ -77,25 +87,16 @@ body {
 	align-items: center;
 	padding: 5% 0;
 }
-.food-search::before{
+/* .food-search::before{
 	content: "";
-	position: absolute;
+	position: relative;
 	top: 0px;
 	right: 0px;
 	bottom: 0px;
 	left: 0px;
-	background-color: rgba(0,0,0,0.25);
-}
+} */
 
 .food-search input[type="search"]{
-	position: relative;
-	width: 50%;
-	padding: 1%;
-	font-size: 1rem;
-	border: none;
-	border-radius: 5px;
-}
-.food-search submit{
 	position: relative;
 	width: 50%;
 	padding: 1%;
@@ -108,10 +109,11 @@ body {
 
 .container{
 	/*use for checking container */
-	border: 1px solid red;
+	/* border: 1px solid red; */
+	position: relative;
 	width: 80%;
-	margin: 0 auto;
-	padding: 1%;
+	margin: auto;
+	/* padding: 0; */
 }
 
 .img-responsive{
@@ -139,14 +141,6 @@ body {
 	float: none;
 }
 
-a{
-	color: #ff7675;
-	text-decoration: none;
-}
-a:hover{
-	color: #d63031;
-}
-
 .btn{
 	padding: 1%;
 	border: none;
@@ -155,14 +149,15 @@ a:hover{
 }
 
 .btn-primary{
-	background-color: #ff7675;
+	background-color: #d63031;
 	color: white;
 	cursor: pointer;
 }
 
 .btn-primary:hover{
-	background-color: #d63031;
-	color: white;
+	/* background-color: #ff7675; */
+	background-color: black;
+	color: burlywood;
 }
 
 .menu{
@@ -180,9 +175,15 @@ a:hover{
 	font-weight: bold;
 }
 
-h2{
-	color: #636e72;
+h1{
+	/* color: #636e72; */
+	color: white;
+	font-size: 2.5rem;
+	background-color: #d63031;
+	padding: 1%;
+	border: none;
 	font-size: 2rem;
+	border-radius: 5px;
 }
 
 h3{
@@ -202,13 +203,50 @@ h3{
 
 /*CSS for Categories*/
 .categories{
+	/* border: 1px solid black; */
 	padding: 4% 0;
 }
 
-.box-3{
-	border: 1px solid black;
+.box{
+	/* border: 1px solid black; */
 	width: 28%;
 	float: left;
-	margin: 2%;
+	margin: 2.5%;
+	font-style: unset;
+}
+
+.category-img {
+	opacity: 1;
+	display: block;
+	width: 100%;
+	height: auto;
+	transition: .5s ease;
+	backface-visibility: hidden;
+}
+
+.middle {
+	transition: .5s ease;
+	opacity: 0;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	-ms-transform: translate(-50%, -50%);
+	text-align: center;
+}
+
+.box:hover .category-img {
+	opacity: 0.2;
+}
+
+.box:hover .middle {
+	opacity: 1;
+}
+
+.category-caption {
+	color: crimson;
+	font-size: 1.7rem;
+	margin-top: 2%;
+	font-weight: bold;
 }
 /*End CSS for Categories*/
