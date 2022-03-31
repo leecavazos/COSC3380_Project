@@ -1,0 +1,51 @@
+input {
+    display: inline-block;
+    width: 95%;
+    border: none;
+    background: #f1f1f1;
+    margin: 0 15px 0 15px;
+    padding: 10px;
+    font-size: large;
+}
+
+label {
+    display:block;
+    padding-left: 15px;
+    font-size: large;
+}
+
+body {
+    margin: 50px;
+    padding: 25px;
+    border: #f1f1f1 solid;
+}
+
+hr{
+    width: 100%;
+    border: 1px solid #f1f1f1;
+    margin: 25px 0 25px 0;
+}
+
+button {
+    background-color: pink;
+    color: white;
+    font-size: large;
+    padding: 16px 20px;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    opacity: 0.5;
+}
+
+input:focus {
+    background-color: #ddd;
+    outline: none;
+}
+
+button:hover {
+    opacity: 1;
+}
+
+.head {
+    padding-left: 15px;
+}
