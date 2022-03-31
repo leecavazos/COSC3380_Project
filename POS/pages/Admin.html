@@ -5,30 +5,29 @@
         <link rel="stylesheet" type="text/css" href="../css/style.css">
 
     </head>
-   <section class="navbar">
-       <div class="container">
-            <div class="menu text-right"> 
-                <ul>
-                    <li><a href="../index.html"> Home </a></li>
-                    <li><a href= ""> Contact</a></li>
-                    <li><a href= ""> Locations</a></li>
-                </ul>
-            </div>
-        </div>
-    </section>
-    <body>
+<body>
+   <header>
+        <a href="index.html">
+            <img src="../images/logo.webp">
+        </a>
+        <nav> 
+            <ul>
+                <li><a href="../index.html"> Home </a></li>
+            </ul>
+        </nav>
+    </header>
         <section class="container">
             <h2> Please Log In!</h2>
-            <form action="./AdminView.html">
-                <label for="fname">Username:</label>
+            <form action="./AdminView.html" class="form_Admin text-center food-search">
+                <label for="username">Username:</label>
                 <input type="text" id="fname" name="fname"><br><br>
-                <label for="lname">Password:</label>
+                <label for="password">Password:</label>
                 <input type="text" id="lname" name="lname"><br><br>
-                <input type="submit" value="Submit">
+                <input type="submit" value="Submit" class="btn btn-primary">
             </form>
         </section>
         <section class="footer">
-            <div class="container">
+            <div class="container text-center">
                 <p>All rights reserved. Designed by <a href="#">Team 5 COSC 3380</a></p>
             </div>
         </section>
