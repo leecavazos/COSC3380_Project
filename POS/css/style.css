@@ -11,11 +11,111 @@
 	font-family: Arial, Helvetica, sans-serif;
 }
 
-.container{
-	border: 1px solid red;
-	width: 80%;
-	margin: 0 auto;
+/* CSS for header (including the navbar) */
+header img {
+	height: 100px;
+	margin-left: 40px;
+}
+
+header {
+	/* border: 1px solid blue; */
+	background-color: whitesmoke;
+	position: fixed;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	height: 100px;
+	display: flex;
+	align-items: center;
+	box-shadow: 0 0 25px 0 black;
+	/* overflow: hidden; */
+	z-index: 10;
+}
+
+/* CSS for Order Now button */
+.order-btn {
+	position: absolute;
+	top: 30%;
+	right: 16px;
+	/* Consider here (get some bugs if the screen is bigger) */
+	/* bottom: 18%; */
+	font-size: 16px;
+	color: white;
+}
+
+header * {
+	display: inline;
+}
+
+header li {
+	margin: 20px;
+}
+
+header li a {
+	color:black;
+	font-size: large;
+	text-decoration: solid;
+}
+
+/* END CSS for header (including the navbar) */
+
+body {
+	height: 125vh;
+	margin-top: 80px;
+	padding: 30px;
+}
+
+a{
+	color: #ff7675;
+	font-weight: bold;
+	text-decoration: none;
+}
+a:hover{
+	color: #d63031;
+	/* color: burlywood; */
+}
+
+/* CSS for Food Search Section */
+.food-search{
+	position: relative;
+	background-image: url(../images/cover_page.jpeg);
+	/* background-size: contain; */
+	/* background-repeat: no-repeat; */
+	background-position: center;
+	justify-content: center;
+	/* width: auto;
+	height: 100%; */
+	align-items: center;
+	padding: 5% 0;
+}
+/* .food-search::before{
+	content: "";
+	position: relative;
+	top: 0px;
+	right: 0px;
+	bottom: 0px;
+	left: 0px;
+} */
+
+.food-search input[type="search"]{
+	position: relative;
+	width: 50%;
 	padding: 1%;
+	font-size: 1rem;
+	border: none;
+	border-radius: 5px;
+}
+/* End CSS for Food Search Section */
+
+
+.container{
+	/*use for checking container */
+	/* border: 1px solid red; */
+	position: relative;
+	width: 80%;
+	margin: auto;
+	/* padding: 0; */
 }
 
 .img-responsive{
@@ -43,14 +143,6 @@
 	float: none;
 }
 
-a{
-	color: #ff7675;
-	text-decoration: none;
-}
-a:hover{
-	color: #d63031;
-}
-
 .btn{
 	padding: 1%;
 	border: none;
@@ -59,22 +151,18 @@ a:hover{
 }
 
 .btn-primary{
-	background-color: #ff7675;
+	background-color: #d63031;
 	color: white;
 	cursor: pointer;
+	display: inline-block;
+	padding: auto;
 }
 
 .btn-primary:hover{
-	background-color: #d63031;
+	/* background-color: #ff7675; */
+	background-color: black;
+	color: burlywood;
 }
-/* CSS for navbar section */
-
-.logo{
-	border: 1px solid black;
-	width: 10%;
-	float: left;
-}
-
 
 .menu{
 	line-height: 60px;
@@ -91,9 +179,15 @@ a:hover{
 	font-weight: bold;
 }
 
-h2{
-	color: #636e72;
+h1{
+	/* color: #636e72; */
+	color: white;
+	font-size: 2.5rem;
+	background-color: #d63031;
+	padding: 1%;
+	border: none;
 	font-size: 2rem;
+	border-radius: 5px;
 }
 
 h3{
@@ -111,33 +205,52 @@ h3{
 }
 /* End CSS for All */
 
-/* CSS for Food Search Section */
-.food-search{
-	background-image: url(../images/pic.jpeg);
-	background-size: cover;
-	background-repeat: no-repeat;
-	background-position: center;
-	padding: 7% 0;
-}
-
-.food-search input[type="search"]{
-	width: 50%;
-	padding: 1%;
-	font-size: 1rem;
-	border: none;
-	border-radius: 5px;
-}
-/* End CSS for Food Search Section */
-
 /*CSS for Categories*/
 .categories{
+	/* border: 1px solid black; */
 	padding: 4% 0;
 }
 
-.box-3{
-	border: 1px solid black;
+.box{
+	/* border: 1px solid black; */
 	width: 28%;
 	float: left;
-	margin: 2%;
+	margin: 2.5%;
+	font-style: unset;
+}
+
+.category-img {
+	opacity: 1;
+	display: block;
+	width: 100%;
+	height: auto;
+	transition: .5s ease;
+	backface-visibility: hidden;
+}
+
+.middle {
+	transition: .5s ease;
+	opacity: 0;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	-ms-transform: translate(-50%, -50%);
+	text-align: center;
+}
+
+.box:hover .category-img {
+	opacity: 0.2;
+}
+
+.box:hover .middle {
+	opacity: 1;
+}
+
+.category-caption {
+	color: crimson;
+	font-size: 1.7rem;
+	margin-top: 2%;
+	font-weight: bold;
 }
 /*End CSS for Categories*/

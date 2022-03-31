@@ -1,82 +1,67 @@
-<<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Pos Webapp</title>
+	<title>POS Team 5</title>
 
 	<!-- Link to css file -->
 	<link rel="stylesheet" type="text/css" href="css/style.css">
-
+	<link rel="icon" type="image/x-icon" href="images/logo.webp">
 </head>
 
 <body>
-	<!-- Navbar Section Starts Here -->
-	<section class="navbar">
-		<div class="container">
-			<div class="logo">
-				<img src="images/bio.jpeg" alt="Restaurant Logo" class="img-responsive">
-			</div>
-
-			<div class="menu text-right">
-				<ul>
-					<li>
-						<a href="#">Home</a>
-					</li>
-
-					<li>
-						<a href="#">About</a>
-					</li>
-
-					<li>
-						<a href="#">Foods</a>
-					</li>
-
-					<li>
-						<a href="#">Contact</a>
-					</li>
-				</ul>
-			</div>
-
-			<div class="clearfix"></div>
-	</section>
-	<!-- Navbar Section Ends Here -->
-
+	<header>
+		<a href="index.html">
+			<img src="images/logo.webp">
+		</a>
+		<!-- Navbar Starts -->
+		<nav>
+			<ul>
+				<li><a href="index.html">Home</a></li>
+				<li><a href="login.html">Account</a></li>
+				<li><a href="#">Orders</a></li>
+				<li><a href="#">Cart</a></li>
+				<li><a href="pages/Admin.html">Admin</a></li>
+				<li><a href="#" class="order-btn btn btn-primary">Order Now</a></li>
+			</ul>
+		</nav>
+		<!-- Navbar End -->
+	</header>
+	
 	<!-- Food Search Section Starts Here -->
 	<section class="food-search text-center">
-		<div class="container">
-			
-
+		<span class="food-search">
 			<form action="">
 				<input type="search" name="search" placeholder="Search for Food">
 				<input type="submit" name="submit" value="Search" class="btn btn-primary">
 			</form>
-
-		</div>
+		</span>
 	</section>
 	<!-- Food Search Section Ends Here -->
 
 	<!-- Categories Section Starts Here -->
 	<section class="categories">
 		<div class="container">
-			<h2 class="text-center">Categories</h2>
+			<h1 class="text-center">Categories</h1>
 
-			<div class="box-3 float-container">
-				<img src="images/flower.png" alt="image1" class="img-responsive" class="img-responsive img-curve">
-
-				<h3 class="float-text text-white">food</h3>
+			<div class="box float-container">
+				<img src="images/cate pic sample.jpeg" alt="image1" class="category-img img-responsive" class="img-responsive img-curve">
+				<div class="middle">
+					<div class="category-caption text-center">Category 1</div>
+				</div>
 			</div>
-
-			<div class="box-3 float-container">
-				<img src="images/pic.jpeg" alt="image2" class="img-responsive" class="img-responsive img-curve">
-
-				<h3 class="float-text text-white">food</h3>
+			<div class="box float-container">
+				<img src="images/cate pic sample.jpeg" alt="image1" class="category-img img-responsive" class="img-responsive img-curve">
+				<div class="middle">
+					<div class="category-caption text-center">Category 2</div>
+				</div>
 			</div>
-			
-			<div class="box-3 float-container">
-				<img src="images/logo.jpeg" alt="image3" class="img-responsive" class="img-responsive img-curve">
-
-				<h3 class="float-text text-white">food</h3>
+			<div class="box float-container">
+				<img src="images/cate pic sample.jpeg" alt="image1" class="category-img img-responsive" class="img-responsive img-curve">
+				<div class="middle">
+					<div class="category-caption text-center">Category 3</div>
+				</div>
 			</div>
 		</div>
 
@@ -104,6 +89,7 @@
 			<div class="food-menu">
 				menu 4
 			</div>
+			
 
 		</div>
 	</section>
