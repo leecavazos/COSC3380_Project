@@ -38,6 +38,7 @@ header {
 	position: absolute;
 	top: 30%;
 	right: 16px;
+	bottom: 30%;
 	font-size: 18px;
 	color: white;
 }
@@ -152,6 +153,8 @@ a:hover{
 	background-color: #d63031;
 	color: white;
 	cursor: pointer;
+	display: inline-block;
+	padding: auto;
 }
 
 .btn-primary:hover{
