@@ -14,8 +14,8 @@
 
     $servername = "localhost";
     $username = "root";
-    $password = "Laallaal!420";
-    $databaseName = "team5store";
+    $password = "";
+    $databaseName = "pos";
 
     $conn = new mysqli($servername, $username, $password, $databaseName);
     if($conn->connect_error) {
