@@ -1,5 +1,5 @@
 /*
-	Author: Lester
+	Author: Team 5 COSC3380 Spring 2022
 	Theme:  POS Web APP
 	version:  1.0;
 */
@@ -9,6 +9,12 @@
 	margin: 0 0;
 	padding: 0 0;
 	font-family: Arial, Helvetica, sans-serif;
+}
+
+/*Try to get the smooth scroll while moving between elements in the page*/
+html {
+	-webkit-scroll-behavior: auto !important;
+	scroll-behavior: smooth;
 }
 
 /* CSS for header (including the navbar) */
@@ -111,7 +117,7 @@ a:hover{
 
 .container{
 	/*use for checking container */
-	/* border: 1px solid red; */
+	/* border: 1px solid blue; */
 	position: relative;
 	width: 80%;
 	margin: auto;
@@ -164,23 +170,10 @@ a:hover{
 	color: burlywood;
 }
 
-.menu{
-	line-height: 60px;
-
-}
-
-.menu ul{
-	list-style-type: none;
-}
-
-.menu ul li{
-	display: inline;
-	padding: 1%;
-	font-weight: bold;
-}
 
 h1{
 	/* color: #636e72; */
+	text-transform: uppercase;
 	color: white;
 	background-color: #d63031;
 	padding: 1%;
@@ -190,9 +183,9 @@ h1{
 }
 
 h2{
+	text-transform: uppercase;
 	color: white;
 	background-color: #d63031;
-	padding: 1%;
 	border: none;
 	font-size: 1.8rem;
 	border-radius: 5px;
@@ -213,6 +206,7 @@ h2{
 .categories{
 	/* border: 1px solid black; */
 	padding: 4% 0;
+	margin: 1%;
 }
 
 .box{
@@ -259,12 +253,79 @@ h2{
 }
 /*End CSS for Categories*/
 
+/*CSS for Menu*/
+.menu{
+	line-height: 50px;
+	display: flex;
+	flex-wrap: wrap;
+	margin: 2%;
+}
+
+.menu ul{
+	list-style-type: none;
+}
+
+.menu ul li{
+	display: inline-block;
+	padding: 1%;
+	font-weight: bold;
+}
+
+.item-img {
+	/* display: inline-flex; */
+	width: 100%;
+}
+
+.item-box {
+	/* position: relative; */
+	/* border: 1px solid yellowgreen; */
+	display: flex;
+	flex-wrap: wrap;
+	flex-direction: column;
+	float: left;
+	width: 25%;
+	margin: 4%;
+	font-style: unset;
+}
+
+.menu-item {
+	/* position: relative; */
+	display:flex;
+	color:black;
+	font-size: 18px;
+	font-weight: bold;
+	font-style: italic;
+	font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+	padding-left: 1%;
+}
+
+.price {
+	background-color: #165c25;
+	font-size: 1em;
+	color: white;
+	position: absolute;
+	right: 0%;
+	padding: 0.04% 5%;
+	border: none;
+	border-radius: 2px;
+}
+
+.item-description {
+	color:rgb(36, 34, 34);
+	font-weight: bolder;
+}
+/* End CSS for Menu*/
+
 /*CSS for Footer*/
+footer {
+	box-sizing: border-box;
+	margin-bottom: auto;
+}
 .copyright {
+	/* border: 1px solid black; */
 	margin-top:15px;
 	text-align:center;
-	font-size:15px;
+	font-size:17px;
 	color: black;
-	margin-bottom:0;
 }
 /*End CSS for Footer*/
