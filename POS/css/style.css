@@ -38,7 +38,8 @@ header {
 	position: absolute;
 	top: 30%;
 	right: 16px;
-	bottom: 18%;
+	/* Consider here (get some bugs if the screen is bigger) */
+	/* bottom: 18%; */
 	font-size: 16px;
 	color: white;
 }
