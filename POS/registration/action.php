@@ -17,10 +17,16 @@
     $password = "";
     $databaseName = "pos";
 
+    require_once 'functions.php';
+
     $conn = new mysqli($servername, $username, $password, $databaseName);
     if($conn->connect_error) {
         die("Connection failed: " . $conn->connect_error);
     } else {
+        if(userExists($conn, $User_ID, $Email, $Username) !== false) {
+            //header;
+            exit();
+        }
         $stmt = $conn->prepare("INSERT INTO User (User_ID, First_name, Last_name, Email, Phone_number, Street_address, APT, City, State, Zip, Username, Password) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
         $stmt->bind_param("isssssssssss", $User_ID, $First_name, $Last_name, $Email, $Phone_number, $Street_address, $APT, $City, $State, $Zip, $Username, $Password);
         $stmt->execute();
