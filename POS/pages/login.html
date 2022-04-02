@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+
 <head>
 	<title>Login </title>
 	<meta charset="UTF-8">
@@ -9,8 +9,7 @@
     <link rel="icon" type="image/x-icon" href="../images/logo.webp">
 	<link rel="stylesheet" type="text/css" href="../css/main_page.css">
 	<link rel="stylesheet" type="text/css" href="../css/login.css">
-
-</head>
+	
 <body>
 	<header>
 		<a href="../index.html">
@@ -40,19 +39,7 @@
 				<input type="password" placeholder="Enter Password" name="psw" id="passInput" required>
 				<i class="bi bi-eye-slash" id="togglePassword" style="margin-left: -5%;display:inline;
 				vertical-align: middle"></i>
-					<script>
-						const togglePassword = document.querySelector("#togglePassword");
-						const password = document.querySelector("#passInput");
-				
-						togglePassword.addEventListener("click", function () {
-							// toggle the type attribute
-							const type = password.getAttribute("type") === "password" ? "text" : "password";
-							password.setAttribute("type", type);
-							
-							// toggle the icon
-							this.classList.toggle("bi-eye");
-						});
-					</script>
+				<script src="../js/script.js"></script>
 		
 				<button type="submit" class="signup">Login</button>
 				<label>
