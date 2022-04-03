@@ -4,16 +4,17 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="../css/signup.css">
 </head>
 
 <body>
+    <div class="Form">
     <div class="head">
     <h1>Register</h1>
     <p>Please fill in this form to create an account.</p>
     </div>
     <hr>
-    <form action="action.php" method="post">
+    <form action="../php/signupAction.php" method="post">
         <div class="container">
 
             <div class="entry">
@@ -77,8 +78,27 @@
             </div>
             <hr>
         </div>
+        <?php
+        if(isset($_GET["invalid"])) {
+            if($_GET["invalid"] == "id") {
+                echo "<style> .invalid {color: red; text-align: center;}</style><p class='invalid'> User ID already taken. Please enter a new one.</p>";
+            }
+            if($_GET["invalid"] == "email") {
+                echo "<style> .invalid {color: red; text-align: center;}</style><p class='invalid'> Email is already registered. Please enter a new one.</p>";
+            }
+            if($_GET["invalid"] == "username") {
+                echo "<style> .invalid {color: red; text-align: center;}</style><p class='invalid'> Username already taken. Please enter a new one.</p>";
+            }
+        }
+    ?>
         <button type="submit" class="registerbtn">Register</button>
     </form>
+    </div>
 </body>
+<?php
+    if(isset($_GET["created"])) {
+        echo "<style> .success {font-size: larger; text-decoration: bold; text-align: center;}</style><p class='success'>Account successfully created! Please <a href=../pages/login.html>login</a>.</p>";
+    }
+?>
 
 </html>

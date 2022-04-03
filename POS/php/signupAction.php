@@ -23,8 +23,16 @@
     if($conn->connect_error) {
         die("Connection failed: " . $conn->connect_error);
     } else {
-        if(userExists($conn, $User_ID, $Email, $Username) !== false) {
-            //header;
+        if(userIDExists($conn, $User_ID) !== false) {
+            header("location: ../pages/userForm.php?invalid=id");
+            exit();
+        }
+        if(emailExists($conn, $Email) !== false) {
+            header("location: ../pages/userForm.php?invalid=email");
+            exit();
+        }
+        if(usernameExists($conn, $Username) !== false) {
+            header("location: ../pages/userForm.php?invalid=username");
             exit();
         }
         $stmt = $conn->prepare("INSERT INTO User (User_ID, First_name, Last_name, Email, Phone_number, Street_address, APT, City, State, Zip, Username, Password) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
@@ -33,6 +41,7 @@
         echo "Registration successful";
         $stmt->close();
         $conn->close();
+        header("location: ../pages/userForm.php?created=success");
     }
     
     
