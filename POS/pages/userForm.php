@@ -14,7 +14,6 @@
     <p>Please fill in this form to create an account.</p>
     </div>
     <hr>
-
     <form action="../php/signupAction.php" method="post">
         <div class="container">
 
