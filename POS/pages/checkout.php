@@ -5,7 +5,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
-    <form action="action.php" method="post">
+    <form action="../php/checkoutAction.php" method="post">
         <div>
             <select id="Card_type" name="Card_type">
                 <option value="Visa">Visa</option>
