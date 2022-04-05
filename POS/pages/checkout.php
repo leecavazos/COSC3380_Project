@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html>
-<<<<<<< HEAD
 
 <head>
     <meta charset="utf-8">
@@ -36,7 +35,7 @@
                 </li>
 
 				<li><a href="#">Orders</a></li>
-				<li><a href="#">Cart</a></li>
+				<li><a href="checkout.php">Cart</a></li>
 
 				<li><a href="#" class="order-btn btn btn-primary">Order Now</a></li>
 			</ul>
@@ -44,7 +43,7 @@
 		<!-- Navbar End -->
 </header>
 
-<body style="margin-top: 10%">
+<body style="margin-top: 15%">
     <div class="grid-container">
         <div class="grid-item info">
             <h2>Delivery to:</h2>
@@ -126,27 +125,4 @@
     </script>
 </body>
 
-=======
-<head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-</head>
-<body>
-    <form action="../php/checkoutAction.php" method="post">
-        <div>
-            <select id="Card_type" name="Card_type">
-                <option value="Visa">Visa</option>
-                <option value="Mastercard">Mastercard</option>
-                <option value="Discover">Discover</option>
-                <option value="AMEX">AMEX</option>
-            </select>
-        </div>
-        <div>
-            <label for="Last_4_digits">Please enter last 4 digits of your card.</label>
-            <input type="text" name="Last_4_digits" id="Last_4_digits" maxlength="4">
-        </div>
-    </form>
-
-</body>
->>>>>>> 2213a09cdc56f0cdfd88eaf092084fcedc88f9bb
 </html>

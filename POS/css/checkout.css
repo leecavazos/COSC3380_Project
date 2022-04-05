@@ -58,19 +58,6 @@ label {
     padding-left: 1%;
 }
 
-/*.checkout {
-    margin: 10px 0 10px 1%;
-    padding: 15px;
-    background-color: rgba(0, 128, 0, 0.241);
-    border:rgba(0, 128, 0, 0.241) solid 1px;
-    font-weight: bold;
-}
-
-.checkout:hover {
-    background-color:rgba(2, 72, 2, 0.241);
-    cursor: pointer;
-}*/
-
 .cart, .total {
     text-align: center;
     font-size:xx-large;
