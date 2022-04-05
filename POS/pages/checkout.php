@@ -43,7 +43,7 @@
 		<!-- Navbar End -->
 </header>
 
-<body style="margin-top: 15%">
+<body style="margin-top: 1%">
     <div class="grid-container">
         <div class="grid-item info">
             <h2>Delivery to:</h2>
