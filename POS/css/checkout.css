@@ -1,18 +1,24 @@
+*{
+	font-family: Arial, Helvetica, sans-serif;
+}
 
-
-.change {
-    background-color: rgba(0, 128, 0, 0.241);
+.change, .checkout {
+    background-color: #04AA6D;
+    color: white;
     padding: 15px;
     border-radius: 5px;
     text-decoration: bold;
-    border-color: rgba(0, 128, 0, 0.241);
+    border: none;
     cursor: pointer;
     font-weight: bold;
 }
 
-.change:hover {
-    background-color: rgba(2, 72, 2, 0.241);
-    color: white;
+.change:hover, .checkout:hover {
+    opacity: 0.8;
+}
+
+.checkout {
+    margin: 5px;
 }
 
 .grid-container {
@@ -52,7 +58,7 @@ label {
     padding-left: 1%;
 }
 
-.checkout {
+/*.checkout {
     margin: 10px 0 10px 1%;
     padding: 15px;
     background-color: rgba(0, 128, 0, 0.241);
@@ -63,7 +69,7 @@ label {
 .checkout:hover {
     background-color:rgba(2, 72, 2, 0.241);
     cursor: pointer;
-}
+}*/
 
 .cart, .total {
     text-align: center;
@@ -231,4 +237,35 @@ header li a {
 /* Show the dropdown menu on hover */
 .dropdown:hover .dropdown-content {
     display: block;
+}
+
+.btn{
+	padding: 1%;
+	border: none;
+	font-size: 1rem;
+	border-radius: 5px;
+}
+
+.btn-primary{
+	background-color: #d63031;
+	color: white;
+	cursor: pointer;
+	display: inline-block;
+	padding: auto;
+}
+
+.btn-primary:hover{
+	/* background-color: #ff7675; */
+	background-color: black;
+	color: burlywood;
+}
+
+a{
+	color: #ff7675;
+	font-weight: bold;
+	text-decoration: none;
+}
+a:hover{
+	color: #d63031;
+	/* color: burlywood; */
 }
