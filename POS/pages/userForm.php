@@ -29,7 +29,10 @@
     <p>Please fill in this form to create an account.</p>
     </div>
     <hr>
+<<<<<<< HEAD
 
+=======
+>>>>>>> 2213a09cdc56f0cdfd88eaf092084fcedc88f9bb
     <form action="../php/signupAction.php" method="post">
         <div class="container">
 
