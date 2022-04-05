@@ -6,7 +6,7 @@
 	<title>Purchasing</title>
 
 	<!-- Link to css file -->
-	<link rel="stylesheet" type="text/css" href="../css/purchase.css">
+	<link rel="stylesheet" type="text/css" href="../../css/purchase.css">
 	
 	<!-- Boxicons CDN Link -->
 	<link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
