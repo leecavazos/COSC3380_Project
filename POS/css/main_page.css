@@ -327,4 +327,9 @@ footer {
 	font-size:17px;
 	color: black;
 }
+.form_Admin{
+	padding-top: 20px;
+	background-color: rgb(199, 198, 198);
+	font-weight:bolder;
+}
 /*End CSS for Footer*/
