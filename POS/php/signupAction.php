@@ -17,6 +17,8 @@
     $password = "";
     $databaseName = "pos";
 
+    require_once 'functions.php';
+
     $conn = new mysqli($servername, $username, $password, $databaseName);
     if($conn->connect_error) {
         die("Connection failed: " . $conn->connect_error);
