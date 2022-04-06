@@ -46,58 +46,97 @@
 <body>
     <div class="grid-container">
         <div class="grid-item aboutInfo">
-            <h2> Caela Intertas </h2>
+            <h2 class="name"> Caela Intertas </h2>
             <p id="displayEmail">caelaintertas@gmail.com</p>
             <h2 id="about">About</h2>
             <p>@caelaintrtas</p>
             <p>832-274-1885</p>
-            <p>Shipping Address: 9103 Stoney Lake Dr, Houston, TX, 77064-6426</p>
+            <p><span style="font-weight: 600">Shipping Address:</span><br> 9103 Stoney Lake Dr, Houston, TX, 77064-6426</p>
 
         </div>
         <div class="grid-item">
-            <form>
+            <form action="../php/accountDetailsAction.php" method="POST">
                 <div class="grid-container2">
+                    <h3>Personal Details</h3>
                     <div class="grid-item2">
-                        <h4>Personal Details</h4>
-                        <label for="First_name"><b>First name:</b></label>
-                        <input type="text" name="First_name" id="First_name" placeholder="Enter first name" required>
+                        <div class="flex-grid">
+                            <div class="col">
+                                <label for="First_name"><b>First name:</b></label>
+                                <input type="text" name="First_name" id="First_name" placeholder="Enter first name" required>
 
-                        <label for="Last_name"><b>Last name:</b></label>
-                        <input type="text" name="Last_name" id="Last_name" placeholder="Enter last name" required>
+                                <label for="Email"><b>Email</b></label>
+                                <input type="email" name="Email" id="Email" placeholder="Enter email" required>
+                            </div>
+                            <div class="col">
+                                <label for="Last_name"><b>Last name:</b></label>
+                                <input type="text" name="Last_name" id="Last_name" placeholder="Enter last name" required>
 
-                        <label for="Email"><b>Email</b></label>
-                        <input type="email" name="Email" id="Email" placeholder="Enter email" required>
-
-                        <label for="Phone_number"><b>Phone number:</b></label>
-                        <input type="text" name="Phone_number" id="Phone_number" placeholder="Enter phone number">
-
+                                <label for="Phone_number"><b>Phone number:</b></label>
+                                <input type="text" name="Phone_number" id="Phone_number" placeholder="Enter phone number">
+                            </div>
+                        </div>
                     </div>
+                    <h3>
+                        <hr>Address
+                    </h3>
                     <div class="grid-item2">
-                        <h4>Address</h4>
-                        <label for="Street_address"><b>Street address:</b></label>
-                        <input type="text" name="Street_address" id="Street_address" placeholder="Enter street address" required>
+                        <div class="flex-grid">
+                            <div class="col">
+                                <label for="Street_address"><b>Street address:</b></label>
+                                <input type="text" name="Street_address" id="Street_address" placeholder="Enter street address" required>
 
-                        <label for="APT"><b>APT:</b></label>
-                        <input type="text" name="APT" id="APT" placeholder="Enter apartment number">
+                                <label for="APT"><b>APT:</b></label>
+                                <input type="text" name="APT" id="APT" placeholder="Enter apartment number">
 
-                        <label for="City"><b>City:</b></label>
-                        <input type="text" name="City" id="City" placeholder="Enter city" required>
+                                <label for="Zip"><b>Zipcode:</b></label>
+                                <input type="text" name="Zip" id="Zip" placeholder="Enter Zipcode" required>
+                            </div>
+                            <div class="col">
+                                <label for="City"><b>City:</b></label>
+                                <input type="text" name="City" id="City" placeholder="Enter city" required>
 
-                        <label for="State"><b>State:</b></label>
-                        <input type="text" name="State" id="State" placeholder="Enter state" required>
-
-                        <label for="Zip"><b>Zipcode:</b></label>
-                        <input type="text" name="Zip" id="Zip" placeholder="Enter Zipcode" required>
+                                <label for="State"><b>State:</b></label>
+                                <input type="text" name="State" id="State" placeholder="Enter state" required>
+                            </div>
+                        </div>
                     </div>
+                    <h3>
+                        <hr>Account Details
+                    </h3>
                     <div class="grid-item2">
-                        <h4>Account Details</h4>
-                        <label for="Username"><b>Username:</b></label>
-                        <input type="text" name="Username" id="Username" placeholder="Enter username" required>
+                        <div class="flex-grid">
+                            <div class="col">
+                                <label for="Username"><b>Username:</b></label>
+                                <input type="text" name="Username" id="Username" placeholder="Enter username" required>
+                            </div>
+                            <div class="col">
+                                <label for="Password"><b>Password:</b></label>
+                                <input type="password" name="Password" id="Password" placeholder="Enter password" onkeyup="matchPasswords()" required>
 
-                        <label for="Password"><b>Password:</b></label>
-                        <input type="password" name="Password" id="Password" placeholder="Enter password" required>
+                                <label for="RePassword"><b>Re-enter Password:</b></label>
+                                <input type="password" name="RePassword" id="RePassword" placeholder="Enter password" onkeyup="matchPasswords()" required>
+                                <div id="confirmPassword">❗ Passwords do not match.</div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="grid-item2">
+                    <h3>
+                        <hr>
+                        <?php
+        if(isset($_GET["invalid"])) {
+            if($_GET["invalid"] == "email") {
+                echo "<style> .invalid {color: red; text-align: center;}</style><p class='invalid'>Email already exists for another user. Please try again.</p>";
+            }
+            if($_GET["invalid"] == "username") {
+                echo "<style> .invalid {color: red; text-align: center;}</style><p class='invalid'>Username already exists for another user. Please try again.</p>";
+            }
+        }
+
+        if(isset($_GET["created"])) {
+            echo "<style> .invalid {color: green; text-align: center;}</style><p class='invalid'>Account successfully updated!</p>";
+        }
+    ?>
+                    </h3>
+                    <div class="grid-item2 buttons">
                         <button id="cancel" onclick="clearForm()">Cancel</button>
                         <button id="update" type="submit">Update</button>
                     </div>
@@ -106,5 +145,20 @@
         </div>
     </div>
 </body>
+
+<script>
+    function matchPasswords() {
+        if (document.getElementById('Password').value ==
+            document.getElementById('RePassword').value) {
+            document.getElementById('update').disabled = false;
+            document.getElementById('update').style = "cursor: pointer";
+            document.getElementById('confirmPassword').style.display = "none";
+        } else {
+            document.getElementById('update').disabled = true;
+            document.getElementById('update').style = "cursor: not-allowed";
+            document.getElementById('confirmPassword').style.display = "block";
+        }
+    }
+</script>
 
 </html>
