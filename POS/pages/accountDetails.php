@@ -1,6 +1,27 @@
 <!DOCTYPE html>
 <html>
 
+<?php
+$servername = "localhost";
+$username = "root";
+$password = "";
+$databaseName = "pos";
+
+$conn = new mysqli($servername, $username, $password, $databaseName);
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+} else {
+    $User_ID = 6575;
+    $sql = "SELECT First_name, Last_name, Email, Phone_number, Street_address, APT, City, State, Zip, Username FROM user WHERE User_ID = ?;";
+    $stmt = mysqli_stmt_init($conn);
+    mysqli_stmt_prepare($stmt, $sql);
+    mysqli_stmt_bind_param($stmt, "i", $User_ID);
+    mysqli_stmt_execute($stmt);
+    $result = mysqli_stmt_get_result($stmt);
+    $row = mysqli_fetch_assoc($result);
+}
+?>
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -46,12 +67,18 @@
 <body>
     <div class="grid-container">
         <div class="grid-item aboutInfo">
-            <h2 class="name"> Caela Intertas </h2>
-            <p id="displayEmail">caelaintertas@gmail.com</p>
+            <h2 class="name"><?php echo $row['First_name'] . ' ' . $row['Last_name']?></h2>
+            <p id="displayEmail"><?php echo $row['Email']?></p>
             <h2 id="about">About</h2>
-            <p>@caelaintrtas</p>
-            <p>832-274-1885</p>
-            <p><span style="font-weight: 600">Shipping Address:</span><br> 9103 Stoney Lake Dr, Houston, TX, 77064-6426</p>
+            <p><?php echo '@' . $row['Username']?></p>
+            <p><?php echo $row['Phone_number']?></p>
+            <p><span style="font-weight: 600">Shipping Address:</span><br>
+            <?php echo $row['Street_address'] . ', ';
+            if($row['APT']) {
+                echo $row['APT'] . ', ';
+            }
+            echo $row['City'] . ', ' . $row['State'] . ', ' . $row['Zip']?>
+            </p>
 
         </div>
         <div class="grid-item">
@@ -122,19 +149,19 @@
                     <h3>
                         <hr>
                         <?php
-        if(isset($_GET["invalid"])) {
-            if($_GET["invalid"] == "email") {
-                echo "<style> .invalid {color: red; text-align: center;}</style><p class='invalid'>Email already exists for another user. Please try again.</p>";
-            }
-            if($_GET["invalid"] == "username") {
-                echo "<style> .invalid {color: red; text-align: center;}</style><p class='invalid'>Username already exists for another user. Please try again.</p>";
-            }
-        }
+                        if (isset($_GET["invalid"])) {
+                            if ($_GET["invalid"] == "email") {
+                                echo "<style> .invalid {color: red; text-align: center;}</style><p class='invalid'>Email already exists for another user. Please try again.</p>";
+                            }
+                            if ($_GET["invalid"] == "username") {
+                                echo "<style> .invalid {color: red; text-align: center;}</style><p class='invalid'>Username already exists for another user. Please try again.</p>";
+                            }
+                        }
 
-        if(isset($_GET["created"])) {
-            echo "<style> .invalid {color: green; text-align: center;}</style><p class='invalid'>Account successfully updated!</p>";
-        }
-    ?>
+                        if (isset($_GET["created"])) {
+                            echo "<style> .invalid {color: green; text-align: center;}</style><p class='invalid'>Account successfully updated!</p>";
+                        }
+                        ?>
                     </h3>
                     <div class="grid-item2 buttons">
                         <button id="cancel" onclick="clearForm()">Cancel</button>

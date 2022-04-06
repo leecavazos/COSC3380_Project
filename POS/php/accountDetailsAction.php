@@ -1,5 +1,5 @@
 <?php 
-    //$User_ID = 
+    $User_ID = 123;
     $First_name = $_POST['First_name'];
     $Last_name = $_POST['Last_name'];
     $Email = $_POST['Email'];
@@ -31,12 +31,12 @@
             header("location: ../pages/accountDetails.php?invalid=username");
             exit();
         }
-        $stmt = $conn->prepare("INSERT INTO User (User_ID, First_name, Last_name, Email, Phone_number, Street_address, APT, City, State, Zip, Username, Password) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
-        $stmt->bind_param("isssssssssss", $User_ID, $First_name, $Last_name, $Email, $Phone_number, $Street_address, $APT, $City, $State, $Zip, $Username, $Password);
+        $stmt = $conn->prepare("UPDATE User SET User_ID = ?, First_name = ?, Last_name = ?, Email = ?, Phone_number = ?, Street_address = ?, APT = ?, City = ?, State = ?, Zip = ?, Username = ?, Password = ? WHERE User_ID = ?");
+        $stmt->bind_param("isssssssssssi", $User_ID, $First_name, $Last_name, $Email, $Phone_number, $Street_address, $APT, $City, $State, $Zip, $Username, $Password, $User_ID);
         $stmt->execute();
         echo "Registration successful";
         $stmt->close();
         $conn->close();
-        header("location: ../pages/userForm.php?created=success");
+        header("location: ../pages/accountDetails.php?created=success");
     }
 ?>
