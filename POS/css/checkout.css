@@ -108,13 +108,13 @@ hr {
 }
 
 .cartInfo {
-    grid-row-start: 1;
-    grid-row-end: 3;
+    height: fit-content;
     grid-column-start: 2;
 }
 
 .paymentInfo {
     border-radius: 0 0 5px 5px;
+    height: fit-content;
 }
 
 
