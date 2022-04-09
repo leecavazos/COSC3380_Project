@@ -1,5 +1,5 @@
 <?php 
-    $User_ID = $_POST['User_ID'];
+    $User_ID = 123;
     $First_name = $_POST['First_name'];
     $Last_name = $_POST['Last_name'];
     $Email = $_POST['Email'];
@@ -23,22 +23,20 @@
     if($conn->connect_error) {
         die("Connection failed: " . $conn->connect_error);
     } else {
-        if(emailExists($conn, $Email) !== false) {
-            header("location: ../pages/userForm.php?invalid=email");
+        if(emailExistsForOtherUser($conn, $Email, $User_ID) !== false) {
+            header("location: ../pages/accountDetails.php?invalid=email");
             exit();
         }
-        if(usernameExists($conn, $Username) !== false) {
-            header("location: ../pages/userForm.php?invalid=username");
+        if(usernameExistsForOtherUser($conn, $Username, $User_ID) !== false) {
+            header("location: ../pages/accountDetails.php?invalid=username");
             exit();
         }
-        $stmt = $conn->prepare("INSERT INTO User (User_ID, First_name, Last_name, Email, Phone_number, Street_address, APT, City, State, Zip, Username, Password) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
-        $stmt->bind_param("isssssssssss", $User_ID, $First_name, $Last_name, $Email, $Phone_number, $Street_address, $APT, $City, $State, $Zip, $Username, $Password);
+        $stmt = $conn->prepare("UPDATE User SET User_ID = ?, First_name = ?, Last_name = ?, Email = ?, Phone_number = ?, Street_address = ?, APT = ?, City = ?, State = ?, Zip = ?, Username = ?, Password = ? WHERE User_ID = ?");
+        $stmt->bind_param("isssssssssssi", $User_ID, $First_name, $Last_name, $Email, $Phone_number, $Street_address, $APT, $City, $State, $Zip, $Username, $Password, $User_ID);
         $stmt->execute();
         echo "Registration successful";
         $stmt->close();
         $conn->close();
-        header("location: ../pages/userForm.php?created=success");
+        header("location: ../pages/accountDetails.php?created=success");
     }
-    
-    
 ?>

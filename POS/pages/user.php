@@ -35,7 +35,7 @@
                         </a>
                         <div class="dropdown-content">
                             <a href="#">Profile Management</a> 
-                            <a href="#">Account Details</a>
+                            <a href="accountDetails.php">Account Details</a>
                             <a href="../index.html">Log Out</a>
                         </div>
                     </div>
