@@ -13,13 +13,13 @@
 </head>
 
 <header>
-    <a href="user.html">
+    <a href="user.php">
 			<img src="../images/logo.webp">
 		</a>
 		<!-- Navbar Starts -->
 		<nav>
 			<ul>
-				<li><a href="user.html">Home</a></li>
+				<li><a href="user.php">Home</a></li>
 				<li>
                     <div class="dropdown">
                         <a href="#" class="drop-btn">
@@ -29,15 +29,16 @@
                         <div class="dropdown-content">
                             <a href="#">Profile Management</a> 
                             <a href="#">Account Details</a>
-                            <a href="../index.html">Sign Out</a>
+                            <a href="../index.html">Log Out</a>
                         </div>
                     </div>
                 </li>
 
-				<li><a href="#">Orders</a></li>
+				<li><a href="#">Orders History</a></li>
 				<li><a href="checkout.php">Cart</a></li>
-
-				<li><a href="#" class="order-btn btn btn-primary">Order Now</a></li>
+    
+                <!-- Go back to the previous page -->
+				<li><a href="user.php#menu-section" class="order-btn btn btn-primary">Order Now</a></li>
 			</ul>
 		</nav>
 		<!-- Navbar End -->

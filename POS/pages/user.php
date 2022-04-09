@@ -1,4 +1,9 @@
 <!DOCTYPE html>
+
+<?php
+	include('../php/loginAction.php');
+?>
+
 <html lang="en">
 <head>
     <meta charset="utf-8">
@@ -31,15 +36,15 @@
                         <div class="dropdown-content">
                             <a href="#">Profile Management</a> 
                             <a href="#">Account Details</a>
-                            <a href="../index.html">Sign Out</a>
+                            <a href="../index.html">Log Out</a>
                         </div>
                     </div>
                 </li>
 
-				<li><a href="#">Orders</a></li>
+				<li><a href="#">Orders History</a></li>
 				<li><a href="checkout.php">Cart</a></li>
 
-				<li><a href="#" class="order-btn btn btn-primary">Order Now</a></li>
+				<li><a href="#menu-section" class="order-btn btn btn-primary">Order Now</a></li>
 			</ul>
 		</nav>
 		<!-- Navbar End -->
@@ -86,7 +91,7 @@
 	<!-- Categories Section Ends Here -->
 
 	<!-- Food Menu Section Starts Here -->
-	<section class="menu">
+	<section class="menu" id="menu-section">
 		<div class="container">
 			<h2 class="text-center">Explore</h2>
 

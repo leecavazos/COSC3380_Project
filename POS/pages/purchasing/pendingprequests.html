@@ -11,11 +11,14 @@
 	<!-- Boxicons CDN Link -->
 	<link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
 
+	<!-- Link to js file -->
+	<script src="../../js/script.js"></script>
 
 </head>
 <body>
 	<!-- Navigation Bar Begins -->
-	<div class="sidebar">
+	<!-- Add onclick event for the sidebar from js file -->
+	<div class="sidebar" onclick="toggleSideBar()">
 		<div class="logo_content">
 			<div class="logo">
 				<i class='bx bx-money'></i>
@@ -40,7 +43,7 @@
 			<li>
 				<a href="purchase.html">
 					<i class='bx bx-grid-alt' ></i>
-					<span class="links_name">Dashbobard</span>
+					<span class="links_name">Dashboard</span>
 				</a>
 				<span class="tooltip">Dashboard</span>
 			</li>
@@ -151,25 +154,6 @@
 		</div>
 	</section>
 	<!-- Page Content Ends -->
-
-
-
-	<!-- Begin Script -->
-	<script type="text/javascript">
-		let btn = document.querySelector("#btn");
-		let sidebar = document.querySelector(".sidebar");
-		let searchBtn = document.querySelector(".bx-search");
-
-		btn.onclick = function(){
-			sidebar.classList.toggle("active");
-		}
-		searchBtn.onclick = function(){
-			sidebar.classList.toggle("active");
-		}
-	</script>
-	<!-- End Script -->
-
-
 
 </body>
 </html>

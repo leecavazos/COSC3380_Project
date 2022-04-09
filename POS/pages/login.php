@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 
 <head>
-	<title>Login </title>
+
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -9,6 +9,7 @@
     <link rel="icon" type="image/x-icon" href="../images/logo.webp">
 	<link rel="stylesheet" type="text/css" href="../css/main_page.css">
 	<link rel="stylesheet" type="text/css" href="../css/login.css">
+	<script src="../js/script.js"></script>
 	
 <body id="#top">
 	<header>
@@ -25,7 +26,7 @@
 	</header>
 
 	<section>
-		<form action="user.html" method="post">
+		<form action="../php/loginAction.php" method="post">
 			<div class="imgcontainer">
 				<img src="../images/login icon.png" alt="Avatar" class="avatar">
 			</div>
@@ -38,9 +39,16 @@
 				<label for="psw"><b>Password</b></label>
 				<input type="password" placeholder="Enter Password" name="psw" id="passInput" required>
 				<i class="bi bi-eye-slash" id="togglePassword" style="margin-left: -5%;display:inline;
-				vertical-align: middle"></i>
-				<script src="../js/script.js"></script>
-		
+				vertical-align: middle" onclick="togglePassword()"></i>
+
+				<?php
+					if(isset($_GET["invalid"])) {
+						if($_GET["invalid"] == "true") {
+							echo "<style> .invalid {color: red; text-align: center;}</style><p class='invalid'> Invalid username or password. Please try again!</p>";
+						}
+					}
+				?>
+  
 				<button type="submit" class="signup">Login</button>
 				<label>
 				<input type="checkbox" checked="checked" name="remember"> Remember me
@@ -56,7 +64,7 @@
 				<span class="psw">Forgot <a href="#">password?</a></span>
 				<button type="button">
 					<a href="../pages/userForm.php" class="signup">
-						Don't have an Account? Signup Here!
+						Don't have an Account? Sign up now!
 					</a>
 				</button>
 			</div>
