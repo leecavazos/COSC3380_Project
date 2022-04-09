@@ -1,4 +1,8 @@
 <!DOCTYPE html>
+
+<?php
+	include('../php/loginAction.php');
+?>
 <html>
 
 <?php
@@ -11,7 +15,7 @@ $conn = new mysqli($servername, $username, $password, $databaseName);
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 } else {
-    $User_ID = 6575;
+    $User_ID = $_SESSION['user_id'];
     $sql = "SELECT First_name, Last_name, Email, Phone_number, Street_address, APT, City, State, Zip, Username FROM user WHERE User_ID = ?;";
     $stmt = mysqli_stmt_init($conn);
     mysqli_stmt_prepare($stmt, $sql);

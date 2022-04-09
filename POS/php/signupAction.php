@@ -23,10 +23,6 @@
     if($conn->connect_error) {
         die("Connection failed: " . $conn->connect_error);
     } else {
-        if(userIDExists($conn, $User_ID) !== false) {
-            header("location: ../pages/userForm.php?invalid=id");
-            exit();
-        }
         if(emailExists($conn, $Email) !== false) {
             header("location: ../pages/userForm.php?invalid=email");
             exit();

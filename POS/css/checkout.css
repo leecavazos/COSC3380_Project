@@ -76,7 +76,7 @@ img {
     font-weight: bold;
 }
 
-.cartItems {
+#cartItems {
     float: right;
     font-weight: bolder;
     color:rgb(105, 105, 105)
