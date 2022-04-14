@@ -73,13 +73,13 @@
 				</div>
 			</div>
 			<div class="box float-container">
-				<img src="../images/cate pic sample.jpeg" alt="image1" class="category-img img-responsive" class="img-responsive img-curve">
+				<img src="../images/cate pic sample 1.jpeg" alt="image1" class="category-img img-responsive" class="img-responsive img-curve">
 				<div class="middle">
 					<div class="category-caption text-center">Category 2</div>
 				</div>
 			</div>
 			<div class="box float-container">
-				<img src="../images/cate pic sample.jpeg" alt="image1" class="category-img img-responsive" class="img-responsive img-curve">
+				<img src="../images/cate pic sample 2.jpeg" alt="image1" class="category-img img-responsive" class="img-responsive img-curve">
 				<div class="middle">
 					<div class="category-caption text-center">Category 3</div>
 				</div>
