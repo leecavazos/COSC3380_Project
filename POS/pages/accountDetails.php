@@ -38,13 +38,13 @@ if ($conn->connect_error) {
 </head>
 
 <header>
-    <a href="user.html">
+    <a href="user.php">
         <img src="../images/logo.webp">
     </a>
     <!-- Navbar Starts -->
     <nav>
         <ul>
-            <li><a href="user.html">Home</a></li>
+            <li><a href="user.php">Home</a></li>
             <li>
                 <div class="dropdown">
                     <a href="#" class="drop-btn">

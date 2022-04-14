@@ -86,7 +86,7 @@ if ($conn->connect_error) {
                                         echo $row['APT'] . ', ';
                                     }
                                     echo $row['City'] . ', ' . $row['State'] . ', ' . $row['Zip'] ?></p>
-            <a href="user.html"><button class="change">Change Information</button></a>
+            <a href="user.php"><button class="change">Change Information</button></a>
         </div>
         <div class="grid-item cartInfo">
             <p><span class="cart">Your cart</span><span id="cartItems"></span></p>
