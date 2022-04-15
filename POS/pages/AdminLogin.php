@@ -26,7 +26,7 @@
 	</header>
 
 	<section>
-		<form action="OrdersManager/OrdersAdmin.html" method="post">
+		<form action="../php/AdminloginAction.php" method="post">
 			<div class="imgcontainer">
 				<img src="../images/login icon.png" alt="Avatar" class="avatar">
 			</div>
@@ -40,11 +40,6 @@
 				<input type="password" placeholder="Enter Password" name="psw" id="passInput" required>
 				<i class="bi bi-eye-slash" id="togglePassword" style="margin-left: -5%;display:inline;
 				vertical-align: middle" onclick="togglePassword()"></i>
-
-				<laber for="manages"><b>What type of Manager are you?</b></laber>
-				<input type="checkbox">Inventory</input>
-				<input type="checkbox">Orders</input>
-				<input type="checkbox">Purchasing</input>
 
 				<button type="submit" class="signup">Login</button>
 				<label>
