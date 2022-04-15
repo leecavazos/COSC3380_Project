@@ -1,5 +1,5 @@
 <?php 
-    $User_ID = 123;
+    $User_ID = $_POST['User_ID'];
     $First_name = $_POST['First_name'];
     $Last_name = $_POST['Last_name'];
     $Email = $_POST['Email'];

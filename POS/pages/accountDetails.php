@@ -147,6 +147,8 @@ if ($conn->connect_error) {
                                 <label for="RePassword"><b>Re-enter Password:</b></label>
                                 <input type="password" name="RePassword" id="RePassword" placeholder="Enter password" onkeyup="matchPasswords()" required>
                                 <div id="confirmPassword">❗ Passwords do not match.</div>
+
+                                <input type="hidden" name="User_ID" value=<?= $_SESSION['user_id'] ?>>
                             </div>
                         </div>
                     </div>
@@ -168,7 +170,7 @@ if ($conn->connect_error) {
                         ?>
                     </h3>
                     <div class="grid-item2 buttons">
-                        <button id="cancel" onclick="clearForm()">Cancel</button>
+                        <button id="cancel" onclick="location.href='user.php';">Cancel</button>
                         <button id="update" type="submit">Update</button>
                     </div>
                 </div>
