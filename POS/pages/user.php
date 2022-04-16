@@ -2,7 +2,6 @@
 
 <?php
 	include('../php/loginAction.php');
-	// include('../php/addToCartAction.php');
 
 ?>
 
@@ -97,27 +96,29 @@
 			<h2 class="text-center">Explore</h2>
 
 			<?php
-				require_once '../php/config.php';
+				// require_once '../php/config.php';
 				$sql = "SELECT Product_ID, Product_name, Price FROM `Product`";
 				$result = mysqli_query($conn,$sql) or die(mysqli_error($conn));
 				if ($result->num_rows > 0) {
 					while($row = mysqli_fetch_array($result)) {
 						echo '
 						<div class="item-box float-container">
-							<p class="menu-item text-left">'.$row['Product_name'].'
+							<p id="pid" name="pid" class="menu-item text-left">'.$row['Product_name'].'
 								<span class="price">$'.$row['Price'].'</span>
 							</p>
 							<img src="../images/item sample '.$row['Product_ID'].'.jpeg" class="item-img img-responsive">
 							<p class="item-description text-left">Item '.$row['Product_ID'].' Description</p>
-							<form action="../php/addToCartAction.php" method="post" style="display: flex; flex-direction: row; gap: 20px;">
+							<form action="../php/addToCartAction.php" method="post" style="display: flex; flex-direction: row; gap: 15px;">
+								<input type="hidden" name="pid" value="'.$row['Product_ID'].'">
 								<label for="quantity" style="font-size: large;">Quantity</label>
-								<input type="number" id="quantity" name="quantity" min="1" 
+								<input type="number" id="quantity" name="quantity" min="1" value="1"
 									style="width: 12%; margin-top: 5%; margin-bottom: 5%; vertical-align: middle;"/>
 								<button type="submit" class="btn btn-primary item-btn">Add to Cart</button>
 							</form>
 						</div>';
 					}
 				}
+				mysqli_close($conn);
 			?>
 
 		</div>
