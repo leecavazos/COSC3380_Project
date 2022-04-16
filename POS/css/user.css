@@ -42,3 +42,15 @@
 .dropdown:hover .dropdown-content {
     display: block;
 }
+
+/* Order button for items */
+.item-btn {
+	background-color: #04AA6D;
+	margin: auto;
+	text-align: center;
+	padding: 10px;
+}
+.item-btn:hover {
+	background-color: #05be7b;
+	color: white;
+}
