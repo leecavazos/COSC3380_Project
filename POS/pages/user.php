@@ -36,7 +36,7 @@
                             <i class="fa fa-caret-down"></i>
                         </a>
                         <div class="dropdown-content">
-                            <a href="#">Profile Management</a> 
+                            <!-- <a href="#">Profile Management</a>  -->
                             <a href="accountDetails.php">Account Details</a>
                             <a href="../index.html">Log Out</a>
                         </div>
