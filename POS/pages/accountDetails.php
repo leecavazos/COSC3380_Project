@@ -52,17 +52,17 @@ if ($conn->connect_error) {
                         <i class="fa fa-caret-down"></i>
                     </a>
                     <div class="dropdown-content">
-                        <a href="#">Profile Management</a>
+                        <!-- <a href="#">Profile Management</a> -->
                         <a href="#">Account Details</a>
-                        <a href="../index.html">Sign Out</a>
+                        <a href="../index.html">Log Out</a>
                     </div>
                 </div>
             </li>
 
-            <li><a href="#">Orders</a></li>
+            <li><a href="#">Orders History</a></li>
             <li><a href="checkout.php">Cart</a></li>
 
-            <li><a href="#" class="order-btn btn btn-primary">Order Now</a></li>
+            <li><a href="user.php#menu-section" class="order-btn btn btn-primary">Order Now</a></li>
         </ul>
     </nav>
     <!-- Navbar End -->

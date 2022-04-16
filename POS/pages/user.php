@@ -2,6 +2,7 @@
 
 <?php
 	include('../php/loginAction.php');
+
 ?>
 
 <html lang="en">
@@ -34,7 +35,7 @@
                             <i class="fa fa-caret-down"></i>
                         </a>
                         <div class="dropdown-content">
-                            <a href="#">Profile Management</a> 
+                            <!-- <a href="#">Profile Management</a>  -->
                             <a href="accountDetails.php">Account Details</a>
                             <a href="../index.html">Log Out</a>
                         </div>
@@ -66,24 +67,23 @@
 		<div class="container">
 			<h1 class="text-center">Categories</h1>
 
-			<div class="box float-container">
-				<img src="../images/cate pic sample.jpeg" alt="image1" class="category-img img-responsive" class="img-responsive img-curve">
-				<div class="middle">
-					<div class="category-caption text-center">Category 1</div>
-				</div>
-			</div>
-			<div class="box float-container">
-				<img src="../images/cate pic sample 1.jpeg" alt="image1" class="category-img img-responsive" class="img-responsive img-curve">
-				<div class="middle">
-					<div class="category-caption text-center">Category 2</div>
-				</div>
-			</div>
-			<div class="box float-container">
-				<img src="../images/cate pic sample 2.jpeg" alt="image1" class="category-img img-responsive" class="img-responsive img-curve">
-				<div class="middle">
-					<div class="category-caption text-center">Category 3</div>
-				</div>
-			</div>
+			<?php
+				require_once '../php/config.php';
+				$sql = "SELECT * FROM `Category`";
+				$result = mysqli_query($conn,$sql) or die(mysqli_error);
+				if ($result->num_rows > 0) {
+					while ($row = mysqli_fetch_array($result)) {
+						echo '
+							<div class="box float-container">
+								<img src="../images/cate pic sample '.$row['Category_ID'].'.jpeg" alt="image1" class="category-img img-responsive" class="img-responsive img-curve">
+								<div class="middle">
+									<div class="category-caption text-center">'.$row['Category_name'].'</div>
+								</div>
+							</div>
+						';
+					}
+				}
+			?>
 		</div>
 
 		<div class="clearfix"></div>
@@ -95,45 +95,31 @@
 		<div class="container">
 			<h2 class="text-center">Explore</h2>
 
-			<div class="item-box float-container">
-				<p class="menu-item text-left">Item 1
-					<span class="price">$10</span>
-				</p>
-				<img src="../images/item sample 1.jpeg" class="item-img img-responsive">
-				<p class="item-description text-left">Item 1 Description</p>
-			</div>
-
-			<div class="item-box float-container">
-				<p class="menu-item text-left">Item 2
-					<span class="price">$12</span>
-				</p>
-				<img src="../images/item sample 2.jpeg" class="item-img img-responsive">
-				<p class="item-description text-left">Item 2 Description</p>
-			</div>
-
-			<div class="item-box float-container">
-				<p class="menu-item text-left">Item 3
-					<span class="price">$8</span>
-				</p>
-				<img src="../images/item sample 3.jpeg" class="item-img img-responsive">
-				<p class="item-description text-left">Item 3 Description</p>
-			</div>
-
-			<div class="item-box float-container">
-				<p class="menu-item text-left">Item 4
-					<span class="price">$12</span>
-				</p>
-				<img src="../images/item sample 4.jpeg" class="item-img img-responsive">
-				<p class="item-description text-left">Item 4 Description</p>
-			</div>
-
-			<div class="item-box float-container">
-				<p class="menu-item text-left">Item 5
-					<span class="price">$10</span>
-				</p>
-				<img src="../images/item sample 5.webp" class="item-img img-responsive">
-				<p class="item-description text-left">Item 5 Description</p>
-			</div>
+			<?php
+				// require_once '../php/config.php';
+				$sql = "SELECT Product_ID, Product_name, Price FROM `Product`";
+				$result = mysqli_query($conn,$sql) or die(mysqli_error($conn));
+				if ($result->num_rows > 0) {
+					while($row = mysqli_fetch_array($result)) {
+						echo '
+						<div class="item-box float-container">
+							<p id="pid" name="pid" class="menu-item text-left">'.$row['Product_name'].'
+								<span class="price">$'.$row['Price'].'</span>
+							</p>
+							<img src="../images/item sample '.$row['Product_ID'].'.jpeg" class="item-img img-responsive">
+							<p class="item-description text-left">Item '.$row['Product_ID'].' Description</p>
+							<form action="../php/addToCartAction.php" method="post" style="display: flex; flex-direction: row; gap: 15px;">
+								<input type="hidden" name="pid" value="'.$row['Product_ID'].'">
+								<label for="quantity" style="font-size: large;">Quantity</label>
+								<input type="number" id="quantity" name="quantity" min="1" value="1"
+									style="width: 12%; margin-top: 5%; margin-bottom: 5%; vertical-align: middle;"/>
+								<button type="submit" class="btn btn-primary item-btn">Add to Cart</button>
+							</form>
+						</div>';
+					}
+				}
+				mysqli_close($conn);
+			?>
 
 		</div>
 	</section>
