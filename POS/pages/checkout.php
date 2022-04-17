@@ -15,11 +15,7 @@ include('../php/loginAction.php');
     $row = mysqli_fetch_assoc($result);
     mysqli_free_result($result);
 
-<<<<<<< HEAD
-    $sql = "SELECT p.Product_ID, Product_name, Price, Quantity FROM `cart item` AS c, `product` AS p WHERE User_ID = ? AND p.Product_ID = c.Product_ID;";
-=======
-    $sql = "SELECT * FROM `Cart Item` AS c, `Product` AS p WHERE User_ID = ? AND p.Product_ID = c.Product_ID;";
->>>>>>> b7aaa97ac3a6dda602a2c1579acecf963cbbb0c0
+    $sql = "SELECT p.Product_ID, Product_name, Price, Quantity FROM `Cart Item` AS c, `Product` AS p WHERE User_ID = ? AND p.Product_ID = c.Product_ID;";
     $stmt = mysqli_stmt_init($conn);
     mysqli_stmt_prepare($stmt, $sql);
     mysqli_stmt_bind_param($stmt, "i", $User_ID);
@@ -34,7 +30,7 @@ include('../php/loginAction.php');
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>POS Team 5</title>
     <link rel="stylesheet" type="text/css" href="../css/user.css">
-    <link rel="stylesheet" type="text/css" href="../css/checkout.css">
+    <link rel="stylesheet" type="text/css" href="../css/checkout.css?v1.1">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <link rel="icon" type="image/x-icon" href="../images/logo.webp">
@@ -102,7 +98,9 @@ include('../php/loginAction.php');
                 <hr>';
             } ?>
             <p><span class="total">Total</span><span class="amount" id="gtotal"></span></p>
+            <a href="../php/clearCartAction.php?id=<?php echo $User_ID?>"><button class="clear">Clear Cart</button></a>
         </div>
+        
         <div class="grid-item paymentInfo">
             <p class="pay">Payment Information</p>
             <form action="../php/checkoutAction.php" method="POST">
@@ -134,7 +132,12 @@ include('../php/loginAction.php');
     </div>
     <?php
     if(isset($_GET["success"])) {
-        echo "<style> .success {font-size: larger; font-weight: 600; text-align: center; color: #04AA6D;}</style><p class='success'>Order successfully made!</p>";
+        if($_GET["success"] == "order")
+        echo "<style> .success {margin-top: 5%; font-size: larger; font-weight: 600; text-align: center; color: #04AA6D;}</style><p class='success'>Order successfully made!</p>";
+    }
+    if(isset($_GET["success"])) {
+        if($_GET["success"] == "clear")
+        echo "<style> .success {margin-top: 5%; font-size: larger; font-weight: 600; text-align: center; color: #04AA6D;}</style><p class='success'>Cart has successfully been cleared!</p>";
     }
 ?>
 

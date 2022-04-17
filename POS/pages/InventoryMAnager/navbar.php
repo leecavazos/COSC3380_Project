@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <?php
-include('../../php/loginManagerAction.php');
+include('../../php/AdminloginAction.php');
 ?>
 
 <html>

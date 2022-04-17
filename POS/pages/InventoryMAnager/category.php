@@ -5,7 +5,7 @@ include('navbar.php');
 
 <?php
 require_once "../../php/config.php";
-$sql = "SELECT Category_ID, Category_name FROM category";
+$sql = "SELECT Category_ID, Category_name, Category_image FROM Category";
 $result = $conn->query($sql);
 $num = $result->num_rows;
 $rows = $result->fetch_all(MYSQLI_ASSOC);
@@ -14,7 +14,7 @@ $rows = $result->fetch_all(MYSQLI_ASSOC);
 <html>
 
 <head>
-    <link rel="stylesheet" type="text/css" href="../../css/inventory.css?v1.2">
+    <link rel="stylesheet" type="text/css" href="../../css/inventory.css?v1.3">
 </head>
 
 <body>
@@ -29,10 +29,14 @@ $rows = $result->fetch_all(MYSQLI_ASSOC);
             <!-- End Dashboard content -->
             <!-- Recent Activity Content Begins -->
             <section>
-                <form action="../../php/addCategoryAction.php" method="POST" class="categoryForm">
+                <form action="../../php/addCategoryAction.php" method="POST" class="categoryForm" enctype="multipart/form-data">
                     <div class="itemC">
                         <label for="Category_name">Category name:</label>
                         <input type="text" id="Category_name" name="Category_name" required>
+                    </div>
+                    <div class="itemC">
+                        <label for="Category_image">Category image:</label>
+                        <input type="file" name="Category_image" required>
                     </div>
                     <div class="itemC">
                         <input type="submit" id="submit">
@@ -91,7 +95,7 @@ $rows = $result->fetch_all(MYSQLI_ASSOC);
                             <span class="data-title">Delete?</span>
                             <?php
                             for ($ind = 0; $ind < $num; $ind++) {
-                                echo "<span class='data-list-link'><a href='../../php/deleteCategoryAction.php?id={$rows[$ind]['Category_ID']}' class='button'><i class='bx bxs-trash'></i></i></a></span>";
+                                echo "<span class='data-list-link'><a href='../../php/deleteCategoryAction.php?id={$rows[$ind]['Category_ID']}&image={$rows[$ind]['Category_image']}' class='button'><i class='bx bxs-trash'></i></i></a></span>";
                             }
                             ?>
                         </div>

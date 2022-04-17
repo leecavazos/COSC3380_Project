@@ -5,10 +5,10 @@ include('navbar.php');
 
 <?php
 require_once "../../php/config.php";
-$sql = "SELECT Category_ID, Category_name FROM category";
+$sql = "SELECT Category_ID, Category_name FROM Category";
 $result1 = $conn->query($sql);
-
-$sql = "SELECT Product_ID, Product_name, Price, Category_name, Available_for_purchase, Current_stock_level, Threshold_level, Restock_level FROM product AS p, category AS c WHERE p.Category_ID = c.Category_ID";
+$rows1 = $result1->fetch_all(MYSQLI_ASSOC);
+$sql = "SELECT Product_ID, Product_name, Price, Category_name, Available_for_purchase, Current_stock_level, Threshold_level, Restock_level, Product_image FROM Product AS p, Category AS c WHERE p.Category_ID = c.Category_ID";
 $result = $conn->query($sql);
 $num = $result->num_rows;
 $rows = $result->fetch_all(MYSQLI_ASSOC);
@@ -34,7 +34,7 @@ $rows = $result->fetch_all(MYSQLI_ASSOC);
                 <!-- End Dashboard content -->
                 <!-- Recent Activity Content Begins -->
                 <div class="productForm">
-                    <form action="../../php/addProductAction.php" method="POST">
+                    <form action="../../php/addProductAction.php" method="POST" enctype="multipart/form-data">
                         <div class="item">
                             <label for="Product_name">Product name:</label>
                             <input type="text" id="Product_name" name="Product_name" required>
@@ -47,11 +47,10 @@ $rows = $result->fetch_all(MYSQLI_ASSOC);
                             <label for="Category">Category:</label>
                             <select id="Category" name="Category" required>
                                 <?php
-                                while ($row = $result1->fetch_assoc()) {
-                                    echo "<option value='{$row['Category_ID']}'>{$row['Category_name']}</option>";
+                                foreach ($rows1 as $row1) {
+                                    echo "<option value='{$row1['Category_ID']}'>{$row1['Category_name']}</option>";
                                 }
                                 ?>
-                                <option value=""></option>
                             </select>
                         </div>
                         <div class="item">
@@ -79,6 +78,10 @@ $rows = $result->fetch_all(MYSQLI_ASSOC);
                             <label for="Restock_level">Restock level:</label>
                             <input type="number" id="Restock_level" name="Restock_level" min="0" onchange="checkLevels()" required>
                             <div id="checkLevels"> ❗ Restock level must be greater than threshold.</div>
+                        </div>
+                        <div class="item">
+                            <label for="Product_image">Product image:</label>
+                            <input type="file" name="Product_image" required>
                         </div>
                         <div class="item">
                             <input type="submit" id="submit">
@@ -186,7 +189,7 @@ $rows = $result->fetch_all(MYSQLI_ASSOC);
                             <span class="data-title">Delete?</span>
                             <?php
                             for ($ind = 0; $ind < $num; $ind++) {
-                                echo "<span class='data-list-link'><a href='../../php/deleteAction.php?id={$rows[$ind]['Product_ID']}' class='button'><i class='bx bxs-trash'></i></i></a></span>";
+                                echo "<span class='data-list-link'><a href='../../php/deleteAction.php?id={$rows[$ind]['Product_ID']}&image={$rows[$ind]['Product_image']}' class='button'><i class='bx bxs-trash'></i></i></a></span>";
                             }
                             ?>
                         </div>

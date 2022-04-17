@@ -2,7 +2,7 @@
 	font-family: Arial, Helvetica, sans-serif;
 }
 
-.change, .checkout {
+.change, .checkout, .clear {
     background-color: #04AA6D;
     color: white;
     padding: 15px;
@@ -256,4 +256,9 @@ a{
 a:hover{
 	color: #d63031;
 	/* color: burlywood; */
+}
+
+.clear {
+    float: right;
+    margin-right: 2%;
 }
