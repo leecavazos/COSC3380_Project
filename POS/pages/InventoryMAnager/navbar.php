@@ -12,7 +12,7 @@ include('../../php/loginManagerAction.php');
 	<!-- Link to css file -->
 	<link rel="stylesheet" type="text/css" href="../../css/purchase.css">
 
-    <link rel="stylesheet" type="text/css" href="../../css/inventory.css">
+    
 	
 	<!-- Boxicons CDN Link -->
 	<link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
@@ -48,32 +48,18 @@ include('../../php/loginManagerAction.php');
 				<span class="tooltip">Dashboard</span>
 			</li>
 			<li>
-				<a href="addProduct.php">
-                    <i class='bx bx-plus-circle' ></i>
-					<span class="links_name">Add Product</span>
+				<a href="product.php">
+					<i class='bx bxs-popsicle' ></i>
+					<span class="links_name">Products</span>
 				</a>
-				<span class="tooltip">Add Product</span>
+				<span class="tooltip">Products</span>
 			</li>
 			<li>
-				<a href="deleteProduct.php">
-                    <i class='bx bx-minus-circle' ></i>
-					<span class="links_name">Delete Product</span>
+				<a href="category.php">
+                <i class='bx bx-folder' ></i>
+					<span class="links_name">Categories</span>
 				</a>
-				<span class="tooltip">Delete Product</span>
-			</li>
-			<li>
-				<a href="addCategory.html">
-                <i class='bx bx-folder-plus' ></i>
-					<span class="links_name">Add Category</span>
-				</a>
-				<span class="tooltip">Add Category</span>
-			</li>
-			<li>
-				<a href="deleteCategory.php">
-                <i class='bx bx-folder-minus' ></i>
-					<span class="links_name">Delete Category</span>
-				</a>
-				<span class="tooltip">Delete Category</span>
+				<span class="tooltip">Categories</span>
 			</li>
 			<li>
 				<a href="purchaseRequest.php">

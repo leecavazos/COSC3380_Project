@@ -37,12 +37,12 @@
 
          }
          else {
-            header("Location: ../pages/login.php?invalid=true");
+            header("Location: ../pages/AdminLogin.php?invalid=true");
             exit();
          }
       }
       else {
-         header("Location: ../pages/login.php?invalid=true");
+         header("Location: ../pages/AdminLogin.php?invalid=true");
          exit();
       }
    }

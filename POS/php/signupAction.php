@@ -12,17 +12,9 @@
     $Username = $_POST['Username'];
     $Password = $_POST['Password'];
 
-    $servername = "localhost";
-    $username = "root";
-    $password = "";
-    $databaseName = "pos";
-
+    require_once "config.php";
     require_once 'functions.php';
 
-    $conn = new mysqli($servername, $username, $password, $databaseName);
-    if($conn->connect_error) {
-        die("Connection failed: " . $conn->connect_error);
-    } else {
         if(emailExists($conn, $Email) !== false) {
             header("location: ../pages/userForm.php?invalid=email");
             exit();
@@ -38,7 +30,7 @@
         $stmt->close();
         $conn->close();
         header("location: ../pages/userForm.php?created=success");
-    }
+    
     
     
 ?>

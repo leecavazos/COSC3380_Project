@@ -6,15 +6,7 @@
 <html>
 
 <?php
-$servername = "localhost";
-$username = "root";
-$password = "";
-$databaseName = "pos";
-
-$conn = new mysqli($servername, $username, $password, $databaseName);
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-} else {
+    require_once "../php/config.php";
     $User_ID = $_SESSION['user_id'];
     $sql = "SELECT First_name, Last_name, Email, Phone_number, Street_address, APT, City, State, Zip, Username FROM user WHERE User_ID = ?;";
     $stmt = mysqli_stmt_init($conn);
@@ -23,7 +15,7 @@ if ($conn->connect_error) {
     mysqli_stmt_execute($stmt);
     $result = mysqli_stmt_get_result($stmt);
     $row = mysqli_fetch_assoc($result);
-}
+
 ?>
 
 <head>

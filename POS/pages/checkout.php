@@ -4,15 +4,7 @@ include('../php/loginAction.php');
 ?>
 
 <?php
-$servername = "localhost";
-$username = "root";
-$password = "";
-$databaseName = "pos";
-
-$conn = new mysqli($servername, $username, $password, $databaseName);
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-} else {
+    require_once "../php/config.php";
     $User_ID = $_SESSION['user_id'];
     $sql = "SELECT First_name, Last_name, Email, Phone_number, Street_address, APT, City, State, Zip, Username FROM user WHERE User_ID = ?;";
     $stmt = mysqli_stmt_init($conn);
@@ -23,14 +15,13 @@ if ($conn->connect_error) {
     $row = mysqli_fetch_assoc($result);
     mysqli_free_result($result);
 
-    $sql = "SELECT Product_name, Price, Quantity FROM `cart item` AS c, `product` AS p WHERE User_ID = ? AND p.Product_ID = c.Product_ID;";
+    $sql = "SELECT p.Product_ID, Product_name, Price, Quantity FROM `cart item` AS c, `product` AS p WHERE User_ID = ? AND p.Product_ID = c.Product_ID;";
     $stmt = mysqli_stmt_init($conn);
     mysqli_stmt_prepare($stmt, $sql);
     mysqli_stmt_bind_param($stmt, "i", $User_ID);
     mysqli_stmt_execute($stmt);
     $result = mysqli_stmt_get_result($stmt);
     $results = mysqli_fetch_all($result, MYSQLI_ASSOC);
-}
 ?>
 <html>
 
@@ -94,7 +85,7 @@ if ($conn->connect_error) {
             <?php foreach ($results as $row2) {
                 echo '<div class="grid-container2">
                     <div class="grid-item2">
-                        <img src="../images/item sample 2.jpeg">
+                    <img src="../images/item sample '.$row2['Product_ID'].'.jpeg" class="item-img img-responsive">
                     </div>
                     <div class="grid-item2">
                         <div class="itemName">' . $row2['Product_name'] . '</div>
@@ -157,7 +148,7 @@ if ($conn->connect_error) {
                 }
             }
             document.getElementById('Order_total').value = total;
-            document.getElementById('gtotal').innerHTML = "$" + total;
+            document.getElementById('gtotal').innerHTML = "$" + total.toFixed(2);
 
             document.getElementById('cartItems').innerHTML = "<box-icon name='cart' style='margin-right: 5px; padding-top: 3px;'></box-icon>" + totalQuantity + " items";
         }
