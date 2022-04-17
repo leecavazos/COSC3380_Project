@@ -1,5 +1,5 @@
 <?php
-    require_once "../../php/AdminLoginAction.php";
+    require_once "../../php/AdminloginAction.php";
     require_once "../../php/config.php";
 ?>
 <!DOCTYPE html>
