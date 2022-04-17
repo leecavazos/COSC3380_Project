@@ -10,10 +10,10 @@ $Last_4_digits = substr($_POST['CardNumber'], -4, 4);
 $Order_total = $_POST['Order_total'];
 $Date_of_purchase = date('Y-m-d');
 
-$servername = "localhost";
+$servername = "3.133.98.11";
 $username = "root";
-$password = "";
-$databaseName = "pos";
+$password = "cosc3380";
+$databaseName = "POS";
 
 $conn = new mysqli($servername, $username, $password, $databaseName);
 if ($conn->connect_error) {
