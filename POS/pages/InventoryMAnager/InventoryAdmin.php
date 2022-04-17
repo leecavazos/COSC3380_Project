@@ -15,7 +15,7 @@
                 <ul>
                     <li><a href=""> Account</a></li>
                     <li><a href="../../index.html"> Logout</a></li>
-                    <li><a href="../OrdersManager/OrdersAdmin.html"> Order </a></li>
+                    <li><a href="../OrdersManager/OrdersAdmin.php"> Order </a></li>
                     <li><a href="../purchasing/purchase.html"> Purchasing </a></li>
                 </ul>
             </nav>

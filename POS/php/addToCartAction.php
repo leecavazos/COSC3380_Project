@@ -6,7 +6,7 @@
     if (isset($_POST['pid']) && isset($_POST['quantity'])) {
         $pid = $_POST['pid'];
         $qty = $_POST['quantity'];
-        echo "Processing...";
+        // echo "Processing...";
         if ($stmt = $conn->prepare("INSERT INTO `Cart item`(User_ID, Product_ID, Quantity) VALUES ($User_ID, ?, $qty);")) {
             
             $stmt->bind_param("i",$pid);

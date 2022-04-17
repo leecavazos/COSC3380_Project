@@ -4,10 +4,10 @@ include('../php/loginAction.php');
 ?>
 
 <?php
-$servername = "localhost";
+$servername = "3.133.98.11";
 $username = "root";
-$password = "";
-$databaseName = "pos";
+$password = "cosc3380";
+$databaseName = "POS";
 
 $conn = new mysqli($servername, $username, $password, $databaseName);
 if ($conn->connect_error) {

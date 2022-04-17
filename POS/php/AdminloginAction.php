@@ -29,7 +29,7 @@
                header("Location: ../pages/OrdersManager/OrdersAdmin.php");
                exit();
             }
-            elseif ($row['Managin_role'] === 'Purchasing') {
+            elseif ($row['Managing_role'] === 'Purchasing') {
                header("Location: ../pages/InventoryMAnager/InventoryAdmin.php");
                exit();
             }
@@ -37,12 +37,12 @@
             // exit();
          }
          else {
-            header("Location: ../pages/Adminlogin.php?invalid=true");
+            header("Location: ../pages/AdminLogin.php?invalid=true");
             exit();
          }
       }
       else {
-         header("Location: ../pages/Adminlogin.php?invalid=true");
+         header("Location: ../pages/AdminLogin.php?invalid=true");
          exit();
       }
    }
