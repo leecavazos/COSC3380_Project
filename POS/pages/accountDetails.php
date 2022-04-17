@@ -8,7 +8,7 @@
 <?php
     require_once "../php/config.php";
     $User_ID = $_SESSION['user_id'];
-    $sql = "SELECT First_name, Last_name, Email, Phone_number, Street_address, APT, City, State, Zip, Username FROM user WHERE User_ID = ?;";
+    $sql = "SELECT First_name, Last_name, Email, Phone_number, Street_address, APT, City, State, Zip, Username FROM `User` WHERE User_ID = ?;";
     $stmt = mysqli_stmt_init($conn);
     mysqli_stmt_prepare($stmt, $sql);
     mysqli_stmt_bind_param($stmt, "i", $User_ID);
@@ -22,6 +22,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>POS Team 5</title>
+    <link rel="stylesheet" type="text/css" href="../css/user.css">
     <link rel="stylesheet" type="text/css" href="../css/accountDetails.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 

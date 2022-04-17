@@ -26,7 +26,7 @@
 	</header>
 
 	<section>
-		<form action="../php/loginManagerAction.php" method="post">
+		<form action="../php/AdminloginAction.php" method="post">
 			<div class="imgcontainer">
 				<img src="../images/login icon.png" alt="Avatar" class="avatar">
 			</div>
