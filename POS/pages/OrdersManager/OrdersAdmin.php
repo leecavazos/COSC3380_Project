@@ -115,7 +115,7 @@
                                 $result = mysqli_query($conn, $sql) or die(mysqli_error($conn));
                                 while($row = mysqli_fetch_array($result)){
                                     $id=$row['Order_ID'];
-                                    $PID=$row['Purchaser_ID'];
+                                    $PID=$row['User_ID'];
                                     $Street=$row['Street_delivered_to'];
                                     $City=$row['City_delivered_to'];
                                     $State=$row['State_delivered_to'];
@@ -138,7 +138,7 @@
                                 $result = mysqli_query($conn, $sql) or die(mysqli_error($conn));
                                 while($row = mysqli_fetch_assoc($result)){
                                     $id=$row['Order_ID'];
-                                    $PID=$row['Purchaser_ID'];
+                                    $PID=$row['User_ID'];
                                     $Street=$row['Street_delivered_to'];
                                     $City=$row['City_delivered_to'];
                                     $State=$row['State_delivered_to'];
@@ -159,7 +159,7 @@
                                 $result = mysqli_query($conn, $sql) or die(mysqli_error($conn));
                                 while($row = mysqli_fetch_assoc($result)){
                                     $id=$row['Order_ID'];
-                                    $PID=$row['Purchaser_ID'];
+                                    $PID=$row['User_ID'];
                                     $Street=$row['Street_delivered_to'];
                                     $City=$row['City_delivered_to'];
                                     $State=$row['State_delivered_to'];

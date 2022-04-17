@@ -12,10 +12,10 @@
     $Username = $_POST['Username'];
     $Password = $_POST['Password'];
 
-    $servername = "localhost";
+    $servername = "3.133.98.11";
     $username = "root";
-    $password = "";
-    $databaseName = "pos";
+    $password = "cosc3380";
+    $databaseName = "POS";
 
     require_once 'functions.php';
 
