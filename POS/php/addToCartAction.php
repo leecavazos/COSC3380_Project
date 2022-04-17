@@ -7,15 +7,14 @@
         $pid = $_POST['pid'];
         $qty = $_POST['quantity'];
         // echo "Processing...";
-        if ($stmt = $conn->prepare("INSERT INTO `Cart item`(User_ID, Product_ID, Quantity) VALUES ($User_ID, ?, $qty);")) {
-            
-            $stmt->bind_param("i",$pid);
+        if ($stmt = $conn->prepare("INSERT INTO `Cart item`(User_ID, Product_ID, Quantity) VALUES ($User_ID, ?, $qty)")) {
+            $stmt->bind_param("i", $pid);
             $stmt->execute();
+            // echo"Done.\n";
             $stmt->close();
-            echo"Done.\n";
             header("location: ../pages/user.php#menu-section?addItem=true");
         }else {
-            echo "Error";
+            header("location: ../pages/user.php#menu-section?addItem=false");
         }
     }
 ?>

@@ -112,7 +112,7 @@
 </body>
 <?php
     if(isset($_GET["created"])) {
-        echo "<style> .success {font-size: larger; text-decoration: bold; text-align: center;}</style><p class='success'>Account successfully created! Please <a href=../pages/login.html>login</a>.</p>";
+        echo "<style> .success {font-size: larger; text-decoration: bold; text-align: center;}</style><p class='success'>Account successfully created! Please <a href=../pages/login.php>login</a>.</p>";
     }
 ?>
 

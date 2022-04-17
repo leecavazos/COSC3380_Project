@@ -14,7 +14,7 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 } else {
     $User_ID = $_SESSION['user_id'];
-    $sql = "SELECT First_name, Last_name, Email, Phone_number, Street_address, APT, City, State, Zip, Username FROM user WHERE User_ID = ?;";
+    $sql = "SELECT First_name, Last_name, Email, Phone_number, Street_address, APT, City, State, Zip, Username FROM `User` WHERE User_ID = ?;";
     $stmt = mysqli_stmt_init($conn);
     mysqli_stmt_prepare($stmt, $sql);
     mysqli_stmt_bind_param($stmt, "i", $User_ID);
@@ -23,7 +23,7 @@ if ($conn->connect_error) {
     $row = mysqli_fetch_assoc($result);
     mysqli_free_result($result);
 
-    $sql = "SELECT Product_name, Price, Quantity FROM `cart item` AS c, `product` AS p WHERE User_ID = ? AND p.Product_ID = c.Product_ID;";
+    $sql = "SELECT * FROM `Cart Item` AS c, `Product` AS p WHERE User_ID = ? AND p.Product_ID = c.Product_ID;";
     $stmt = mysqli_stmt_init($conn);
     mysqli_stmt_prepare($stmt, $sql);
     mysqli_stmt_bind_param($stmt, "i", $User_ID);
@@ -38,6 +38,7 @@ if ($conn->connect_error) {
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>POS Team 5</title>
+    <link rel="stylesheet" type="text/css" href="../css/user.css">
     <link rel="stylesheet" type="text/css" href="../css/checkout.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
@@ -86,7 +87,7 @@ if ($conn->connect_error) {
                                         echo $row['APT'] . ', ';
                                     }
                                     echo $row['City'] . ', ' . $row['State'] . ', ' . $row['Zip'] ?></p>
-            <a href="user.php"><button class="change">Change Information</button></a>
+            <a href="accountDetails.php"><button class="change">Change Information</button></a>
         </div>
         <div class="grid-item cartInfo">
             <p><span class="cart">Your cart</span><span id="cartItems"></span></p>
@@ -111,7 +112,7 @@ if ($conn->connect_error) {
             <p class="pay">Payment Information</p>
             <form action="../php/checkoutAction.php" method="POST">
                 <label for="CardName">Name on card</label>
-                <input type="text" id="CardName" name="CardName" placeholder="John Smith" class="payInput">
+                <input type="text" id="CardName" name="CardName" placeholder="John Smith" class="payInput" required>
                 <label for="Card_type">Card type:</label>
                 <select name="Card_type" id="Card_type" class="payInput">
                     <option value="Visa">Visa</option>
@@ -120,11 +121,11 @@ if ($conn->connect_error) {
                     <option value="AMEX">AMEX</option>
                 </select>
                 <label for="CardNumber">Credit card number</label>
-                <input type="text" id="CardNumber" name="CardNumber" placeholder="1111-2222-3333-4444" class="payInput">
+                <input type="text" id="CardNumber" name="CardNumber" placeholder="1111-2222-3333-4444" class="payInput" required>
                 <label for="ExpDate">Expiration Date</label>
-                <input type="text" id="ExpDate" name="ExpDate" placeholder="01/11" class="payInput">
+                <input type="text" id="ExpDate" name="ExpDate" placeholder="01/11" class="payInput" required>
                 <label for="CVV">CVV</label>
-                <input type="text" id="CVV" name="CVV" placeholder="123" maxlength="3" class="payInput">
+                <input type="text" id="CVV" name="CVV" placeholder="123" maxlength="3" class="payInput" required>
                 <input type="hidden" name="User_ID" value=<?= $_SESSION['user_id'] ?>>
                 <input type="hidden" name="Street_delivered_to" value=<?= $row['Street_address'] ?>>
                 <input type="hidden" name="APT_delivered_to" value=<?= $row['APT'] ?>>
