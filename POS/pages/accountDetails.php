@@ -47,7 +47,7 @@
                     <div class="dropdown-content">
                         <!-- <a href="#">Profile Management</a> -->
                         <a href="#">Account Details</a>
-                        <a href="../index.html">Log Out</a>
+                        <a href="../index.php">Log Out</a>
                     </div>
                 </div>
             </li>

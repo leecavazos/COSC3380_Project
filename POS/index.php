@@ -1,50 +1,30 @@
 <!DOCTYPE html>
-
 <?php
-	include('../php/loginAction.php');
-
+	require_once 'php/config.php';
 ?>
-
-<html lang="en">
+<html>
 <head>
-    <meta charset="utf-8">
+	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>POS Team 5</title>
 
 	<!-- Link to css file -->
-	<link rel="stylesheet" type="text/css" href="../css/main_page.css">
-    <link rel="stylesheet" type="text/css" href="../css/user.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
-	<link rel="icon" type="image/x-icon" href="../images/logo.webp">
+	<link rel="stylesheet" type="text/css" href="css/main_page.css">
+	<link rel="icon" type="image/x-icon" href="images/logo.webp">
 </head>
 
+<!-- Set body id = "top", in case want to go to the top of the page smoothly (using smooth behavior in css) -->
 <body id="top">
 	<header>
 		<a href="">
-			<img src="../images/logo.webp">
+			<img src="images/logo.webp">
 		</a>
 		<!-- Navbar Starts -->
 		<nav>
 			<ul>
 				<li><a href="#top">Home</a></li>
-				<li>
-                    <div class="dropdown">
-                        <a href="#" class="drop-btn">
-                            Profile
-                            <i class="fa fa-caret-down"></i>
-                        </a>
-                        <div class="dropdown-content">
-                            <!-- <a href="#">Profile Management</a>  -->
-                            <a href="accountDetails.php">Account Details</a>
-                            <a href="../index.php">Log Out</a>
-                        </div>
-                    </div>
-                </li>
-
-				<li><a href="orderHistory.php">Order History</a></li>
-				<li><a href="checkout.php">Cart</a></li>
-
+				<li><a href="pages/login.php">User Login</a></li>
+				<li><a href="pages/AdminLogin.php">Admin</a></li>
 				<li><a href="#menu-section" class="order-btn btn btn-primary">Order Now</a></li>
 			</ul>
 		</nav>
@@ -68,7 +48,6 @@
 			<h1 class="text-center">Categories</h1>
 
 			<?php
-				require_once '../php/config.php';
 				$sql = "SELECT * FROM `Category`";
 				$result = mysqli_query($conn,$sql) or die(mysqli_error);
 				if ($result->num_rows > 0) {
@@ -94,11 +73,10 @@
 	<section class="menu" id="menu-section">
 		<div class="container">
 			<h2 class="text-center">Explore</h2>
-			
-			<!-- <p class="item-description text-left">Item '.$row['Product_ID'].' Description</p> -->
+
 			<?php
 				// require_once '../php/config.php';
-				$sql = "SELECT Product_ID, Product_name, Product_image, Price FROM `Product`";
+				$sql = "SELECT Product_ID, Product_name, Product_image, Price FROM `Product` WHERE Available_for_purchase = 1";
 				$result = mysqli_query($conn,$sql) or die(mysqli_error($conn));
 				if ($result->num_rows > 0) {
 					while($row = mysqli_fetch_array($result)) {
@@ -108,19 +86,14 @@
 								<span class="price">$'.$row['Price'].'</span>
 							</p>
 							<img src="../images/'.$row['Product_image'].'" class="item-img img-responsive">
-							<form action="../php/addToCartAction.php" method="post" style="display: flex; flex-direction: row; gap: 15px;">
-								<input type="hidden" name="pid" value="'.$row['Product_ID'].'">
-								<label for="quantity" style="font-size: large;">Quantity</label>
-								<input type="number" id="quantity" name="quantity" min="1" value="1"
-									style="width: 12%; margin-top: 5%; margin-bottom: 5%; vertical-align: middle;"/>
-								<button type="submit" class="btn btn-primary item-btn">Add to Cart</button>
-							</form>
-						</div>';
+							
+							</div>';
+						}
 					}
-				}
-				mysqli_close($conn);
-			?>
+					mysqli_close($conn);
+					?>
 
+				<!-- <p class="item-description text-left">Item '.$row['Product_ID'].' Description</p> -->
 		</div>
 	</section>
 </body>

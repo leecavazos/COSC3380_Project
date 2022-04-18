@@ -38,7 +38,7 @@
             <nav> 
                 <ul>
                     <li><a href=""> Account</a></li>
-                    <li><a href="../../index.html"> Logout</a></li>
+                    <li><a href="../../index.php"> Logout</a></li>
                 </ul>
             </nav>
         </header>
