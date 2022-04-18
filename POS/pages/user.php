@@ -94,11 +94,11 @@
 	<section class="menu" id="menu-section">
 		<div class="container">
 			<h2 class="text-center">Explore</h2>
-			
+			<div class="menu-container">
 			<!-- <p class="item-description text-left">Item '.$row['Product_ID'].' Description</p> -->
 			<?php
 				// require_once '../php/config.php';
-				$sql = "SELECT Product_ID, Product_name, Product_image, Price FROM `Product`";
+				$sql = "SELECT Product_ID, Product_name, Product_image, Price FROM `Product`  WHERE Available_for_purchase = 1";
 				$result = mysqli_query($conn,$sql) or die(mysqli_error($conn));
 				if ($result->num_rows > 0) {
 					while($row = mysqli_fetch_array($result)) {
@@ -120,6 +120,7 @@
 				}
 				mysqli_close($conn);
 			?>
+			</div>
 
 		</div>
 	</section>

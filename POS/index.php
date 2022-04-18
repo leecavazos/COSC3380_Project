@@ -73,7 +73,10 @@
 	<section class="menu" id="menu-section">
 		<div class="container">
 			<h2 class="text-center">Explore</h2>
+			
+			<div class = "menu-container">
 
+				<!-- <p class="item-description text-left">Item '.$row['Product_ID'].' Description</p> -->
 			<?php
 				// require_once '../php/config.php';
 				$sql = "SELECT Product_ID, Product_name, Product_image, Price FROM `Product` WHERE Available_for_purchase = 1";
@@ -88,12 +91,12 @@
 							<img src="../images/'.$row['Product_image'].'" class="item-img img-responsive">
 							
 							</div>';
-						}
 					}
-					mysqli_close($conn);
-					?>
+				}
+				mysqli_close($conn);
+			?>
 
-				<!-- <p class="item-description text-left">Item '.$row['Product_ID'].' Description</p> -->
+			</div>
 		</div>
 	</section>
 </body>
