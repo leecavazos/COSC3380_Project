@@ -54,7 +54,7 @@ include('../php/loginAction.php');
                     <div class="dropdown-content">
                         <!-- <a href="#">Profile Management</a> -->
                         <a href="accountDetails.php">Account Details</a>
-                        <a href="../index.html">Log Out</a>
+                        <a href="../index.php">Log Out</a>
                     </div>
                 </div>
             </li>

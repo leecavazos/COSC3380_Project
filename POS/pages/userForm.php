@@ -10,13 +10,13 @@
 </head>
 
 <header>
-		<a href="../index.html">
+		<a href="../index.php">
 			<img src="../images/logo.webp">
 		</a>
 		<!-- Navbar Starts -->
 		<nav>
 			<ul>
-				<li><a href="../index.html">Return to Home</a></li>
+				<li><a href="../index.php">Return to Home</a></li>
 			</ul>
 		</nav>
 		<!-- Navbar End -->
