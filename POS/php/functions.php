@@ -127,3 +127,20 @@ function validate($data){
     $data = htmlspecialchars($data);
     return $data;  
  }
+
+ function productNameExists($conn, $Product_name, $Product_ID) {
+
+    $sql = "SELECT * FROM Product WHERE Product_name = ? AND NOT Product_ID = ?;";
+    $stmt = mysqli_stmt_init($conn);
+    mysqli_stmt_prepare($stmt, $sql);
+    mysqli_stmt_bind_param($stmt, "si", $Product_name, $Product_ID);
+    mysqli_stmt_execute($stmt);
+
+    $result = mysqli_stmt_get_result($stmt);
+
+    if(mysqli_fetch_assoc($result)) {
+        return true;
+    } else {
+        return false;
+    }
+}

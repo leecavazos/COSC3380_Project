@@ -11,9 +11,8 @@ include('../../php/AdminloginAction.php');
 
 	<!-- Link to css file -->
 	<link rel="stylesheet" type="text/css" href="../../css/purchase.css">
+	<link rel="stylesheet" type="text/css" href="../../css/inventory.css?v1.6">
 
-    
-	
 	<!-- Boxicons CDN Link -->
 	<link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
 
@@ -84,7 +83,7 @@ include('../../php/AdminloginAction.php');
 						<div class="job">Inventory Manager</div>
 					</div>
 				</div>
-				<i class='bx bx-log-out' id="log_out"></i>
+				<a href="../../index.html"><i class='bx bx-log-out' id="log_out"></i></a>
 			</div>
 		</div>
 	</div>

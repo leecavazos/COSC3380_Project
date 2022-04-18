@@ -13,10 +13,6 @@ $rows = $result->fetch_all(MYSQLI_ASSOC);
 
 <html>
 
-<head>
-    <link rel="stylesheet" type="text/css" href="../../css/inventory.css?v1.3">
-</head>
-
 <body>
     <section class="dashboard">
         <div class="dash-content">
@@ -124,22 +120,5 @@ $rows = $result->fetch_all(MYSQLI_ASSOC);
             </div>
         </div>
     </section>
-
-
 </body>
-
-<script>
-    function checkLevels() {
-        if (parseInt(document.getElementById('Restock_level').value) > parseInt(document.getElementById('Threshold_level').value)) {
-            document.getElementById('submit').disabled = false;
-            document.getElementById('submit').style = "cursor: pointer";
-            document.getElementById('checkLevels').style.display = "none";
-        } else {
-            document.getElementById('submit').disabled = true;
-            document.getElementById('submit').style = "cursor: not-allowed";
-            document.getElementById('checkLevels').style.display = "block";
-        }
-    }
-</script>
-
 </html>
