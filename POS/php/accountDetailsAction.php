@@ -10,7 +10,7 @@
     $State = $_POST['State'];
     $Zip = $_POST['Zip'];
     $Username = $_POST['Username'];
-    $Password = $_POST['Password'];
+    $Password = md5($_POST['Password']);
 
     require_once 'functions.php';
     require_once "config.php";

@@ -6,7 +6,7 @@
    if (isset($_POST['uname']) && isset($_POST['psw'])) {
   
       $username = validate($_POST['uname']);
-      $password = validate($_POST['psw']);
+      $password = validate(md5($_POST['psw']));
 
       $sql = "SELECT Username, Password, User_ID FROM User WHERE Username='$username' AND Password='$password'";
       $result = mysqli_query($conn, $sql) or die(mysqli_error($conn));

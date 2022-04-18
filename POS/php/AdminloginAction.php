@@ -1,18 +1,12 @@
 <?php
    require_once "config.php";
+   include 'functions.php';
    session_start();
 
    if (isset($_POST['uname']) && isset($_POST['psw'])) {
-
-      function validate($data){
-         $data = trim($data);
-         $data = stripslashes($data);
-         $data = htmlspecialchars($data);
-         return $data;  
-      }
   
       $username = validate($_POST['uname']);
-      $password = validate($_POST['psw']);
+      $password = validate(md5($_POST['psw']));
 
       $sql = "SELECT Manager_username, Manager_password, Managing_role FROM Manager WHERE Manager_username='$username' AND Manager_password='$password'";
       $result = mysqli_query($conn, $sql) or die(mysqli_error($conn));
