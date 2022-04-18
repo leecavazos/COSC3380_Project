@@ -16,10 +16,6 @@ $conn->close();
 
 <html>
 
-<head>
-    <link rel="stylesheet" type="text/css" href="../../css/inventory.css?v1.3">
-</head>
-
 <body>
     <section class="dashboard">
         <div class="dash-content">

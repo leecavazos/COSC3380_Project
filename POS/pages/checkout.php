@@ -126,6 +126,27 @@ include('../php/loginAction.php');
                 <input type="hidden" name="State_delivered_to" value=<?= $row['State'] ?>>
                 <input type="hidden" name="Zip_code_delivered_to" value=<?= $row['Zip'] ?>>
                 <input type="hidden" name="Order_total" id="Order_total">
+                <?php
+                $num = 0;
+                foreach($results as $row) {
+                    $lineItem = "lineItem" . $num;
+                    echo "<input type='hidden' name='{$lineItem}' id='{$lineItem}'>";
+                    $num = $num + 1;
+                }
+                $num = 0;
+                foreach($results as $row) {
+                    $lineID = "lineID" . $num;
+                    echo "<input type='hidden' name='{$lineID}' value={$row['Product_ID']}>";
+                    $num = $num + 1;
+                }
+                $num = 0;
+                foreach($results as $row) {
+                    $linePrice = "linePrice" . $num;
+                    echo "<input type='hidden' name='{$linePrice}' value={$row['Price']}>";
+                    $num = $num + 1;
+                }
+                echo "<input type='hidden' name='numProducts' value='{$num}'>";
+                ?>
                 <button type="submit" class="checkout">Checkout</button>
             </form>
         </div>
@@ -154,6 +175,7 @@ include('../php/loginAction.php');
                     total += parseInt(iquantity[i].value) * parseFloat(iprice[i].value);
                     totalQuantity += parseInt(iquantity[i].value);
                 }
+                document.getElementById("lineItem" + i).value = iquantity[i].value;
             }
             document.getElementById('Order_total').value = total;
             document.getElementById('gtotal').innerHTML = "$" + total.toFixed(2);
