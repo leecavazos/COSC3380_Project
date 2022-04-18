@@ -4,15 +4,7 @@ include('../php/loginAction.php');
 ?>
 
 <?php
-$servername = "3.133.98.11";
-$username = "root";
-$password = "cosc3380";
-$databaseName = "POS";
-
-$conn = new mysqli($servername, $username, $password, $databaseName);
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-} else {
+    require_once "../php/config.php";
     $User_ID = $_SESSION['user_id'];
     $sql = "SELECT First_name, Last_name, Email, Phone_number, Street_address, APT, City, State, Zip, Username FROM `User` WHERE User_ID = ?;";
     $stmt = mysqli_stmt_init($conn);
@@ -23,14 +15,13 @@ if ($conn->connect_error) {
     $row = mysqli_fetch_assoc($result);
     mysqli_free_result($result);
 
-    $sql = "SELECT * FROM `Cart Item` AS c, `Product` AS p WHERE User_ID = ? AND p.Product_ID = c.Product_ID;";
+    $sql = "SELECT p.Product_ID, Product_name, Price, Quantity, Product_image FROM `Cart Item` AS c, `Product` AS p WHERE User_ID = ? AND p.Product_ID = c.Product_ID;";
     $stmt = mysqli_stmt_init($conn);
     mysqli_stmt_prepare($stmt, $sql);
     mysqli_stmt_bind_param($stmt, "i", $User_ID);
     mysqli_stmt_execute($stmt);
     $result = mysqli_stmt_get_result($stmt);
     $results = mysqli_fetch_all($result, MYSQLI_ASSOC);
-}
 ?>
 <html>
 
@@ -39,7 +30,7 @@ if ($conn->connect_error) {
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>POS Team 5</title>
     <link rel="stylesheet" type="text/css" href="../css/user.css">
-    <link rel="stylesheet" type="text/css" href="../css/checkout.css">
+    <link rel="stylesheet" type="text/css" href="../css/checkout.css?v1.1">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <link rel="icon" type="image/x-icon" href="../images/logo.webp">
@@ -95,7 +86,7 @@ if ($conn->connect_error) {
             <?php foreach ($results as $row2) {
                 echo '<div class="grid-container2">
                     <div class="grid-item2">
-                        <img src="../images/item sample 2.jpeg">
+                    <img src="../images/'.$row2['Product_image'].'" class="item-img img-responsive">
                     </div>
                     <div class="grid-item2">
                         <div class="itemName">' . $row2['Product_name'] . '</div>
@@ -107,7 +98,9 @@ if ($conn->connect_error) {
                 <hr>';
             } ?>
             <p><span class="total">Total</span><span class="amount" id="gtotal"></span></p>
+            <a href="../php/clearCartAction.php?id=<?php echo $User_ID?>"><button class="clear">Clear Cart</button></a>
         </div>
+        
         <div class="grid-item paymentInfo">
             <p class="pay">Payment Information</p>
             <form action="../php/checkoutAction.php" method="POST">
@@ -139,7 +132,12 @@ if ($conn->connect_error) {
     </div>
     <?php
     if(isset($_GET["success"])) {
-        echo "<style> .success {font-size: larger; font-weight: 600; text-align: center; color: #04AA6D;}</style><p class='success'>Order successfully made!</p>";
+        if($_GET["success"] == "order")
+        echo "<style> .success {margin-top: 5%; font-size: larger; font-weight: 600; text-align: center; color: #04AA6D;}</style><p class='success'>Order successfully made!</p>";
+    }
+    if(isset($_GET["success"])) {
+        if($_GET["success"] == "clear")
+        echo "<style> .success {margin-top: 5%; font-size: larger; font-weight: 600; text-align: center; color: #04AA6D;}</style><p class='success'>Cart has successfully been cleared!</p>";
     }
 ?>
 
@@ -158,7 +156,7 @@ if ($conn->connect_error) {
                 }
             }
             document.getElementById('Order_total').value = total;
-            document.getElementById('gtotal').innerHTML = "$" + total;
+            document.getElementById('gtotal').innerHTML = "$" + total.toFixed(2);
 
             document.getElementById('cartItems').innerHTML = "<box-icon name='cart' style='margin-right: 5px; padding-top: 3px;'></box-icon>" + totalQuantity + " items";
         }

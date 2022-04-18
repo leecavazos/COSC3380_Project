@@ -2,7 +2,7 @@
 	font-family: Arial, Helvetica, sans-serif;
 }
 
-.change, .checkout {
+.change, .checkout, .clear {
     background-color: #04AA6D;
     color: white;
     padding: 15px;
@@ -43,6 +43,7 @@
     background-color: #f5f5f5;
     border-radius: 5px 5px 0 0;
     border-bottom-style: none;
+    
 }
 
 .payInput {
@@ -255,4 +256,9 @@ a{
 a:hover{
 	color: #d63031;
 	/* color: burlywood; */
+}
+
+.clear {
+    float: right;
+    margin-right: 2%;
 }

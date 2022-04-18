@@ -1,5 +1,4 @@
 <?php 
-    $User_ID = $_POST['User_ID'];
     $First_name = $_POST['First_name'];
     $Last_name = $_POST['Last_name'];
     $Email = $_POST['Email'];
@@ -12,17 +11,9 @@
     $Username = $_POST['Username'];
     $Password = $_POST['Password'];
 
-    $servername = "3.133.98.11";
-    $username = "root";
-    $password = "cosc3380";
-    $databaseName = "POS";
-
+    require_once "config.php";
     require_once 'functions.php';
 
-    $conn = new mysqli($servername, $username, $password, $databaseName);
-    if($conn->connect_error) {
-        die("Connection failed: " . $conn->connect_error);
-    } else {
         if(emailExists($conn, $Email) !== false) {
             header("location: ../pages/userForm.php?invalid=email");
             exit();
@@ -31,14 +22,14 @@
             header("location: ../pages/userForm.php?invalid=username");
             exit();
         }
-        $stmt = $conn->prepare("INSERT INTO User (User_ID, First_name, Last_name, Email, Phone_number, Street_address, APT, City, State, Zip, Username, Password) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
-        $stmt->bind_param("isssssssssss", $User_ID, $First_name, $Last_name, $Email, $Phone_number, $Street_address, $APT, $City, $State, $Zip, $Username, $Password);
+        $stmt = $conn->prepare("INSERT INTO User (First_name, Last_name, Email, Phone_number, Street_address, APT, City, State, Zip, Username, Password) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+        $stmt->bind_param("sssssssssss", $First_name, $Last_name, $Email, $Phone_number, $Street_address, $APT, $City, $State, $Zip, $Username, $Password);
         $stmt->execute();
         echo "Registration successful";
         $stmt->close();
         $conn->close();
         header("location: ../pages/userForm.php?created=success");
-    }
+    
     
     
 ?>

@@ -6,11 +6,11 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css" />
-    <link rel="icon" type="image/x-icon" href="../images/logo.webp">
+	<link rel="icon" type="image/x-icon" href="../images/logo.webp">
 	<link rel="stylesheet" type="text/css" href="../css/main_page.css">
 	<link rel="stylesheet" type="text/css" href="../css/login.css">
 	<script src="../js/script.js"></script>
-	
+
 <body>
 	<header>
 		<a href="../index.html">
@@ -30,7 +30,7 @@
 			<div class="imgcontainer">
 				<img src="../images/login icon.png" alt="Avatar" class="avatar">
 			</div>
-		
+
 			<div class="container">
 				<label for="uname"><b>Username</b></label>
 				<input type="text" placeholder="Enter Username" name="uname" required>
@@ -41,9 +41,17 @@
 				<i class="bi bi-eye-slash" id="togglePassword" style="margin-left: -5%;display:inline;
 				vertical-align: middle" onclick="togglePassword()"></i>
 
+				<?php
+				if (isset($_GET["invalid"])) {
+					if ($_GET["invalid"] == "true") {
+						echo "<style> .invalid {color: red; text-align: center;}</style><p class='invalid'> Invalid username or password. Please try again!</p>";
+					}
+				}
+				?>
+
 				<button type="submit" class="signup">Login</button>
 				<label>
-				<input type="checkbox" checked="checked" name="remember"> Remember me
+					<input type="checkbox" checked="checked" name="remember"> Remember me
 				</label>
 			</div>
 		</form>
@@ -56,4 +64,5 @@
 		<!-- <a href="index.html">Go to top.</a> -->
 	</div>
 </footer>
+
 </html>

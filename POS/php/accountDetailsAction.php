@@ -12,17 +12,10 @@
     $Username = $_POST['Username'];
     $Password = $_POST['Password'];
 
-    $servername = "3.133.98.11";
-    $username = "root";
-    $password = "cosc3380";
-    $databaseName = "POS";
-
     require_once 'functions.php';
+    require_once "config.php";
 
-    $conn = new mysqli($servername, $username, $password, $databaseName);
-    if($conn->connect_error) {
-        die("Connection failed: " . $conn->connect_error);
-    } else {
+    
         if(emailExistsForOtherUser($conn, $Email, $User_ID) !== false) {
             header("location: ../pages/accountDetails.php?invalid=email");
             exit();
@@ -34,9 +27,7 @@
         $stmt = $conn->prepare("UPDATE User SET User_ID = ?, First_name = ?, Last_name = ?, Email = ?, Phone_number = ?, Street_address = ?, APT = ?, City = ?, State = ?, Zip = ?, Username = ?, Password = ? WHERE User_ID = ?");
         $stmt->bind_param("isssssssssssi", $User_ID, $First_name, $Last_name, $Email, $Phone_number, $Street_address, $APT, $City, $State, $Zip, $Username, $Password, $User_ID);
         $stmt->execute();
-        echo "Registration successful";
         $stmt->close();
         $conn->close();
         header("location: ../pages/accountDetails.php?created=success");
-    }
 ?>
