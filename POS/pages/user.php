@@ -42,7 +42,7 @@
                     </div>
                 </li>
 
-				<li><a href="#">Orders History</a></li>
+				<li><a href="orderHistory.php">Order History</a></li>
 				<li><a href="checkout.php">Cart</a></li>
 
 				<li><a href="#menu-section" class="order-btn btn btn-primary">Order Now</a></li>

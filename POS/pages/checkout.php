@@ -59,7 +59,7 @@ include('../php/loginAction.php');
                 </div>
             </li>
 
-            <li><a href="#">Orders History</a></li>
+            <li><a href="orderHistory.php">Orders History</a></li>
             <li><a href="checkout.php">Cart</a></li>
 
             <!-- Go back to the previous page -->

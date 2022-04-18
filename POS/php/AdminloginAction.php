@@ -25,7 +25,7 @@
                header("Location: ../pages/InventoryMAnager/InventoryAdmin.php");
                exit();
             }
-            elseif ($row['Managing_role'] === 'Orders') {
+            elseif ($row['Managing_role'] === 'Sales') {
                header("Location: ../pages/OrdersManager/OrdersAdmin.php");
                exit();
             }

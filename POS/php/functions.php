@@ -121,3 +121,9 @@ function categoryReferenced($conn, $Category_ID) {
         return false;
     }
 }
+function validate($data){
+    $data = trim($data);
+    $data = stripslashes($data);
+    $data = htmlspecialchars($data);
+    return $data;  
+ }

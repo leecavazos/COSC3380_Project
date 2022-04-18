@@ -2,14 +2,8 @@
    require_once "config.php";
    session_start();
 
+   require_once 'functions.php';
    if (isset($_POST['uname']) && isset($_POST['psw'])) {
-
-      function validate($data){
-         $data = trim($data);
-         $data = stripslashes($data);
-         $data = htmlspecialchars($data);
-         return $data;  
-      }
   
       $username = validate($_POST['uname']);
       $password = validate($_POST['psw']);
