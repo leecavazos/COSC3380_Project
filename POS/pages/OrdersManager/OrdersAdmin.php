@@ -1,8 +1,7 @@
-<?php
-    require_once "../../php/AdminloginAction.php";
-    require_once "../../php/config.php";
-?>
 <!DOCTYPE html>
+<?php
+    include ('../../php/AdminloginAction.php');
+?>
 <html>
     <head>
         <title>Admin View</title>
@@ -102,12 +101,6 @@
                         </tr>
                         <tr>
                         <?php
-                            function validate($data){
-                                $data = trim($data);
-                                $data = stripslashes($data);
-                                $data = htmlspecialchars($data);
-                                return $data;  
-                            }
                             if (isset($_POST['submit'])) {
                                 $Input = validate($_POST['search']);
 
