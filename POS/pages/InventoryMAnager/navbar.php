@@ -80,8 +80,8 @@ include('../../php/AdminloginAction.php');
 			<div class="profile">
 				<div class="profile_details">
 					<div class="name_job">
-						<div class="name">manager/user</div>
-						<div class="job">Purchasing Manager</div>
+						<div class="name"><?php echo $_SESSION['login_user']?></div>
+						<div class="job">Inventory Manager</div>
 					</div>
 				</div>
 				<i class='bx bx-log-out' id="log_out"></i>
@@ -89,6 +89,6 @@ include('../../php/AdminloginAction.php');
 		</div>
 	</div>
 	<!-- Navigation Bar Ends -->
-    hi
+    
 </body>
 <html>

@@ -15,7 +15,7 @@ include('../php/loginAction.php');
     $row = mysqli_fetch_assoc($result);
     mysqli_free_result($result);
 
-    $sql = "SELECT p.Product_ID, Product_name, Price, Quantity FROM `Cart Item` AS c, `Product` AS p WHERE User_ID = ? AND p.Product_ID = c.Product_ID;";
+    $sql = "SELECT p.Product_ID, Product_name, Price, Quantity, Product_image FROM `Cart Item` AS c, `Product` AS p WHERE User_ID = ? AND p.Product_ID = c.Product_ID;";
     $stmt = mysqli_stmt_init($conn);
     mysqli_stmt_prepare($stmt, $sql);
     mysqli_stmt_bind_param($stmt, "i", $User_ID);
@@ -86,7 +86,7 @@ include('../php/loginAction.php');
             <?php foreach ($results as $row2) {
                 echo '<div class="grid-container2">
                     <div class="grid-item2">
-                    <img src="../images/item sample '.$row2['Product_ID'].'.jpeg" class="item-img img-responsive">
+                    <img src="../images/'.$row2['Product_image'].'" class="item-img img-responsive">
                     </div>
                     <div class="grid-item2">
                         <div class="itemName">' . $row2['Product_name'] . '</div>

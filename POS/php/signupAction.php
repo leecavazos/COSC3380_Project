@@ -1,5 +1,4 @@
 <?php 
-    $User_ID = $_POST['User_ID'];
     $First_name = $_POST['First_name'];
     $Last_name = $_POST['Last_name'];
     $Email = $_POST['Email'];
@@ -23,8 +22,8 @@
             header("location: ../pages/userForm.php?invalid=username");
             exit();
         }
-        $stmt = $conn->prepare("INSERT INTO User (User_ID, First_name, Last_name, Email, Phone_number, Street_address, APT, City, State, Zip, Username, Password) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
-        $stmt->bind_param("isssssssssss", $User_ID, $First_name, $Last_name, $Email, $Phone_number, $Street_address, $APT, $City, $State, $Zip, $Username, $Password);
+        $stmt = $conn->prepare("INSERT INTO User (First_name, Last_name, Email, Phone_number, Street_address, APT, City, State, Zip, Username, Password) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+        $stmt->bind_param("sssssssssss", $First_name, $Last_name, $Email, $Phone_number, $Street_address, $APT, $City, $State, $Zip, $Username, $Password);
         $stmt->execute();
         echo "Registration successful";
         $stmt->close();

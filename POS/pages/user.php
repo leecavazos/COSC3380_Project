@@ -75,7 +75,7 @@
 					while ($row = mysqli_fetch_array($result)) {
 						echo '
 							<div class="box float-container">
-								<img src="../images/cate pic sample '.$row['Category_ID'].'.jpeg" alt="image1" class="category-img img-responsive" class="img-responsive img-curve">
+								<img src="../images/'.$row['Category_image'].'" alt="image1" class="category-img img-responsive" class="img-responsive img-curve">
 								<div class="middle">
 									<div class="category-caption text-center">'.$row['Category_name'].'</div>
 								</div>
@@ -97,7 +97,7 @@
 
 			<?php
 				// require_once '../php/config.php';
-				$sql = "SELECT Product_ID, Product_name, Price FROM `Product`";
+				$sql = "SELECT Product_ID, Product_name, Product_image, Price FROM `Product`";
 				$result = mysqli_query($conn,$sql) or die(mysqli_error($conn));
 				if ($result->num_rows > 0) {
 					while($row = mysqli_fetch_array($result)) {
@@ -106,7 +106,7 @@
 							<p id="pid" name="pid" class="menu-item text-left">'.$row['Product_name'].'
 								<span class="price">$'.$row['Price'].'</span>
 							</p>
-							<img src="../images/item sample '.$row['Product_ID'].'.jpeg" class="item-img img-responsive">
+							<img src="../images/'.$row['Product_image'].'" class="item-img img-responsive">
 							<p class="item-description text-left">Item '.$row['Product_ID'].' Description</p>
 							<form action="../php/addToCartAction.php" method="post" style="display: flex; flex-direction: row; gap: 15px;">
 								<input type="hidden" name="pid" value="'.$row['Product_ID'].'">

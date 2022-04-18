@@ -2,6 +2,16 @@
 <?php
 include('navbar.php');
 ?>
+<?php
+	require_once "../../php/config.php";
+	$sql = "SELECT SUM(Current_stock_level) FROM Product";
+	$result1 = $conn->query($sql)->fetch_all(MYSQLI_NUM);
+	$sql = "SELECT COUNT(Product_ID) FROM Product";
+	$result2 = $conn->query($sql)->fetch_all(MYSQLI_NUM);
+	$sql = "SELECT COUNT(Category_ID) FROM Category";
+	$result3 = $conn->query($sql)->fetch_all(MYSQLI_NUM);
+	
+?>
 <html>
 <body>
 <section class="dashboard">
@@ -14,19 +24,19 @@ include('navbar.php');
 
 				<div class="boxes">
 					<div class="box box1">
-						<i class='bx bx-message-square-error'></i>
-						<span class="text">Pending Requests</span>
-						<span class="number">2</span>
+					<i class='bx bxs-package'></i>
+						<span class="text">Total Inventory</span>
+						<span class="number"><?php echo $result1[0][0];?></span>
 					</div>
 					<div class="box box2">
-						<i class='bx bx-check-square' ></i>
-						<span class="text">Amount Approved</span>
-						<span class="number">$325,000</span>
+					<i class='bx bxs-popsicle' ></i>
+						<span class="text">Number of Current Products</span>
+						<span class="number"><?php echo $result2[0][0];?></span>
 					</div>
 					<div class="box box3">
-						<i class='bx bx-message-alt-x' ></i>
-						<span class="text">Amount Rejected</span>
-						<span class="number">$23,600</span>
+					<i class='bx bx-folder' ></i>
+						<span class="text">Number of Current Categories</span>
+						<span class="number"><?php echo $result3[0][0];?></span>
 					</div>
 				</div>
 			</div>

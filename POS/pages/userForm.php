@@ -31,12 +31,6 @@
     <hr>
     <form action="../php/signupAction.php" method="post">
         <div class="container">
-
-            <div class="entry">
-                <label for="User_ID"><b>User ID:</b></label>
-                <input type="text" name="User_ID" id="User_ID" placeholder="Enter user-ID" required>
-            </div>
-
             <div class="entry">
                 <label for="First_name"><b>First name:</b></label>
                 <input type="text" name="First_name" id="First_name" placeholder="Enter first name" required>
@@ -95,9 +89,6 @@
         </div>
         <?php
         if(isset($_GET["invalid"])) {
-            if($_GET["invalid"] == "id") {
-                echo "<style> .invalid {color: red; text-align: center;}</style><p class='invalid'> User ID already taken. Please enter a new one.</p>";
-            }
             if($_GET["invalid"] == "email") {
                 echo "<style> .invalid {color: red; text-align: center;}</style><p class='invalid'> Email is already registered. Please enter a new one.</p>";
             }
