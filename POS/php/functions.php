@@ -70,3 +70,10 @@ function usernameExistsForOtherUser($conn, $Username, $User_ID) {
         return $result;
     }
 }
+
+function validate($data){
+    $data = trim($data);
+    $data = stripslashes($data);
+    $data = htmlspecialchars($data);
+    return $data;  
+ }
