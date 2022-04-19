@@ -22,3 +22,9 @@ function toggleSideBar() {
         sidebar.classList.toggle("active");
     }   
 };
+
+// Toggle the popup
+function togglePopup() {
+    let popup = document.getElementById("myPopup");
+    popup.classList.toggle("show");
+};
