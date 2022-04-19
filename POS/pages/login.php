@@ -61,7 +61,7 @@
 						Cancel
 					</a>
 				</button>
-				<span class="psw">Forgot <a href="#">password?</a></span>
+				<!-- <span class="psw">Forgot <a href="#">password?</a></span> -->
 				<button type="button">
 					<a href="../pages/userForm.php" class="signup">
 						Don't have an Account? Sign up now!
