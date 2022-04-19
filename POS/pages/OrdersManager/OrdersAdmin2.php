@@ -88,7 +88,7 @@ include('navbar.php');
                         <label style="display: block; margin-top: 0px;" > 
                             <span class="text">Search</span>
                         </label>
-                        <input type="search" name="search" placeholder="Order ID, Card Number, Date, User_ID" class="input_box">
+                        <input type="search" name="search" placeholder="Order ID" class="input_box">
                         <input type="submit" name="submit" value="Go" class="block" style="margin-top: 0px;">
                 </form>
             </span>
@@ -99,7 +99,7 @@ include('navbar.php');
                     <?php 
                         if(isset($_POST['submit'])){
                             $Input = validate($_POST['search']);
-                            $sql = "SELECT * FROM `Order` WHERE Order_ID='$Input' OR Date_of_purchase = '$Input'";
+                            $sql = "SELECT * FROM `Order` WHERE Order_ID='$Input'";
                             $result = mysqli_query($conn, $sql) or die(mysqli_error($conn));
                             while($row = mysqli_fetch_assoc($result)){
                                 $id=$row['Order_ID'];
@@ -121,7 +121,7 @@ include('navbar.php');
                     <?php
                         if(isset($_POST['submit'])){
                             $Input = validate($_POST['search']);
-                            $sql = "SELECT * FROM `Order` WHERE Order_ID='$Input'OR Date_of_purchase = '$Input'";
+                            $sql = "SELECT * FROM `Order` WHERE Order_ID='$Input'";
                             $result = mysqli_query($conn, $sql) or die(mysqli_error($conn));
                             while($row = mysqli_fetch_assoc($result)){
                                 $PID=$row['User_ID'];
@@ -143,7 +143,7 @@ include('navbar.php');
                     <?php 
                         if(isset($_POST['submit'])){
                             $Input = validate($_POST['search']);
-                            $sql = "SELECT * FROM `Order` WHERE Order_ID='$Input'OR Date_of_purchase = '$Input'";
+                            $sql = "SELECT * FROM `Order` WHERE Order_ID='$Input'";
                             $result = mysqli_query($conn, $sql) or die(mysqli_error($conn));
                             while($row = mysqli_fetch_assoc($result)){
                                 $Street=$row['Street_delivered_to'];
@@ -172,7 +172,7 @@ include('navbar.php');
                     <?php
                         if(isset($_POST['submit'])){
                             $Input = validate($_POST['search']);
-                            $sql = "SELECT * FROM `Order` WHERE Order_ID='$Input' OR Date_of_purchase = '$Input'";
+                            $sql = "SELECT * FROM `Order` WHERE Order_ID='$Input'";
                             $result = mysqli_query($conn, $sql) or die(mysqli_error($conn));
                             while($row = mysqli_fetch_assoc($result)){
                                 $Card=$row['Card_type'];
@@ -196,7 +196,7 @@ include('navbar.php');
                     <?php
                         if(isset($_POST['submit'])){
                             $Input = validate($_POST['search']);
-                            $sql = "SELECT * FROM `Order` WHERE Order_ID='$Input' OR Date_of_purchase = '$Input'";
+                            $sql = "SELECT * FROM `Order` WHERE Order_ID='$Input'";
                             $result = mysqli_query($conn, $sql) or die(mysqli_error($conn));
                             while($row = mysqli_fetch_assoc($result)){
                                 $Total=$row['Order_total'];
@@ -218,7 +218,7 @@ include('navbar.php');
                     <?php
                         if(isset($_POST['submit'])){
                             $Input = validate($_POST['search']);
-                            $sql = "SELECT * FROM `Order` WHERE Order_ID='$Input' OR Date_of_purchase = '$Input'";
+                            $sql = "SELECT * FROM `Order` WHERE Order_ID='$Input'";
                             $result = mysqli_query($conn, $sql) or die(mysqli_error($conn));
                             while($row = mysqli_fetch_assoc($result)){
                                 $DOP=$row['Date_of_purchase'];
@@ -240,7 +240,7 @@ include('navbar.php');
                     <?php
                         if(isset($_POST['submit'])){
                             $Input = validate($_POST['search']);
-                            $sql = "SELECT * FROM `Order` WHERE Order_ID='$Input' OR Date_of_purchase = '$Input'";
+                            $sql = "SELECT * FROM `Order` WHERE Order_ID='$Input'";
                             $result = mysqli_query($conn, $sql) or die(mysqli_error($conn));
                             while($row = mysqli_fetch_assoc($result)){
                                 $id=$row['Order_ID'];
