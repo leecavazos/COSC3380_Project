@@ -67,13 +67,13 @@ include('../../php/AdminloginAction.php');
 				</a>
 				<span class="tooltip">Purchase Requests</span>
 			</li>
-			<li>
+			<!-- <li>
 				<a href="reports.php">
 					<i class='bx bxs-report' ></i>
 					<span class="links_name">Reports</span>
 				</a>
 				<span class="tooltip">Reports</span>
-			</li>
+			</li> -->
 		</ul>
 		<div class="profile_content">
 			<div class="profile">
@@ -83,7 +83,7 @@ include('../../php/AdminloginAction.php');
 						<div class="job">Inventory Manager</div>
 					</div>
 				</div>
-				<a href="../../index.html"><i class='bx bx-log-out' id="log_out"></i></a>
+				<a href="../../index.php"><i class='bx bx-log-out' id="log_out"></i></a>
 			</div>
 		</div>
 	</div>

@@ -63,13 +63,13 @@
 				</a>
 				<span class="tooltip">Reject History</span>
 			</li>
-			<li>
+			<!-- <li>
 				<a href="reports.html">
 					<i class='bx bxs-report' ></i>
 					<span class="links_name">Reports</span>
 				</a>
 				<span class="tooltip">Reports</span>
-			</li>
+			</li> -->
 		</ul>
 		<div class="profile_content">
 			<div class="profile">

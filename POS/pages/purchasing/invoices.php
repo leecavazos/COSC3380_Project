@@ -1,5 +1,6 @@
 <?php
 	require_once '../../php/config.php';
+	include ('navbar.php');
 ?>
 
 <!DOCTYPE html>
@@ -19,8 +20,6 @@
 </head>
 <body>
 
-	<?php include('navbar.php'); ?>
-
 	<!-- Page Content Begins -->
 	<!-- Begin Title Content -->
 	<section class="dashboard">
@@ -39,7 +38,7 @@
 					<?php 
 						//show invoices as a list of options
 						$query = "SELECT * FROM `Invoice`";
-						$results = mysqli_query($connection, $query);
+						$results = mysqli_query($conn, $query);
 
 						while($row = mysqli_fetch_array($results))
 						{

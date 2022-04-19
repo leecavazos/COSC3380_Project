@@ -1,28 +1,16 @@
 <?php
-
-    $dbservername = "localhost";
-    $dbusername = "root";
-    $dbpassword = "";
-    $dbname = "POS";
-
-    $connection = mysqli_connect($dbservername,$dbusername,$dbpassword,$dbname);
-
-    if($connection)
-        echo "";
-    else
-        die("CONNECTION FAILED! REASON: ".mysqli_connect_error());
-
+    include '../../php/config.php';
     $query = "SELECT * FROM Invoice WHERE Invoice_ID = {$_GET['invoiceID']}";
-    $result = mysqli_query($connection, $query);
+    $result = mysqli_query($conn, $query);
     $row = mysqli_fetch_assoc($result);
     $requestID =  $row['Request_ID'];
     // echo "{$requestID}<br>";
-    $query2 = "SELECT Product_ID, Quantity FROM `Items Requested` WHERE Request_ID = {$requestID}";
-    $result2 = mysqli_query($connection,$query2);
+    $query2 = "SELECT Product_ID, Quantity FROM `Items Requested` WHERE Request_ID = $requestID";
+    $result2 = mysqli_query($conn,$query2);
     $row2 = mysqli_fetch_assoc($result2);
-
+    
     // echo "{$row2['Quantity']}";
-?>
+    ?>
 
 <!doctype html>
 <html lang="en">
@@ -79,7 +67,7 @@
                             <p>Invoice ID: <span><?php echo "{$_GET['invoiceID']}" ?></span></p>
                         </div>
                         <div class="col-5">
-                            <p>Approval Date: <span><?php echo "{$row['Date_generated']}" ?></span></p>
+                            <p>Approval Date: <span><?php echo "{$row['Generated_on']}" ?></span></p>
                         </div>
                     </div>
                 </div>
@@ -97,21 +85,23 @@
                     <tbody>
                         <?php
 
-                        $query3 = "SELECT `Items Requested`.Product_ID, `Items Requested`.`Quantity`, `Product`.Price \n"
+                        $query3 = "SELECT `Items Requested`.Product_ID, `Items Requested`.Quantity, `Product`.Price
 
-                            . "FROM `Items Requested` \n"
+                                    FROM `Items Requested`
 
-                            . "INNER JOIN `PRODUCT` ON `Items Requested`.Product_ID = `Product`.Product_ID AND `Items Requested`.`Request_ID` = {$requestID};";
+                                    INNER JOIN `PRODUCT`  ON  `Items Requested`.Product_ID = `Product`.Product_ID AND `Items Requested`.Request_ID = {$requestID};";
                         
-                        $result3 = mysqli_query($connection,$query3);
+                        $result3 = mysqli_query($conn,$query3);
                         $i = 0;
                         $total = array();
                         while($row3 = mysqli_fetch_assoc($result3)){
                             $line = ((int)$row3['Quantity'] * (float)$row3['Price']);
                             $total[$i] = $line;
+                            $pid = $row3['Product_ID'];
+                            $price = $row3['Price'];
                             echo "<tr>";
-                            echo "<td>{$row3['Product_ID']}</td>";
-                            echo "<td>{$row3['Price']}</td>";
+                            echo "<td>'.$pid.'</td>";
+                            echo "<td>'.$price.'</td>";
                             echo "<td>{$row3['Quantity']}</td>";
                             echo "<td>{$line}</td>";
                             echo "</tr>";
@@ -159,7 +149,7 @@
             </section>
 
             <!-- Cart Image -->
-            <img src="../images/cart.jpeg" class="img-fluid cart-bg" alt="">
+            <img src="../../images/cart.jpeg" class="img-fluid cart-bg" alt="">
 
         </div>
     </div>
