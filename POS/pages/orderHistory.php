@@ -72,14 +72,11 @@
                         </tr>
                         <?php
                             include '../php/addToCartAction.php';
-                            $sql = "
-                                    SELECT *
-                                    FROM ((`Line Item` AS l 
-                                    INNER JOIN `Order` AS o  ON  l.Order_ID = o.Order_ID)
-                                    INNER JOIN `Product` AS p  ON  l.Product_ID = p.Product_ID)
-                                    WHERE o.User_ID = 1 
-                                    ORDER BY Date_of_purchase DESC;
-                                    ";
+                            $sql = "SELECT * 
+                                    FROM `Order`
+                                    WHERE User_ID =  $User_ID
+                                    ORDER BY Order_ID DESC";
+                                    
                             $result = mysqli_query($conn,$sql) or die(mysqli_error);
                             // echo $result;
                             if ($result->num_rows > 0) {
@@ -93,9 +90,6 @@
                                     $Card_num= $row['Last_4_digits'];
                                     $Total=$row['Order_total'];
                                     $DOP=$row['Date_of_purchase'];
-                                    $Product_name = $row['Product_name'];
-                                    $Quantity=$row['Quantity'];
-                                    $LineTotal =$row['Line_total'];
                                     echo '<tr>
                                             <td>'.$id.'</td> 
                                             <td>'.$Street.',';
@@ -107,26 +101,39 @@
                                             <td>'.$DOP.'</td>
                                             <td>
                                                 <div class="popup" onclick="togglePopup()">Click to view
-                                                    <span class="popup-content" id="myPopup">
+                                                    <span class="popup-content" id="myPopup">' .
+                                                        '
                                                         <table>
                                                         <tr>
                                                             <th>Product Name</th>
                                                             <th>Quantity</th>
                                                             <th>Line Total</th>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>'.$Product_name.'</td>
-                                                            <td>'.$Quantity.'</td>
-                                                            <td>'.$LineTotal.'</td>
-                                                        </tr>
-                                                    </table>
+                                                        </tr>';
+                                                            $query = "SELECT Product_name, Quantity, Line_total
+                                                                        FROM `Line Item` as l, `Product` as p
+                                                                        WHERE Order_ID = $id AND l.Product_ID = p.Product_ID";
+                                                        
+                                                            $result1 = mysqli_query($conn,$query) or die(mysqli_error);
+                                                            if ($result1->num_rows > 0) {
+                                                                while ($row1 = mysqli_fetch_array($result1)) {
+                                                                    $Product_name = $row1['Product_name'];
+                                                                    $Quantity=$row1['Quantity'];
+                                                                    $LineTotal =$row1['Line_total'];
+                                                                    echo '
+                                                                    <tr>
+                                                                        <td>'.$Product_name.'</td>
+                                                                        <td>'.$Quantity.'</td>
+                                                                        <td>'.$LineTotal.'</td>
+                                                                    </tr>
+                                                                    ';
+                                                                }
+                                                            }
+                                                        echo '
+                                                        </table>
                                                     </span>
                                                 </div>
                                             </td>
-                                            </tr>';
-                                    //  <td>
-                                    // <a href="../../php/EditOrder.php?editOrder='.$id.'">Edit</a>
-                                    // <a href="../../php/DeleteOrder.php?deleteOrder='.$id.'"> Delete</a></td></tr>';
+                                        </tr>';
                                 }
                             }    
                         ?>
