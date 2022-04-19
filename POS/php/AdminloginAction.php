@@ -20,7 +20,7 @@
                exit();
             }
             elseif ($row['Managing_role'] === 'Sales') {
-               header("Location: ../pages/OrdersManager/OrdersAdmin.php");
+               header("Location: ../pages/OrdersManager/OrdersAdmin2.php");
                exit();
             }
             elseif ($row['Managing_role'] === 'Purchasing') {
