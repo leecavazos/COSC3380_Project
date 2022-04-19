@@ -34,10 +34,11 @@
 	<!-- Food Search Section Starts Here -->
 	<section class="food-search text-center">
 		<span class="food-search">
-			<form action="">
+			<h1 style="background-color: transparent;">Food Delivery</h1>
+			<!-- <form action="">
 				<input type="search" name="search" placeholder="Search for Food">
 				<input type="submit" name="submit" value="Search" class="btn btn-primary">
-			</form>
+			</form> -->
 		</span>
 	</section>
 	<!-- Food Search Section Ends Here -->
