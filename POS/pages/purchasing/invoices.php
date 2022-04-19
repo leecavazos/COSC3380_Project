@@ -1,16 +1,5 @@
 <?php
-
-	$dbservername = "localhost";
-	$dbusername = "root";
-	$dbpassword = "";
-	$dbname = "POS";
-
-	$connection = mysqli_connect($dbservername,$dbusername,$dbpassword,$dbname);
-
-	if($connection)
-		echo "";
-	else
-		die("CONNECTION FAILED! REASON: ".mysqli_connect_error())
+	require_once '../../php/config.php';
 ?>
 
 <!DOCTYPE html>
@@ -21,7 +10,7 @@
 	<title>Purchasing</title>
 
 	<!-- Link to css file -->
-	<link rel="stylesheet" type="text/css" href="../css/purchase.css">
+	<link rel="stylesheet" type="text/css" href="../../css/purchase.css">
 	
 	<!-- Boxicons CDN Link -->
 	<link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
@@ -30,7 +19,7 @@
 </head>
 <body>
 
-	<?php include('../includes/navbar.php'); ?>
+	<?php include('navbar.php'); ?>
 
 	<!-- Page Content Begins -->
 	<!-- Begin Title Content -->

@@ -100,7 +100,7 @@
                                             <td>'.$DOP.'</td>
                                             <td>
                                                 <div class="popup" onclick="togglePopup()">Click to view
-                                                    <span class="popup-content" id="myPopup">' .
+                                                    <div class="popup-content" id="myPopup">' .
                                                         '
                                                         <table>
                                                         <tr>
@@ -110,7 +110,8 @@
                                                         </tr>';
                                                             $query = "SELECT Product_name, Quantity, Line_total
                                                                         FROM `Line Item` as l, `Product` as p
-                                                                        WHERE Order_ID = $id AND l.Product_ID = p.Product_ID";
+                                                                        WHERE l.Order_ID = $id
+                                                                        ORDER BY p.Product_ID";
                                                         
                                                             $result1 = mysqli_query($conn,$query) or die(mysqli_error);
                                                             if ($result1->num_rows > 0) {
@@ -129,7 +130,7 @@
                                                             }
                                                         echo '
                                                         </table>
-                                                    </span>
+                                                    </div>
                                                 </div>
                                             </td>
                                         </tr>';

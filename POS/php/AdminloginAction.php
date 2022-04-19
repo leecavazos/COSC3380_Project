@@ -24,7 +24,7 @@
                exit();
             }
             elseif ($row['Managing_role'] === 'Purchasing') {
-               header("Location: ../pages/InventoryManager/InventoryAdmin.php");
+               header("Location: ../pages/purchasing/dashboard.php");
                exit();
             }
             // header("Location: ../pages/OrdersManager/OrdersAdmin.php");
