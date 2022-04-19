@@ -89,7 +89,7 @@
 
                                     FROM `Items Requested`
 
-                                    INNER JOIN `PRODUCT`  ON  `Items Requested`.Product_ID = `Product`.Product_ID AND `Items Requested`.Request_ID = {$requestID};";
+                                    INNER JOIN `Product`  ON  `Items Requested`.Product_ID = `Product`.Product_ID AND `Items Requested`.Request_ID = {$requestID};";
                         
                         $result3 = mysqli_query($conn,$query3);
                         $i = 0;
@@ -100,8 +100,8 @@
                             $pid = $row3['Product_ID'];
                             $price = $row3['Price'];
                             echo "<tr>";
-                            echo "<td>'.$pid.'</td>";
-                            echo "<td>'.$price.'</td>";
+                            echo "<td>$pid</td>";
+                            echo "<td>$price</td>";
                             echo "<td>{$row3['Quantity']}</td>";
                             echo "<td>{$line}</td>";
                             echo "</tr>";
