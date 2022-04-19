@@ -15,7 +15,7 @@
 </head>
 <body>
 	
-	<?php include('../includes/navbar.php'); ?>
+	<?php include('navbar.php'); ?>
 	
 	<!-- Page Content Begins -->
 	<!-- Begin Dashboard Content -->
