@@ -54,7 +54,7 @@
 					while ($row = mysqli_fetch_array($result)) {
 						echo '
 							<div class="box float-container">
-								<img src="../images/'.$row['Category_image'].'" alt="image1" class="category-img img-responsive" class="img-responsive img-curve">
+								<img src="images/'.$row['Category_image'].'" alt="image1" class="category-img img-responsive" class="img-responsive img-curve">
 								<div class="middle">
 									<div class="category-caption text-center">'.$row['Category_name'].'</div>
 								</div>
@@ -88,7 +88,7 @@
 							<p id="pid" name="pid" class="menu-item text-left">'.$row['Product_name'].'
 								<span class="price">$'.$row['Price'].'</span>
 							</p>
-							<img src="../images/'.$row['Product_image'].'" class="item-img img-responsive">
+							<img src="images/'.$row['Product_image'].'" class="item-img img-responsive">
 							
 							</div>';
 					}
