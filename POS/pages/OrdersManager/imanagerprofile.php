@@ -5,7 +5,7 @@ include('navbar.php');
 
 <?php
 require_once "../../php/config.php";
-$stmt = $conn->prepare("SELECT Manager_ID, Manager_username, Managing_role FROM Manger WHERE Manager_username = ?");
+$stmt = $conn->prepare("SELECT Manager_ID, Manager_username, Managing_role FROM Manager WHERE Manager_username = ?");
 $stmt->bind_param("s", $_SESSION['login_user']);
 $stmt->execute();
 $result = $stmt->get_result();
