@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 
 <?php
-	include('../php/loginAction.php');
-    $User_ID = $_SESSION['user_id'];
+	// include('../php/checkout.php');
+    
 ?>
 
 <html lang="en">
@@ -71,11 +71,17 @@
                             <th>Order Details</th>
                         </tr>
                         <?php
-                            $sql = "SELECT `Order`.*, `Line Item`.*, `Product`.Product_name
-                                    FROM `Order` as o, `Line Item` as l, `Product` as p
-                                    WHERE o.User_ID = $User_ID AND o.Order_ID = l.Order_ID AND l.Product_ID = p.Product_ID
-                                    ORDER BY o.Order_ID DESC";
+                            include '../php/addToCartAction.php';
+                            $sql = "
+                                    SELECT *
+                                    FROM ((`Line Item` AS l 
+                                    INNER JOIN `Order` AS o  ON  l.Order_ID = o.Order_ID)
+                                    INNER JOIN `Product` AS p  ON  l.Product_ID = p.Product_ID)
+                                    WHERE o.User_ID = 1 
+                                    ORDER BY Date_of_purchase DESC;
+                                    ";
                             $result = mysqli_query($conn,$sql) or die(mysqli_error);
+                            // echo $result;
                             if ($result->num_rows > 0) {
                                 while ($row = mysqli_fetch_array($result)) {
                                     $id=$row['Order_ID'];
