@@ -78,7 +78,6 @@
                                     ORDER BY Order_ID DESC";
                                     
                             $result = mysqli_query($conn,$sql) or die(mysqli_error);
-                            // echo $result;
                             if ($result->num_rows > 0) {
                                 while ($row = mysqli_fetch_array($result)) {
                                     $id=$row['Order_ID'];
@@ -92,7 +91,7 @@
                                     $DOP=$row['Date_of_purchase'];
                                     echo '<tr>
                                             <td>'.$id.'</td> 
-                                            <td>'.$Street.',';
+                                            <td>'.$Street.', ';
                                             if ($row['APT_delivered_to']) echo $row['APT_delivered_to'] .', ';
                                             echo ''.$City.', '.$State.', '.$Zip.'</td> 
                                             <td>'.$Card.'</td> 
