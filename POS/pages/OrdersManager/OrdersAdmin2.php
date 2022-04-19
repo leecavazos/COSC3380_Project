@@ -89,7 +89,7 @@ include('navbar.php');
                             <span class="text">Search</span>
                         </label>
                         <input type="search" name="search" placeholder="Order ID, Card Number, Date, User_ID" class="input_box">
-                        <input type="submit" name="submit" value="Go" class="block" style="float:center; margin-top: 0px;">
+                        <input type="submit" name="submit" value="Go" class="block" style="margin-top: 0px;">
                 </form>
             </span>
             <!-- OUTOUT OF THE DB BEGINS -->
@@ -99,7 +99,7 @@ include('navbar.php');
                     <?php 
                         if(isset($_POST['submit'])){
                             $Input = validate($_POST['search']);
-                            $sql = "SELECT * FROM `Order` WHERE Order_ID='$Input' OR Last_4_digits='$Input' OR Date_of_purchase = '$Input' OR User_ID = '$Input'";
+                            $sql = "SELECT * FROM `Order` WHERE Order_ID='$Input' OR Date_of_purchase = '$Input'";
                             $result = mysqli_query($conn, $sql) or die(mysqli_error($conn));
                             while($row = mysqli_fetch_assoc($result)){
                                 $id=$row['Order_ID'];
@@ -121,7 +121,7 @@ include('navbar.php');
                     <?php
                         if(isset($_POST['submit'])){
                             $Input = validate($_POST['search']);
-                            $sql = "SELECT * FROM `Order` WHERE Order_ID='$Input' OR Last_4_digits='$Input' OR Date_of_purchase = '$Input' OR User_ID = '$Input'";
+                            $sql = "SELECT * FROM `Order` WHERE Order_ID='$Input'OR Date_of_purchase = '$Input'";
                             $result = mysqli_query($conn, $sql) or die(mysqli_error($conn));
                             while($row = mysqli_fetch_assoc($result)){
                                 $PID=$row['User_ID'];
@@ -143,99 +143,41 @@ include('navbar.php');
                     <?php 
                         if(isset($_POST['submit'])){
                             $Input = validate($_POST['search']);
-                            $sql = "SELECT * FROM `Order` WHERE Order_ID='$Input' OR Last_4_digits='$Input' OR Date_of_purchase = '$Input' OR User_ID = '$Input'";
+                            $sql = "SELECT * FROM `Order` WHERE Order_ID='$Input'OR Date_of_purchase = '$Input'";
                             $result = mysqli_query($conn, $sql) or die(mysqli_error($conn));
                             while($row = mysqli_fetch_assoc($result)){
                                 $Street=$row['Street_delivered_to'];
-                                echo '<span>' .$Street. '</span>';
-                            }
-                        }
-                        else{
-                            $sql = "SELECT * FROM `Order`";
-                            $result = mysqli_query($conn, $sql) or die(mysqli_error($conn));
-                            while($row = mysqli_fetch_assoc($result)){
-                            $Street=$row['Street_delivered_to'];
-                            echo '<span>' .$Street. '</span>';
-                            }
-                        }
-                    ?>
-                </div>	
-                <div class="data ID">
-                    <span class="data-title">City</span>
-                    <?php
-                        if(isset($_POST['submit'])){
-                            $Input = validate($_POST['search']);
-                            $sql = "SELECT * FROM `Order` WHERE Order_ID='$Input' OR Last_4_digits='$Input' OR Date_of_purchase = '$Input' OR User_ID = '$Input'";
-                            $result = mysqli_query($conn, $sql) or die(mysqli_error($conn));
-                            while($row = mysqli_fetch_assoc($result)){
                                 $City=$row['City_delivered_to'];
-                                echo '<span>' .$City. '</span>';
-                            }
-                        }
-                        else{
-                            $sql = "SELECT * FROM `Order`";
-                            $result = mysqli_query($conn, $sql) or die(mysqli_error($conn));
-                            while($row = mysqli_fetch_assoc($result)){
-                                $City=$row['City_delivered_to'];
-                                echo '<span>' .$City. '</span>';
-                            }
-                        }
-                    ?>
-                </div>		
-                <div class="data ID">
-                    <span class="data-title">State</span>
-                    <?php
-                        if(isset($_POST['submit'])){
-                            $Input = validate($_POST['search']);
-                            $sql = "SELECT * FROM `Order` WHERE Order_ID='$Input' OR Last_4_digits='$Input' OR Date_of_purchase = '$Input' OR User_ID = '$Input'";
-                            $result = mysqli_query($conn, $sql) or die(mysqli_error($conn));
-                            while($row = mysqli_fetch_assoc($result)){
                                 $State=$row['State_delivered_to'];
-                                echo '<span>' .$State. '</span>';
-                            }
-                        }
-                        else{
-                            $sql = "SELECT * FROM `Order`";
-                            $result = mysqli_query($conn, $sql) or die(mysqli_error($conn));
-                            while($row = mysqli_fetch_assoc($result)){
-                                $State=$row['State_delivered_to'];
-                                echo '<span>' .$State. '</span>';
-                            }
-                        }
-                    ?>
-                </div>	
-                <div class="data ID">
-                    <span class="data-title">Zip</span>
-                    <?php
-                        if(isset($_POST['submit'])){
-                            $Input = validate($_POST['search']);
-                            $sql = "SELECT * FROM `Order` WHERE Order_ID='$Input' OR Last_4_digits='$Input' OR Date_of_purchase = '$Input' OR User_ID = '$Input'";
-                            $result = mysqli_query($conn, $sql) or die(mysqli_error($conn));
-                            while($row = mysqli_fetch_assoc($result)){
                                 $Zip=$row['Zip_code_delivered_to'];
-                                echo '<span>' .$Zip. '</span>';
+                                echo '<span>' .$Street. ' ' .$City.', ' .$State. ', ' .$Zip.'</span>';
                             }
                         }
                         else{
                             $sql = "SELECT * FROM `Order`";
                             $result = mysqli_query($conn, $sql) or die(mysqli_error($conn));
                             while($row = mysqli_fetch_assoc($result)){
-                                $Zip =$row['Zip_code_delivered_to'];
-                                echo '<span>' .$Zip. '</span>';
+                                $Street=$row['Street_delivered_to'];
+                                $City=$row['City_delivered_to'];
+                                $State=$row['State_delivered_to'];
+                                $Zip=$row['Zip_code_delivered_to'];
+                                echo '<span>' .$Street. ' ' .$City.', ' .$State. ', ' .$Zip.'</span>';
                             }
                         }
                     ?>
                 </div>	
+                
                 <div class="data ID">
                     <span class="data-title">Card Type</span>
                     <?php
                         if(isset($_POST['submit'])){
                             $Input = validate($_POST['search']);
-                            $sql = "SELECT * FROM `Order` WHERE Order_ID='$Input' OR Last_4_digits='$Input' OR Date_of_purchase = '$Input' OR User_ID = '$Input'";
+                            $sql = "SELECT * FROM `Order` WHERE Order_ID='$Input' OR Date_of_purchase = '$Input'";
                             $result = mysqli_query($conn, $sql) or die(mysqli_error($conn));
                             while($row = mysqli_fetch_assoc($result)){
                                 $Card=$row['Card_type'];
-                                echo '<span>' .$Card. '</span>';
+                                $Card_num=$row['Last_4_digits'];
+                                echo '<span>' .$Card. '-' .$Card_num.'</span>';
                             }
                         }
                         else{
@@ -243,39 +185,18 @@ include('navbar.php');
                             $result = mysqli_query($conn, $sql) or die(mysqli_error($conn));
                             while($row = mysqli_fetch_assoc($result)){
                                 $Card =$row['Card_type'];
-                                echo '<span>' .$Card. '</span>'; 
-                            }
-                        }
-                    ?>
-                </div>	
-                <div class="data ID">
-                    <span class="data-title">Card Num</span>
-                    <?php
-                        if(isset($_POST['submit'])){
-                            $Input = validate($_POST['search']);
-                            $sql = "SELECT * FROM `Order` WHERE Order_ID='$Input' OR Last_4_digits='$Input' OR Date_of_purchase = '$Input' OR User_ID = '$Input'";
-                            $result = mysqli_query($conn, $sql) or die(mysqli_error($conn));
-                            while($row = mysqli_fetch_assoc($result)){
                                 $Card_num=$row['Last_4_digits'];
-                                echo '<span>' .$Card_num. '</span>';
-                            }
-                        }
-                        else{
-                            $sql = "SELECT * FROM `Order`";
-                            $result = mysqli_query($conn, $sql) or die(mysqli_error($conn));
-                            while($row = mysqli_fetch_assoc($result)){
-                                $Card_num= $row['Last_4_digits'];
-                                echo '<span>' .$Card_num. '</span>';
+                                echo '<span>' .$Card. '-' .$Card_num.'</span>';
                             }
                         }
                     ?>
-                </div>	
+                </div>		
                 <div class="data totalß">
                     <span class="data-title">Total</span>
                     <?php
                         if(isset($_POST['submit'])){
                             $Input = validate($_POST['search']);
-                            $sql = "SELECT * FROM `Order` WHERE Order_ID='$Input' OR Last_4_digits='$Input' OR Date_of_purchase = '$Input' OR User_ID = '$Input'";
+                            $sql = "SELECT * FROM `Order` WHERE Order_ID='$Input' OR Date_of_purchase = '$Input'";
                             $result = mysqli_query($conn, $sql) or die(mysqli_error($conn));
                             while($row = mysqli_fetch_assoc($result)){
                                 $Total=$row['Order_total'];
@@ -297,7 +218,7 @@ include('navbar.php');
                     <?php
                         if(isset($_POST['submit'])){
                             $Input = validate($_POST['search']);
-                            $sql = "SELECT * FROM `Order` WHERE Order_ID='$Input' OR Last_4_digits='$Input' OR Date_of_purchase = '$Input' OR User_ID = '$Input'";
+                            $sql = "SELECT * FROM `Order` WHERE Order_ID='$Input' OR Date_of_purchase = '$Input'";
                             $result = mysqli_query($conn, $sql) or die(mysqli_error($conn));
                             while($row = mysqli_fetch_assoc($result)){
                                 $DOP=$row['Date_of_purchase'];
@@ -319,7 +240,7 @@ include('navbar.php');
                     <?php
                         if(isset($_POST['submit'])){
                             $Input = validate($_POST['search']);
-                            $sql = "SELECT * FROM `Order` WHERE Order_ID='$Input' OR Last_4_digits='$Input' OR Date_of_purchase = '$Input' OR User_ID = '$Input'";
+                            $sql = "SELECT * FROM `Order` WHERE Order_ID='$Input' OR Date_of_purchase = '$Input'";
                             $result = mysqli_query($conn, $sql) or die(mysqli_error($conn));
                             while($row = mysqli_fetch_assoc($result)){
                                 $id=$row['Order_ID'];
