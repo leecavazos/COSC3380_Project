@@ -261,4 +261,9 @@ a:hover{
 .clear {
     float: right;
     margin-right: 2%;
+    background-color: #b1b1b1;
+}
+
+.clear:hover {
+    opacity: 0.7;
 }

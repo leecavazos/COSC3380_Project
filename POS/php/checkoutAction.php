@@ -38,6 +38,11 @@ for($i = 0; $i <= $numProducts - 1; $i++) {
     $stmt->bind_param("iiid", $Order_ID, $Product_ID, $Quantity, $Line_total);
     $stmt->execute();
     $stmt->close();
+
+    $stmt = $conn->prepare("UPDATE Product SET Current_stock_level = Current_stock_level - ? WHERE Product_ID = ?;");
+    $stmt->bind_param("ii", $Quantity, $Product_ID);
+    $stmt->execute();
+    $stmt->close();
 }
 
 $conn->close();
