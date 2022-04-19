@@ -2,8 +2,6 @@
 
 <?php
 	include('../php/loginAction.php');
-    require_once '../php/config.php';
-    require_once '../php/functions.php';
     $User_ID = $_SESSION['user_id'];
 ?>
 
@@ -16,28 +14,14 @@
 	<!-- Link to css file -->
 	<link rel="stylesheet" type="text/css" href="../css/main_page.css">
     <link rel="stylesheet" type="text/css" href="../css/user.css">
+    <link rel="stylesheet" type="text/css" href="../css/orderHistory.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <!-- Link to js file -->
+    <script src="../js/script.js"></script>
 
 	<link rel="icon" type="image/x-icon" href="../images/logo.webp">
 </head>
-
-<style>
-    table {
-        font-family: arial, sans-serif;
-        border-collapse: collapse;
-        width: 100%;
-    }
-
-    td, th {
-        border: 2px solid black;
-        text-align: left;
-        padding: 8px;
-    }
-
-    tr:nth-child(even) {
-    background-color: #dddddd;
-    }
-</style>
 
 <body id="top">
 	<header>
@@ -79,17 +63,18 @@
                     <table>
                         <tr>
                             <th>Order_ID</th>
-                            <th>Street Address</th>
-                            <th>City</th>
-                            <th>State</th>
-                            <th>Zip</th>
+                            <th>Address</th>
                             <th>Card_type</th>
                             <th>Card_Num</th>
                             <th>Total</th>
                             <th>Date</th>
+                            <th>Order Details</th>
                         </tr>
                         <?php
-                            $sql = "SELECT * FROM `Order` WHERE User_ID = $User_ID ORDER BY Order_ID DESC";
+                            $sql = "SELECT `Order`.*, `Line Item`.*, `Product`.Product_name
+                                    FROM `Order` as o, `Line Item` as l, `Product` as p
+                                    WHERE o.User_ID = $User_ID AND o.Order_ID = l.Order_ID AND l.Product_ID = p.Product_ID
+                                    ORDER BY o.Order_ID DESC";
                             $result = mysqli_query($conn,$sql) or die(mysqli_error);
                             if ($result->num_rows > 0) {
                                 while ($row = mysqli_fetch_array($result)) {
@@ -102,16 +87,36 @@
                                     $Card_num= $row['Last_4_digits'];
                                     $Total=$row['Order_total'];
                                     $DOP=$row['Date_of_purchase'];
+                                    $Product_name = $row['Product_name'];
+                                    $Quantity=$row['Quantity'];
+                                    $LineTotal =$row['Line_total'];
                                     echo '<tr>
                                             <td>'.$id.'</td> 
-                                            <td>'.$Street.'</td> 
-                                            <td>'.$City.'</td> 
-                                            <td>'.$State.'</td> 
-                                            <td>'.$Zip.'</td> 
+                                            <td>'.$Street.',';
+                                            if ($row['APT_delivered_to']) echo $row['APT_delivered_to'] .', ';
+                                            echo ''.$City.', '.$State.', '.$Zip.'</td> 
                                             <td>'.$Card.'</td> 
                                             <td>'.$Card_num.'</td>
                                             <td>$'.$Total.'</td> 
                                             <td>'.$DOP.'</td>
+                                            <td>
+                                                <div class="popup" onclick="togglePopup()">Click to view
+                                                    <span class="popup-content" id="myPopup">
+                                                        <table>
+                                                        <tr>
+                                                            <th>Product Name</th>
+                                                            <th>Quantity</th>
+                                                            <th>Line Total</th>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>'.$Product_name.'</td>
+                                                            <td>'.$Quantity.'</td>
+                                                            <td>'.$LineTotal.'</td>
+                                                        </tr>
+                                                    </table>
+                                                    </span>
+                                                </div>
+                                            </td>
                                             </tr>';
                                     //  <td>
                                     // <a href="../../php/EditOrder.php?editOrder='.$id.'">Edit</a>
