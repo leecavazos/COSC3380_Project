@@ -1,10 +1,8 @@
 <!DOCTYPE html>
 
 <?php
-	include('../php/loginAction.php');
-    require_once '../php/config.php';
-    require_once '../php/functions.php';
-    $User_ID = $_SESSION['user_id'];
+	// include('../php/checkout.php');
+    
 ?>
 
 <html lang="en">
@@ -16,28 +14,14 @@
 	<!-- Link to css file -->
 	<link rel="stylesheet" type="text/css" href="../css/main_page.css">
     <link rel="stylesheet" type="text/css" href="../css/user.css">
+    <link rel="stylesheet" type="text/css" href="../css/orderHistory.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <!-- Link to js file -->
+    <script src="../js/script.js"></script>
 
 	<link rel="icon" type="image/x-icon" href="../images/logo.webp">
 </head>
-
-<style>
-    table {
-        font-family: arial, sans-serif;
-        border-collapse: collapse;
-        width: 100%;
-    }
-
-    td, th {
-        border: 2px solid black;
-        text-align: left;
-        padding: 8px;
-    }
-
-    tr:nth-child(even) {
-    background-color: #dddddd;
-    }
-</style>
 
 <body id="top">
 	<header>
@@ -79,17 +63,20 @@
                     <table>
                         <tr>
                             <th>Order_ID</th>
-                            <th>Street Address</th>
-                            <th>City</th>
-                            <th>State</th>
-                            <th>Zip</th>
+                            <th>Address</th>
                             <th>Card_type</th>
                             <th>Card_Num</th>
                             <th>Total</th>
                             <th>Date</th>
+                            <th>Order Details</th>
                         </tr>
                         <?php
-                            $sql = "SELECT * FROM `Order` WHERE User_ID = $User_ID ORDER BY Order_ID DESC";
+                            include '../php/addToCartAction.php';
+                            $sql = "SELECT * 
+                                    FROM `Order`
+                                    WHERE User_ID =  $User_ID
+                                    ORDER BY Order_ID DESC";
+                                    
                             $result = mysqli_query($conn,$sql) or die(mysqli_error);
                             if ($result->num_rows > 0) {
                                 while ($row = mysqli_fetch_array($result)) {
@@ -104,18 +91,48 @@
                                     $DOP=$row['Date_of_purchase'];
                                     echo '<tr>
                                             <td>'.$id.'</td> 
-                                            <td>'.$Street.'</td> 
-                                            <td>'.$City.'</td> 
-                                            <td>'.$State.'</td> 
-                                            <td>'.$Zip.'</td> 
+                                            <td>'.$Street.', ';
+                                            if ($row['APT_delivered_to']) echo $row['APT_delivered_to'] .', ';
+                                            echo ''.$City.', '.$State.', '.$Zip.'</td> 
                                             <td>'.$Card.'</td> 
                                             <td>'.$Card_num.'</td>
                                             <td>$'.$Total.'</td> 
                                             <td>'.$DOP.'</td>
-                                            </tr>';
-                                    //  <td>
-                                    // <a href="../../php/EditOrder.php?editOrder='.$id.'">Edit</a>
-                                    // <a href="../../php/DeleteOrder.php?deleteOrder='.$id.'"> Delete</a></td></tr>';
+                                            <td>
+                                                <div class="popup" onclick="togglePopup()">Click to view
+                                                    <span class="popup-content" id="myPopup">' .
+                                                        '
+                                                        <table>
+                                                        <tr>
+                                                            <th>Product Name</th>
+                                                            <th>Quantity</th>
+                                                            <th>Line Total</th>
+                                                        </tr>';
+                                                            $query = "SELECT Product_name, Quantity, Line_total
+                                                                        FROM `Line Item` as l, `Product` as p
+                                                                        WHERE Order_ID = $id AND l.Product_ID = p.Product_ID";
+                                                        
+                                                            $result1 = mysqli_query($conn,$query) or die(mysqli_error);
+                                                            if ($result1->num_rows > 0) {
+                                                                while ($row1 = mysqli_fetch_array($result1)) {
+                                                                    $Product_name = $row1['Product_name'];
+                                                                    $Quantity=$row1['Quantity'];
+                                                                    $LineTotal =$row1['Line_total'];
+                                                                    echo '
+                                                                    <tr>
+                                                                        <td>'.$Product_name.'</td>
+                                                                        <td>'.$Quantity.'</td>
+                                                                        <td>'.$LineTotal.'</td>
+                                                                    </tr>
+                                                                    ';
+                                                                }
+                                                            }
+                                                        echo '
+                                                        </table>
+                                                    </span>
+                                                </div>
+                                            </td>
+                                        </tr>';
                                 }
                             }    
                         ?>
