@@ -100,36 +100,41 @@
                                             <td>'.$DOP.'</td>
                                             <td>
                                                 <div class="popup" onclick="togglePopup()">Click to view
-                                                    <span class="popup-content" id="myPopup">' .
-                                                        '
+                                                    <span class="popup-content" id="myPopup">
                                                         <table>
-                                                        <tr>
-                                                            <th>Product Name</th>
-                                                            <th>Quantity</th>
-                                                            <th>Line Total</th>
-                                                        </tr>';
-                                                            $query = "SELECT Product_name, Quantity, Line_total
-                                                                        FROM `Line Item` as l, `Product` as p
-                                                                        WHERE Order_ID = $id AND l.Product_ID = p.Product_ID";
-                                                        
-                                                            $result1 = mysqli_query($conn,$query) or die(mysqli_error);
+                                                            <tr>
+                                                                <th>Product Name</th>
+                                                                <th>Quantity</th>
+                                                                <th>Line Total</th>
+                                                            </tr>';
+                                                            $query1 = "SELECT Product_ID 
+                                                                        FROM `Line Item`
+                                                                        WHERE Order_ID = $id";
+                                                            $result1 = mysqli_query($conn,$query) or die(mysqli_error);    
                                                             if ($result1->num_rows > 0) {
                                                                 while ($row1 = mysqli_fetch_array($result1)) {
-                                                                    $Product_name = $row1['Product_name'];
-                                                                    $Quantity=$row1['Quantity'];
-                                                                    $LineTotal =$row1['Line_total'];
-                                                                    echo '
-                                                                    <tr>
-                                                                        <td>'.$Product_name.'</td>
-                                                                        <td>'.$Quantity.'</td>
-                                                                        <td>'.$LineTotal.'</td>
-                                                                    </tr>
-                                                                    ';
+                                                                    $pid = $row1['Product_ID'];
+
+                                                                    $query2 = "SELECT Product_name, Quantity, Line_total
+                                                                                FROM `Line Item` as l
+                                                                                INNER JOIN `Product` as p ON p.Product_ID = l.Product_ID
+                                                                                WHERE l.Product_ID = $pid AND l.Order_ID = $id";
+                                                                    $result2 = mysqli_query($conn,$query2) or die(mysqli_error);
+                                                                    $row2 = mysqli_fetch_array($result2);
+                                                                    $Product_name = $row2['Product_name'];
+                                                                    $Quantity = $row2['Quantity'];
+                                                                    $Line_total = $row2['Line_total'];
+                                                                    echo '<tr>
+                                                                            <td>'.$Product_name.'</td>
+                                                                            <td>'.$Quantity.'</td>
+                                                                            <td>'.$LineTotal.'</td>
+                                                                        </tr>
+                                                                
+                                                        </table>  
+                                                    </span>';
                                                                 }
                                                             }
-                                                        echo '
-                                                        </table>
-                                                    </span>
+                                                echo '
                                                 </div>
                                             </td>
                                         </tr>';
