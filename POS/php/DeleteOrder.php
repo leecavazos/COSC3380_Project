@@ -6,7 +6,7 @@
       $result=mysqli_query($conn, $sql);
       if($result){
          echo "Deleted";
-         header('Location: ../pages/OrdersManager/OrdersAdmin.php');
+         header('Location: ../pages/OrdersManager/OrdersAdmin2.php');
       }
       else{
          die(mysqli_error($conn));
