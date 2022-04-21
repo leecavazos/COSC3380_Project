@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 
 <?php
-	// include('../php/checkout.php');
+    require_once '../php/config.php';
     
 ?>
 
@@ -22,6 +22,24 @@
 
 	<link rel="icon" type="image/x-icon" href="../images/logo.webp">
 </head>
+
+<style>
+    table {
+        font-family: arial, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    td, th {
+        border: 2px solid black;
+        text-align: center;
+        padding: 8px;
+    }
+
+    tr:nth-child(even) {
+        background-color: #dddddd;
+    }
+</style>
 
 <body id="top">
 	<header>
@@ -71,20 +89,22 @@
                             <th>Order Details</th>
                         </tr>
                         <?php
-                            include '../php/addToCartAction.php';
-                            $sql = "SELECT * 
-                                    FROM `Order`
-                                    WHERE User_ID =  $User_ID
+                            include '../php/addToCartAction.php'; // Just be used to get userID from session (along with db config), can be another thing
+                            // require_once '../php/config.php';
+                            $sql = "SELECT Street_address, APT, City, State, Zip, Order_ID, Card_type, Last_4_digits, Order_total, Date_of_purchase
+                                    FROM `User`
+                                    INNER JOIN `Order` ON `Order`.User_ID = `User`.User_ID
+                                    WHERE `Order`.User_ID =  $User_ID
                                     ORDER BY Order_ID DESC";
                                     
                             $result = mysqli_query($conn,$sql) or die(mysqli_error);
                             if ($result->num_rows > 0) {
                                 while ($row = mysqli_fetch_array($result)) {
                                     $id=$row['Order_ID'];
-                                    $Street=$row['Street_delivered_to'];
-                                    $City=$row['City_delivered_to'];
-                                    $State=$row['State_delivered_to'];
-                                    $Zip =$row['Zip_code_delivered_to'];
+                                    $Street=$row['Street_address'];
+                                    $City=$row['City'];
+                                    $State=$row['State'];
+                                    $Zip =$row['Zip'];
                                     $Card =$row['Card_type'];
                                     $Card_num= $row['Last_4_digits'];
                                     $Total=$row['Order_total'];
@@ -92,46 +112,14 @@
                                     echo '<tr>
                                             <td>'.$id.'</td> 
                                             <td>'.$Street.', ';
-                                            if ($row['APT_delivered_to']) echo $row['APT_delivered_to'] .', ';
+                                            if ($row['APT']) echo 'Apt '. $row['APT'] .', ';
                                             echo ''.$City.', '.$State.', '.$Zip.'</td> 
                                             <td>'.$Card.'</td> 
                                             <td>'.$Card_num.'</td>
                                             <td>$'.$Total.'</td> 
                                             <td>'.$DOP.'</td>
                                             <td>
-                                                <div class="popup" onclick="togglePopup()">Click to view
-                                                    <div class="popup-content" id="myPopup">' .
-                                                        '
-                                                        <table>
-                                                        <tr>
-                                                            <th>Product Name</th>
-                                                            <th>Quantity</th>
-                                                            <th>Line Total</th>
-                                                        </tr>';
-                                                            $query = "SELECT Product_name, Quantity, Line_total
-                                                                        FROM `Line Item` as l, `Product` as p
-                                                                        WHERE l.Order_ID = $id
-                                                                        ORDER BY p.Product_ID";
-                                                        
-                                                            $result1 = mysqli_query($conn,$query) or die(mysqli_error);
-                                                            if ($result1->num_rows > 0) {
-                                                                while ($row1 = mysqli_fetch_array($result1)) {
-                                                                    $Product_name = $row1['Product_name'];
-                                                                    $Quantity=$row1['Quantity'];
-                                                                    $LineTotal =$row1['Line_total'];
-                                                                    echo '
-                                                                    <tr>
-                                                                        <td>'.$Product_name.'</td>
-                                                                        <td>'.$Quantity.'</td>
-                                                                        <td>'.$LineTotal.'</td>
-                                                                    </tr>
-                                                                    ';
-                                                                }
-                                                            }
-                                                        echo '
-                                                        </table>
-                                                    </div>
-                                                </div>
+                                                <a href="orderReceipt.php?orderID='.$id.'" target="_blank" rel="noopener noreferrer"> View Receipt </a>
                                             </td>
                                         </tr>';
                                 }

@@ -75,9 +75,9 @@ include('../php/loginAction.php');
             <h2>Delivery to:</h2>
             <p style="padding: 5px"><?php echo $row['First_name'] . ' ' . $row['Last_name'] . ' - ' . $row['Street_address'] . ', ';
                                     if ($row['APT']) {
-                                        echo $row['APT'] . ', ';
+                                        echo 'Apt ' .$row['APT'] . ', ';
                                     }
-                                    echo $row['City'] . ', ' . $row['State'] . ', ' . $row['Zip'] ?></p>
+                                    echo $row['City'] . ', ' . $row['State'] .' '. $row['Zip'] ?></p>
             <a href="accountDetails.php"><button class="change">Change Information</button></a>
         </div>
         <div class="grid-item cartInfo">
