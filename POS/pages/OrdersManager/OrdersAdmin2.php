@@ -84,12 +84,13 @@ include('navbar.php');
 				<span class="text">Sales</span>
 			</div>
             <span style="">
-                <form action="" method="POST" style="margin-left: 10px;">
+                <form action="" method="POST" style="margin-left: 10px;" target="_blank">
                         <label style="display: block; margin-top: 0px;" > 
                             <span class="text">Search</span>
                         </label>
-                        <input type="search" name="search" placeholder="Order ID" class="input_box">
+                        <input type="search" name="search" placeholder="Order ID, Card Number, Date, User_ID" class="input_box">
                         <input type="submit" name="submit" value="Go" class="block" style="margin-top: 0px;">
+                        <input type="submit" name="generate" value="Generate" class="block" style="margin-top: 0px; padding: 14px 0px;" formmethod="get" formaction="reportlayout.php">
                 </form>
             </span>
             <!-- OUTOUT OF THE DB BEGINS -->
@@ -117,23 +118,26 @@ include('navbar.php');
                     ?>
                 </div>
                 <div class="data manID">
-                    <span class="data-title">User ID</span>
+                    <span class="data-title">Name</span>
                     <?php
                         if(isset($_POST['submit'])){
                             $Input = validate($_POST['search']);
-                            $sql = "SELECT * FROM `Order` WHERE Order_ID='$Input'";
+                            $sql = "SELECT * FROM `Order`, `User` WHERE Order_ID='$Input' AND Order.User_ID = User.User_ID";
                             $result = mysqli_query($conn, $sql) or die(mysqli_error($conn));
                             while($row = mysqli_fetch_assoc($result)){
-                                $PID=$row['User_ID'];
-                                echo '<span>' .$PID. '</span>';
+                                $First=$row['First_name'];
+                                $Last=$row['Last_name'];
+                                echo '<span>' .$First. ' ' .$Last. '</span>';
                             }
                         }
                         else{
-                            $sql = "SELECT * FROM `Order`";
+                            $sql = "SELECT * FROM `Order`, `User`
+                            WHERE Order.User_ID = User.User_ID";
                             $result = mysqli_query($conn, $sql) or die(mysqli_error($conn));
                             while($row = mysqli_fetch_assoc($result)){
-                                $PID=$row['User_ID'];
-                                echo '<span>' .$PID. '</span>';
+                                $First=$row['First_name'];
+                                $Last=$row['Last_name'];
+                                echo '<span>' .$First. ' ' .$Last. '</span>';
                             }
                         }
                     ?>    
