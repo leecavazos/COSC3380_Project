@@ -1,3 +1,60 @@
+<?php
+
+	$dbservername = "18.116.44.118";
+	$dbusername = "root";
+	$dbpassword = "cosc3380";
+	$dbname = "POS";
+
+	$connection = mysqli_connect($dbservername,$dbusername,$dbpassword,$dbname);
+
+	if($connection)
+		echo "<br>";
+	else
+		die("CONNECTION FAILED! REASON: ".mysqli_connect_error());
+
+	$sqlp = "SELECT COUNT(Request_ID) FROM `Items Requested`";
+	$res = mysqli_query($connection, $sqlp);
+	$res = mysqli_fetch_assoc()
+	// echo "<br> New Request Added!<br>";
+	
+	// $ID = $_GET['productID'];
+
+	// echo "<br>The ID is {$ID}<br>";
+	
+
+
+	
+	// $query1 = "SELECT Price, Current_stock_level, Restock_level FROM Product WHERE Product_ID = {$ID}";
+	// $result1 = mysqli_query($connection, $query1);
+	// $row1 = mysqli_fetch_assoc($result1);
+	// $price = $row1['Price'];
+	// $cstock = $row1['Current_stock_level'];
+	// $level = $row1['Restock_level'];
+	// $quant = $level - $cstock;
+	
+	// echo "<br> Each @ {$price} <br>";
+	
+	// $line_total = $price * $quant;
+	
+	// echo "Your Request has been submitted <br> {$quant} items <br>for a total of $ {$line_total}";
+	// echo "<br> To be Restocked To {$level} <br>";
+	
+	// $s = "INSERT INTO `Purchase Request` (Generated_on) VALUES (current_date())";
+	// mysqli_query($connection, $s);
+
+	// echo "<br> The Item Request has been submitted to the database!<br>";
+
+	// $query2 = "INSERT INTO `Items Requested` (Product_ID, Quantity, Line_total) VALUES ({$ID},{$quant},{$line_total})";
+	// mysqli_query($connection, $query2);
+
+	// echo "For {$ID} and amount {$quant} with a total of {$line_total}<br>";
+
+	// $q = "UPDATE Product SET Current_stock_level = {$level} WHERE Product_ID = {$ID}";
+	// mysqli_query($connection, $q);
+
+
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,99 +68,12 @@
 	<!-- Boxicons CDN Link -->
 	<link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
 
-	<!-- Link to js file -->
-	<script src="../../js/script.js"></script>
 
 </head>
 <body>
-	<!-- Navigation Bar Begins -->
-	<!-- Add onclick event for the sidebar from js file -->
-	<div class="sidebar" onclick="toggleSideBar()">
-		<div class="logo_content">
-			<div class="logo">
-				<i class='bx bx-money'></i>
-				<div class="logo_name">Purchasing</div>
-			</div>
-			<i class='bx bx-menu' id="btn"></i>
-		</div>
-		<ul class="nav_list">
-			<li>
-				<i class='bx bx-search' ></i>
-				<input type="text" placeholder="Search...">
-				<span class="tooltip">Search</span>
-			</li>
-			
-			<li>
-				<a href="pmanagerprofile.html">
-					<i class='bx bxs-user-badge' ></i>
-					<span class="links_name">Manager</span>
-				</a>
-				<span class="tooltip">Manager</span>
-			</li>
-			<li>
-				<a href="purchase.html">
-					<i class='bx bx-grid-alt' ></i>
-					<span class="links_name">Dashboard</span>
-				</a>
-				<span class="tooltip">Dashboard</span>
-			</li>
-			<li>
-				<a href="pendingprequests.html">
-					<i class='bx bx-dollar-circle' ></i>
-					<span class="links_name">Requests</span>
-				</a>
-				<span class="tooltip">Requests</span>
-			</li>
-			<li>
-				<a href="invoices.html">
-					<i class='bx bx-spreadsheet' ></i>
-					<span class="links_name">Invoices</span>
-				</a>
-				<span class="tooltip">Invoices</span>
-			</li>
-			<li>
-				<a href="analytics.html">
-					<i class='bx bx-stats'></i>
-					<span class="links_name">Analytics</span>
-				</a>
-				<span class="tooltip">Analytics</span>
-			</li>
-			<li>
-				<a href="finalize.html">
-					<i class='bx bx-cart-alt' ></i>
-					<span class="links_name">Finalize</span>
-				</a>
-				<span class="tooltip">Finalize</span>
-			</li>
-			<li>
-				<a href="reject.html">
-					<i class='bx bx-task-x' ></i>
-					<span class="links_name">Reject</span>
-				</a>
-				<span class="tooltip">Reject History</span>
-			</li>
-			<li>
-				<a href="reports.html">
-					<i class='bx bxs-report' ></i>
-					<span class="links_name">Reports</span>
-				</a>
-				<span class="tooltip">Reports</span>
-			</li>
-		</ul>
-		<div class="profile_content">
-			<div class="profile">
-				<div class="profile_details">
-					<div class="name_job">
-						<div class="name">manager/user</div>
-						<div class="job">Purchasing Manager</div>
-					</div>
-				</div>
-				<i class='bx bx-log-out' id="log_out"></i>
-			</div>
-		</div>
-	</div>
-	<!-- Navigation Bar Ends -->
-
+	
+	<?php include('navbar.php'); ?>
+	
 	<!-- Page Content Begins -->
 	<!-- Begin Dashboard Content -->
 	<section class="dashboard">
@@ -201,6 +171,13 @@
 		</div>
 	</section>
 	<!-- Page Content Ends -->
+
+	
+	
+
+	
+
+
 
 </body>
 </html>
