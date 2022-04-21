@@ -7,7 +7,7 @@
     $Category_image = $_FILES['Category_image']['name'];
 
     if(categoryExists($conn, $Category_name) !== false) {
-        header("location: ../pages/InventoryManager/category.php?invalid=category");
+        header("location: ../pages/InventoryMAnager/category.php?invalid=category");
         exit();
     }
 
@@ -19,5 +19,5 @@
 
     $stmt->close();
     $conn->close();
-    header("location: ../pages/InventoryManager/category.php?success=category");
+    header("location: ../pages/InventoryMAnager/category.php?success=category");
 ?>

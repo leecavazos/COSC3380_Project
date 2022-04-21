@@ -6,7 +6,7 @@
         $Category_ID = $_GET['id'];
         $Category_image = $_GET['image'];
         if(categoryReferenced($conn, $Category_ID) == true) {
-            header("location: ../pages/InventoryManager/category.php?invalid=deleted");
+            header("location: ../pages/InventoryMAnager/category.php?invalid=deleted");
             exit();
         }
         $sql = "DELETE FROM Category WHERE Category_ID = ?;";
@@ -17,7 +17,7 @@
         $stmt->close();
         $conn->close();
         unlink("../images/{$Category_image}");
-        header("location: ../pages/InventoryManager/category.php?success=deleted");
+        header("location: ../pages/InventoryMAnager/category.php?success=deleted");
     }
     
     

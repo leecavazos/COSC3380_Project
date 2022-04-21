@@ -12,7 +12,7 @@
         $stmt->close();
         $conn->close();
         unlink("../images/{$Product_image}");
-        header("location: ../pages/InventoryManager/product.php?success=deleted");
+        header("location: ../pages/InventoryMAnager/product.php?success=deleted");
     }
     
     
