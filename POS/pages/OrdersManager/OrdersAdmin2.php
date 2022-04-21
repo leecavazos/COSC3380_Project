@@ -89,7 +89,7 @@ include('navbar.php');
                             <span class="text">Search</span>
                         </label>
                         <input type="search" name="search" placeholder="Order ID, Card Number, Date, User_ID" class="input_box">
-                        <input type="submit" name="submit" value="Go" class="block" style="margin-top: 0px;">
+                        <input type="submit" name="submit" value="Go" class="block" style="margin-top: 0px;" formtarget="">
                         <input type="submit" name="generate" value="Generate" class="block" style="margin-top: 0px; padding: 14px 0px;" formmethod="get" formaction="reportlayout.php">
                 </form>
             </span>
