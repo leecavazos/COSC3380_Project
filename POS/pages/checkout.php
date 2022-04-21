@@ -119,12 +119,12 @@ include('../php/loginAction.php');
                 <input type="text" id="ExpDate" name="ExpDate" placeholder="01/11" class="payInput" required>
                 <label for="CVV">CVV</label>
                 <input type="text" id="CVV" name="CVV" placeholder="123" maxlength="3" class="payInput" required>
-                <input type="hidden" name="User_ID" value=<?= $_SESSION['user_id'] ?>>
-                <input type="hidden" name="Street_delivered_to" value=<?= $row['Street_address'] ?>>
-                <input type="hidden" name="APT_delivered_to" value=<?= $row['APT'] ?>>
-                <input type="hidden" name="City_delivered_to" value=<?= $row['City'] ?>>
-                <input type="hidden" name="State_delivered_to" value=<?= $row['State'] ?>>
-                <input type="hidden" name="Zip_code_delivered_to" value=<?= $row['Zip'] ?>>
+                <input type="hidden" name="User_ID" value="<?= $_SESSION['user_id'] ?>">
+                <input type="hidden" name="Street_delivered_to" value="<?php echo $row['Street_address'] ?>">
+                <input type="hidden" name="APT_delivered_to" value="<?= $row['APT'] ?>">
+                <input type="hidden" name="City_delivered_to" value="<?= $row['City'] ?>">
+                <input type="hidden" name="State_delivered_to" value="<?= $row['State'] ?>">
+                <input type="hidden" name="Zip_code_delivered_to" value="<?= $row['Zip'] ?>">
                 <input type="hidden" name="Order_total" id="Order_total">
                 <?php
                 $num = 0;

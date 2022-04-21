@@ -60,13 +60,13 @@ include('../../php/AdminloginAction.php');
 				</a>
 				<span class="tooltip">Categories</span>
 			</li>
-			<!-- <li>
+			<li>
 				<a href="purchaseRequest.php">
                 <i class='bx bx-money-withdraw' ></i>
 					<span class="links_name">Purchase Requests</span>
 				</a>
 				<span class="tooltip">Purchase Requests</span>
-			</li> -->
+			</li>
 			<!-- <li>
 				<a href="reports.php">
 					<i class='bx bxs-report' ></i>
