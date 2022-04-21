@@ -13,7 +13,7 @@
     $Product_image = $_FILES['Product_image']['name'];
 
     if(productExists($conn, $Product_name) !== false) {
-        header("location: ../pages/InventoryManager/product.php?invalid=product");
+        header("location: ../pages/InventoryMAnager/product.php?invalid=product");
         exit();
     }
 
@@ -25,5 +25,5 @@
 
     $stmt->close();
     $conn->close();
-    header("location: ../pages/InventoryManager/product.php?success=product");
+    header("location: ../pages/InventoryMAnager/product.php?success=product");
 ?>
