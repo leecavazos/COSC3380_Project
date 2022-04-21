@@ -91,19 +91,20 @@
                         <?php
                             include '../php/addToCartAction.php'; // Just be used to get userID from session (along with db config), can be another thing
                             // require_once '../php/config.php';
-                            $sql = "SELECT * 
-                                    FROM `Order`
-                                    WHERE User_ID =  $User_ID
+                            $sql = "SELECT Street_address, APT, City, State, Zip, Order_ID, Card_type, Last_4_digits, Order_total, Date_of_purchase
+                                    FROM `User`
+                                    INNER JOIN `Order` ON `Order`.User_ID = `User`.User_ID
+                                    WHERE `Order`.User_ID =  $User_ID
                                     ORDER BY Order_ID DESC";
                                     
                             $result = mysqli_query($conn,$sql) or die(mysqli_error);
                             if ($result->num_rows > 0) {
                                 while ($row = mysqli_fetch_array($result)) {
                                     $id=$row['Order_ID'];
-                                    $Street=$row['Street_delivered_to'];
-                                    $City=$row['City_delivered_to'];
-                                    $State=$row['State_delivered_to'];
-                                    $Zip =$row['Zip_code_delivered_to'];
+                                    $Street=$row['Street_address'];
+                                    $City=$row['City'];
+                                    $State=$row['State'];
+                                    $Zip =$row['Zip'];
                                     $Card =$row['Card_type'];
                                     $Card_num= $row['Last_4_digits'];
                                     $Total=$row['Order_total'];
@@ -111,7 +112,7 @@
                                     echo '<tr>
                                             <td>'.$id.'</td> 
                                             <td>'.$Street.', ';
-                                            if ($row['APT_delivered_to']) echo $row['APT_delivered_to'] .', ';
+                                            if ($row['APT']) echo 'Apt '. $row['APT'] .', ';
                                             echo ''.$City.', '.$State.', '.$Zip.'</td> 
                                             <td>'.$Card.'</td> 
                                             <td>'.$Card_num.'</td>
