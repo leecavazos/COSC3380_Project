@@ -23,6 +23,24 @@
 	<link rel="icon" type="image/x-icon" href="../images/logo.webp">
 </head>
 
+<style>
+    table {
+        font-family: arial, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    td, th {
+        border: 2px solid black;
+        text-align: center;
+        padding: 8px;
+    }
+
+    tr:nth-child(even) {
+        background-color: #dddddd;
+    }
+</style>
+
 <body id="top">
 	<header>
 		<a href="">
