@@ -1,5 +1,5 @@
 # UH-Spring 2022 COSC3380_Project (Database System)
-## Team member:
+## Team members:
 - Moreira, Lester (Team Leader)
 - Cavazos, Lee
 - Nguyen, Minh D
@@ -18,6 +18,7 @@
 - Requirements:
   - Git
   - Visual Studio Code (or other IDEs or code editors)
+  - PHP 8.0.17 Development Server (or newer version)
   - MySQL Server
   - MySQLWorkbench (Optional, but recommended)
 
