@@ -68,7 +68,7 @@
             <p id="displayEmail"><?php echo $row['Email']?></p>
             <h2 id="about">About</h2>
             <p><?php echo '@' . $row['Username']?></p>
-            <p><?php echo $row['Phone_number']?></p>
+            <p><?php echo '<b>Phone: </b>'. $row['Phone_number']?></p>
             <p><span style="font-weight: 600">Shipping Address:</span><br>
             <?php echo $row['Street_address'] . ', ';
             if($row['APT']) {
@@ -86,17 +86,19 @@
                         <div class="flex-grid">
                             <div class="col">
                                 <label for="First_name"><b>First name:</b></label>
-                                <input type="text" name="First_name" id="First_name" placeholder="Enter first name" required>
+                                <input type="text" name="First_name" id="First_name" placeholder="<?= $row['First_name'] ?>" value=<?= $row['First_name'] ?> >
 
-                                <label for="Email"><b>Email</b></label>
-                                <input type="email" name="Email" id="Email" placeholder="Enter email" required>
+                                <label for="Email"><b>Email:</b></label>
+                                <input type="email" name="Email" id="Email" placeholder="<?= $row['Email'] ?>" value=<?= $row['Email'] ?> >
                             </div>
                             <div class="col">
                                 <label for="Last_name"><b>Last name:</b></label>
-                                <input type="text" name="Last_name" id="Last_name" placeholder="Enter last name" required>
+                                <input type="text" name="Last_name" id="Last_name" placeholder="<?= $row['Last_name'] ?>" value=<?= $row['Last_name'] ?> >
 
                                 <label for="Phone_number"><b>Phone number:</b></label>
-                                <input type="text" name="Phone_number" id="Phone_number" placeholder="Enter phone number">
+                                <input type="text" name="Phone_number" id="Phone_number" placeholder="<?php if ($row['Phone_number'])
+                                                                                                                echo $row['Phone_number'];
+                                                                                                            else echo 'Enter phone number';?>" value=<?= $row['Phone_number']?>>
                             </div>
                         </div>
                     </div>
@@ -107,20 +109,22 @@
                         <div class="flex-grid">
                             <div class="col">
                                 <label for="Street_address"><b>Street address:</b></label>
-                                <input type="text" name="Street_address" id="Street_address" placeholder="Enter street address" required>
+                                <input type="text" name="Street_address" id="Street_address" placeholder="<?= $row['Street_address'] ?>" value="<?= $row['Street_address'] ?>">
 
                                 <label for="APT"><b>APT:</b></label>
-                                <input type="text" name="APT" id="APT" placeholder="Enter apartment number">
+                                <input type="text" name="APT" id="APT" placeholder="<?php if ($row['APT'])
+                                                                                                echo $row['APT'];
+                                                                                            else echo 'Enter APT';?>" value="<?= $row['APT'] ?>" >
 
                                 <label for="Zip"><b>Zipcode:</b></label>
-                                <input type="text" name="Zip" id="Zip" placeholder="Enter Zipcode" required>
+                                <input type="text" name="Zip" id="Zip" placeholder="<?= $row['Zip'] ?>" value=<?= $row['Zip'] ?>>
                             </div>
                             <div class="col">
                                 <label for="City"><b>City:</b></label>
-                                <input type="text" name="City" id="City" placeholder="Enter city" required>
+                                <input type="text" name="City" id="City" placeholder="<?= $row['City'] ?>" value=<?= $row['City'] ?>>
 
                                 <label for="State"><b>State:</b></label>
-                                <input type="text" name="State" id="State" placeholder="Enter state" required>
+                                <input type="text" name="State" id="State" placeholder="<?= $row['State'] ?>" value=<?= $row['State'] ?>>
                             </div>
                         </div>
                     </div>
@@ -130,14 +134,14 @@
                     <div class="grid-item2">
                         <div class="flex-grid">
                             <div class="col">
-                                <label for="Username"><b>Username:</b></label>
-                                <input type="text" name="Username" id="Username" placeholder="Enter username" required>
+                                <label for="Username"><b>*Username: </b><i style="font-size: 14px">Required</i></label>
+                                <input type="text" name="Username" id="Username" placeholder="<?= $row['Username'] ?>" value =<?= $row['Username'] ?> required>
                             </div>
                             <div class="col">
-                                <label for="Password"><b>Password:</b></label>
+                                <label for="Password"><b>*Password: </b><i style="font-size: 14px">Required</i></label>
                                 <input type="password" name="Password" id="Password" placeholder="Enter password" onkeyup="matchPasswords()" required>
 
-                                <label for="RePassword"><b>Re-enter Password:</b></label>
+                                <label for="RePassword"><b>*Re-enter Password: </b><i style="font-size: 14px">Required</i></label>
                                 <input type="password" name="RePassword" id="RePassword" placeholder="Enter password" onkeyup="matchPasswords()" required>
                                 <div id="confirmPassword">❗ Passwords do not match.</div>
 
