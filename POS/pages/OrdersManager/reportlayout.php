@@ -168,7 +168,7 @@
                 });
             </script>
                 <div class="row">
-                    <div class="col-4" style="margin-top: 100px;">
+                    <div class="col-4" style="margin-top: 50px;">
                         <table class="table border-0 table-hover">
                             <?php 
                             $sql = "SELECT * FROM `Order`";
