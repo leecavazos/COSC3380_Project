@@ -92,7 +92,7 @@
                     <canvas id="myBar" style="width:100%;max-width:450px"></canvas>
                 </div>
             <?php
-                $sql = "SELECT Product_name, Sum(Quantity) FROM POS.`Line Item` group by Product_ID";
+                $sql = "SELECT Product_ID, Sum(Quantity) FROM POS.`Line Item` group by Product_ID";
                 $sql2 = "SELECT COUNT(MONTH(Date_of_purchase)), MONTHNAME(Date_of_purchase) FROM POS.`Order` group by MONTHNAME(Date_of_purchase)";
                 $result = mysqli_query($conn, $sql);
                 $result9 = mysqli_query($conn, $sql2);
@@ -101,7 +101,7 @@
                 $sampleArrayDate = array();
                 $sampleArrayMonth = array();
                 while($row = mysqli_fetch_assoc($result)){
-                    $Product = $row['Product_name'];
+                    $Product = $row['Product_ID'];
                     $Quant = $row['Sum(Quantity)'];
                     array_push($sampleArrayID,$Product);
                     array_push($sampleArrayQ, $Quant);
@@ -139,7 +139,7 @@
                 options: {
                     title: {
                     display: true,
-                    text: "Most Sold Product(Product_Name):"
+                    text: "Most Sold Product(Product_ID):"
                     }
                 }
                 });
