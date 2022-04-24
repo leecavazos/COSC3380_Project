@@ -85,23 +85,40 @@
                 </div>
             </section>
             <section class="balance-info">
-            <canvas id="myChart" style="width:100%;max-width:600px"></canvas>
+                <div style="display: block">
+                    <canvas id="myChart" style="width:100%;max-width:450px"></canvas>
+                    <br>
+                    <br>
+                    <canvas id="myBar" style="width:100%;max-width:450px"></canvas>
+                </div>
             <?php
-                $sql = "SELECT Product_ID, Sum(Quantity) FROM POS.`Line Item` group by Product_ID";
+                $sql = "SELECT Product_name, Sum(Quantity) FROM POS.`Line Item` group by Product_ID";
+                $sql2 = "SELECT COUNT(MONTH(Date_of_purchase)), MONTHNAME(Date_of_purchase) FROM POS.`Order` group by MONTHNAME(Date_of_purchase)";
                 $result = mysqli_query($conn, $sql);
+                $result9 = mysqli_query($conn, $sql2);
                 $sampleArrayID = array();
                 $sampleArrayQ = array();
+                $sampleArrayDate = array();
+                $sampleArrayMonth = array();
                 while($row = mysqli_fetch_assoc($result)){
-                    $Product = $row['Product_ID'];
+                    $Product = $row['Product_name'];
                     $Quant = $row['Sum(Quantity)'];
                     array_push($sampleArrayID,$Product);
                     array_push($sampleArrayQ, $Quant);
+                }   
+                while($row2 = mysqli_fetch_assoc($result9)){
+                    $Dates = $row2['COUNT(MONTH(Date_of_purchase))'];
+                    $Months = $row2['MONTHNAME(Date_of_purchase)'];
+                    array_push($sampleArrayMonth, $Months);
+                    array_push($sampleArrayDate,$Dates);
                 }
-                
             ?>
             <script>
                 var xValues = <?php echo json_encode($sampleArrayID); ?>;
                 var yValues = <?php echo json_encode($sampleArrayQ); ?>;
+
+                var x = <?php echo json_encode($sampleArrayMonth); ?>;
+                var y = <?php echo json_encode($sampleArrayDate); ?>;
                 var barColors = [
                 "#b91d47",
                 "#00aba9",
@@ -122,7 +139,30 @@
                 options: {
                     title: {
                     display: true,
-                    text: "Most Sold Product(Product_ID):"
+                    text: "Most Sold Product(Product_Name):"
+                    }
+                }
+                });
+
+                new Chart("myBar", {
+                type: "line",
+                data: {
+                    labels: x,
+                    datasets: [{
+                    fill: false,
+                    backgroundColor: "rgba(0,0,0,1.0)",
+                    borderColor: "rgba(0,0,0,0.1)",
+                    data: y
+                    }]
+                },
+                options: {
+                    legend: {display: false},
+                    title: {
+                    display: true,
+                    text: "Orders Place By Month"
+                    },
+                    scales: {
+                    yAxes: [{ticks: {min: 0, max:16}}],
                     }
                 }
                 });
