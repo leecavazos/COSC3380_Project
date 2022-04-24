@@ -97,14 +97,7 @@
                     array_push($sampleArrayID,$Product);
                     array_push($sampleArrayQ, $Quant);
                 }
-                // print_r($sampleArrayID);
-                // echo "<br>";
-                // print_r($sampleArrayQ);
-
-                // $js_array = json_encode($sampleArrayID);
-                // $js_array2 = json_encode($sampleArrayQ);
-                // echo "var xValues = ". $js_array . ";\n";
-                // echo "var yValues = ".$js_array2. ";\n";
+                
             ?>
             <script>
                 var xValues = <?php echo json_encode($sampleArrayID); ?>;

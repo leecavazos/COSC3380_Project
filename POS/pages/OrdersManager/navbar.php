@@ -54,27 +54,7 @@ include('../../php/AdminloginAction.php');
 				</a>
 				<span class="tooltip">Edit Order</span>
 			</li>
-			<!-- <li>
-				<a href="category.php">
-                <i class='bx bx-folder' ></i>
-					<span class="links_name">Categories</span>
-				</a>
-				<span class="tooltip">Categories</span>
-			</li> -->
-			<!-- <li>
-				<a href="purchaseRequest.php">
-                <i class='bx bx-money-withdraw' ></i>
-					<span class="links_name">Purchase Requests</span>
-				</a>
-				<span class="tooltip">Purchase Requests</span>
-			</li> -->
-			<li>
-				<a href="reports.php">
-					<i class='bx bxs-report' ></i>
-					<span class="links_name">Reports</span>
-				</a>
-				<span class="tooltip">Reports</span>
-			</li>
+
 		</ul>
 		<div class="profile_content">
 			<div class="profile">

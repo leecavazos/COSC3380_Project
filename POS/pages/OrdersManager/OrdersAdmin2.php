@@ -147,7 +147,7 @@ include('navbar.php');
                     <?php 
                         if(isset($_POST['submit'])){
                             $Input = validate($_POST['search']);
-                            $sql = "SELECT * FROM `Order` WHERE Order_ID='$Input'";
+                            $sql = "SELECT * FROM `Order`, `User` WHERE Order_ID='$Input'";
                             $result = mysqli_query($conn, $sql) or die(mysqli_error($conn));
                             while($row = mysqli_fetch_assoc($result)){
                                 $Street=$row['Street_delivered_to'];

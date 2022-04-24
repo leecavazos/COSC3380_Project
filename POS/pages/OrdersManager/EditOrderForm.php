@@ -12,14 +12,16 @@
    $City=$row['City_delivered_to'];
    $State=$row['State_delivered_to'];
    $Zip =$row['Zip_code_delivered_to'];
+   $Total = $row['Order_total'];
    if(isset($_POST['submit'])){
        $P_ID=$_POST['userid'];
        $St=$_POST['street'];
        $Ciudad=$_POST['city'];
        $Estado=$_POST['state'];
        $Zip=$_POST['zip'];
+       $Total=$_POST['total'];
 
-       $sql = "UPDATE `Order` SET Order_ID='$ID', User_ID = '$P_ID', Street_delivered_to = '$St', City_delivered_to = '$Ciudad', State_delivered_to = '$Estado', Zip_code_delivered_to = '$Zip' WHERE Order_ID = '$ID'";
+       $sql = "UPDATE `Order` SET Order_ID='$ID', User_ID = '$P_ID', Street_delivered_to = '$St', City_delivered_to = '$Ciudad', State_delivered_to = '$Estado', Zip_code_delivered_to = '$Zip', Order_total='$Total' WHERE Order_ID = '$ID'";
        $result=mysqli_query($conn,$sql);
        if($result){
            header('Location: OrdersAdmin2.php');
@@ -74,34 +76,38 @@
                             <div class="">
                                 <label style="display: block;"> 
                                     <span class="data-title">User ID:</span>
-                                    <?php echo $PID;?>
                                 </label>
-                                <input type="text" class="input_box" name="userid" value="" >
+                                <input type="text" class="input_box" name="userid" value="<?php echo $PID;?>" required>
                             </div>
                             <div class="">
                                 <label style="display: block;">
                                     <span class="data-title">Address:</span>
-                                    <?php echo $Strt; ?></label>
-                                <input type="text" class="input_box" name="street" value="">
+                                </label>
+                                <input type="text" class="input_box" name="street" value="<?php echo $Strt; ?>" required>
                             </div>
                             <div class="">
                                 <label style="display: block;">
                                     <span class="data-title">City:</span> 
-                                    <?php echo $City; ?></label>
-                                <input type="text" class="input_box" name="city" value="">
+                                </label>
+                                <input type="text" class="input_box" name="city" value="<?php echo $City; ?>" required>
                             </div>
                             <div class="">
                                 <label style="display: block;">
                                     <span class="data-title">State:</span> 
-                                    <?php echo $State; ?></label>
-                                <input type="text" class="input_box" name="state" value="">
+                                </label>
+                                <input type="text" class="input_box" name="state" value="<?php echo $State; ?>" required>
                             </div>
                             <div class="">
                                 <label style="display: block;">
                                     <span class="data-title">ZipCode:</span> 
-                                    <?php echo $Zip; ?>
                                 </label>
-                                <input type="text" class="input_box" name="zip" value="">
+                                <input type="text" class="input_box" name="zip" value="<?php echo $Zip; ?>" required>
+                            </div>
+                            <div class="">
+                                <label style="display: block;">
+                                    <span class="data-title">Total:</span> 
+                                </label>
+                                <input type="text" class="input_box" name="total" value="<?php echo $Total; ?>" required>
                             </div>
                             <button type="submit" class="block" name="submit">Update</button>
                             <button type="submit" class="block" style=""name="cancel">Cancel</button>
