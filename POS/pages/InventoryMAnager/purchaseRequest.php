@@ -15,10 +15,16 @@
 </head>
 <body>
 
+<!-- Determining the maximum productID -->
 <?php
 include('navbar.php');
-?>
+include('../php/config.php');
 
+$query = "SELECT max(Product_ID) as max FROM Product";
+$result = mysqli_query($conn, $query);
+$row = mysqli_fetch_assoc($result);
+$max_id = (int)$row['max'];
+?>
 	<!-- Page Content Begins -->
 	<!-- Begin Title Content -->
 	<section class="dashboard">
@@ -33,7 +39,7 @@ include('navbar.php');
 	<!-- Invoice Content Begins -->
 			Select Product ID for Purchasing:
 			<form method="get" action = "requestconfirm.php">
-				Product ID: <input type="text" name="productID">
+				Product ID: <input type="number" min="1" max = "<?php echo $max_id;?>" name="productID">
 				<br>
 				<br>
 				<input type="submit">
@@ -42,6 +48,31 @@ include('navbar.php');
 		</div>
 	</section>
 	<!-- Page Content Ends -->
+	<br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+	<h2>Log Messages </h2>
+	<section class="messages">
+	<?php
+		$queryl = "SELECT * FROM Log";
+		$resultl = mysqli_query($conn, $queryl);
+		
+		while ($rowl = mysqli_fetch_assoc($resultl)) {
+			echo "{$rowl['Message']} {$rowl['Name']}";
+			echo "<br>";
+		}
+		
+	?>
+	<h3>Product names</h3>
+	<?php 
+		$queryf = "SELECT * FROM Product";
+		$resultf = mysqli_query($conn, $queryf);
 
+		while ($rowf = mysqli_fetch_array($resultf)) {
+			echo "{$rowf['Product_ID']} {$rowf['Product_name']}";
+			echo "<br>";
+		}
+		
+
+	?>
+	</section>
 </body>
 </html>
