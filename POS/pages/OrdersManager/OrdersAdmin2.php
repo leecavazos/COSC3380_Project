@@ -248,8 +248,8 @@ include('navbar.php');
                             $result = mysqli_query($conn, $sql) or die(mysqli_error($conn));
                             while($row = mysqli_fetch_assoc($result)){
                                 $id=$row['Order_ID'];
-                                echo '<span><a href="EditOrderForm.php?editOrder='.$id.'">Edit</a>
-                                <a href="../../php/DeleteOrder.php?deleteOrder='.$id.'"> Delete</a></span>';
+                                echo '<span><a href="EditOrderForm.php?editOrder='.$id.'">Edit</a></span>';
+                                // <a href="../../php/DeleteOrder.php?deleteOrder='.$id.'"> Delete</a></span>';
                             }
                         }
                         else{
@@ -257,8 +257,8 @@ include('navbar.php');
                             $result = mysqli_query($conn, $sql) or die(mysqli_error($conn));
                             while($row = mysqli_fetch_assoc($result)){
                                 $id=$row['Order_ID'];
-                                echo '<span><a href="EditOrderForm.php?editOrder='.$id.'">Edit</a>
-                                <a href="../../php/DeleteOrder.php?deleteOrder='.$id.'"> Delete</a></span>';  
+                                echo '<span><a href="EditOrderForm.php?editOrder='.$id.'">Edit</a></span>';
+                                // <a href="../../php/DeleteOrder.php?deleteOrder='.$id.'"> Delete</a></span>';  
                             }
                         }
                     ?>
