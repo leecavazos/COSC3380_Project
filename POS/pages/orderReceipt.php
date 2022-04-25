@@ -96,7 +96,6 @@
                                         <tr class="line">
                                             <td class="text-center"><strong>ITEM</strong></td>
                                             <td class="text-center"><strong>QUANTITY</strong></td>
-                                            <td class="text-right"><strong>UNIT PRICE</strong></td>
                                             <td class="text-right"><strong>SUBTOTAL</strong></td>
                                         </tr>
                                     </thead>
@@ -109,36 +108,34 @@
                                                 $pid = $row['Product_ID'];
                                                 
                                                 // Get line item details
-                                                $sql1 = "SELECT Product_name, Price, Quantity, Line_total 
+                                                $sql1 = "SELECT Product_name, Quantity, Line_total
                                                             FROM `Line Item` as l
                                                             INNER JOIN `Product` as p ON p.Product_ID = l.Product_ID
                                                             WHERE l.Product_ID = $pid AND l.Order_ID = $oid";
                                                 $result1 = mysqli_query($conn,$sql1) or die(mysqli_error);
                                                 $row1 = mysqli_fetch_array($result1);
-                                                
+
                                                 $Product_name = $row1['Product_name'];
-                                                $Price = $row1['Price'];
                                                 $Quantity = $row1['Quantity'];
                                                 $LineTotal =$row1['Line_total'];
                                                 echo '
                                                     <tr>
                                                         <td class="text-center">'.$Product_name.'</td>
                                                         <td class="text-center">'.$Quantity.'</td>
-                                                        <td class="text-center">'.$Price.'</td>
                                                         <td class="text-right">$'.$LineTotal.'</td>
-                                                    </tr>
-                                                    ';
+                                                        </tr>
+                                                        ';
                                             };
 
                                         ?>
 
                                         <tr>
-                                            <td colspan="2">
+                                            <td colspan="1">
                                             <td class="text-right"><strong>Taxes</strong></td>
                                             <td class="text-right"><strong>N/A</strong></td>
                                         </tr>
                                         <tr>
-                                            <td colspan="2">
+                                            <td colspan="1">
                                             </td><td class="text-right"><strong>Total</strong></td>
                                             <?php
                                                 $sql = "SELECT Order_total FROM `Order` WHERE Order_ID = $oid";
