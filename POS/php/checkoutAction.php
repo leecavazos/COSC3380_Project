@@ -34,8 +34,8 @@ for($i = 0; $i <= $numProducts - 1; $i++) {
     $Line_total = $_POST[$str] * $Quantity;
     $str = "lineID" . $i;
     $Product_ID = $_POST[$str];
-    $stmt = $conn->prepare("INSERT INTO `Line Item` (Order_ID, Product_ID, Quantity, Line_total) VALUES (?, ?, ?, ?)");
-    $stmt->bind_param("iiid", $Order_ID, $Product_ID, $Quantity, $Line_total);
+    $stmt = $conn->prepare("INSERT INTO `Line Item` (Order_ID, Product_ID, Quantity) VALUES (?, ?, ?)");
+    $stmt->bind_param("iiid", $Order_ID, $Product_ID, $Quantity);
     $stmt->execute();
     $stmt->close();
 
