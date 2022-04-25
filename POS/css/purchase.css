@@ -25,6 +25,14 @@ body{
 }
 /* End CSS for body */
 
+h2 {
+	margin-left: 50%;
+}
+
+.messages {
+	margin-left: 50%;
+}
+
 /* Begin CSS for sidebar */
 
 .sidebar{
