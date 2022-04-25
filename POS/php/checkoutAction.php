@@ -31,11 +31,11 @@ for($i = 0; $i <= $numProducts - 1; $i++) {
         continue;
     }
     $str = "linePrice" . $i;
-    $Line_total = $_POST[$str] * $Quantity;
+    $Price = $_POST[$str];
     $str = "lineID" . $i;
     $Product_ID = $_POST[$str];
-    $stmt = $conn->prepare("INSERT INTO `Line Item` (Order_ID, Product_ID, Quantity) VALUES (?, ?, ?)");
-    $stmt->bind_param("iii", $Order_ID, $Product_ID, $Quantity);
+    $stmt = $conn->prepare("INSERT INTO `Line Item` (Order_ID, Product_ID, Quantity, Price) VALUES (?, ?, ?, ?)");
+    $stmt->bind_param("iiid", $Order_ID, $Product_ID, $Quantity, $Price);
     $stmt->execute();
     $stmt->close();
 
