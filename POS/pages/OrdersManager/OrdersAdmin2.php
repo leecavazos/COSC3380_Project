@@ -88,7 +88,7 @@ include('navbar.php');
                         <label style="display: block; margin-top: 0px;" > 
                             <span class="text">Search</span>
                         </label>
-                        <input type="search" name="search" placeholder="Order ID, Card Number, Date, User_ID" class="input_box">
+                        <input type="search" name="search" placeholder="Order ID" class="input_box">
                         <input type="submit" name="submit" value="Go" class="block" style="margin-top: 0px;" formtarget="">
                         <input type="submit" name="generate" value="Generate" class="block" style="margin-top: 0px; padding: 14px 0px;" formmethod="get" formaction="reportlayout.php">
                 </form>
@@ -147,7 +147,7 @@ include('navbar.php');
                     <?php 
                         if(isset($_POST['submit'])){
                             $Input = validate($_POST['search']);
-                            $sql = "SELECT * FROM `Order`, `User` WHERE Order_ID='$Input'";
+                            $sql = "SELECT * FROM `Order` WHERE Order_ID='$Input'";
                             $result = mysqli_query($conn, $sql) or die(mysqli_error($conn));
                             while($row = mysqli_fetch_assoc($result)){
                                 $Street=$row['Street_delivered_to'];
