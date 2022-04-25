@@ -131,7 +131,7 @@ include('navbar.php');
                             }
                         }
                         else{
-                            $sql = "SELECT First_Name, Last_name FROM newPOS.`Order`, newPOS.`User` WHERE Order.User_ID = User.User_ID Order By Order_ID";
+                            $sql = "SELECT First_name, Last_name FROM newPOS.`Order`, newPOS.`User` WHERE Order.User_ID = User.User_ID Order By Order_ID";
                             $result = mysqli_query($conn, $sql) or die(mysqli_error($conn));
                             while($row = mysqli_fetch_assoc($result)){
                                 $First=$row['First_name'];
