@@ -79,7 +79,7 @@
                             <p>Manager: <span><?php echo $_SESSION['login_user'] ?></span></p>
                         </div>
                         <div class="col-5">
-                            <p>Date of Report: <span>04/21/2022</span></p>
+                            <p>Date of Report: <span>04/26/2022</span></p>
                         </div>
                     </div>
                 </div>
