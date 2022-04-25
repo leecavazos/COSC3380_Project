@@ -7,7 +7,7 @@
 
     if(!empty($_POST['Product_name'])) {
         if(productNameExists($conn, $_POST['Product_name'], $Product_ID) !== false) {
-            header("location: ../pages/InventoryManager/product.php?invalid=edit");
+            header("location: ../pages/InventoryMAnager/product.php?invalid=edit");
             exit();
         }
         $stmt = $conn->prepare("UPDATE Product SET Product_name = ? WHERE Product_ID = ?");
@@ -70,6 +70,6 @@
     $stmt->close();
     $conn->close();
     
-    header("location: ../pages/InventoryManager/product.php?success=edit");
+    header("location: ../pages/InventoryMAnager/product.php?success=edit");
     
 ?>
