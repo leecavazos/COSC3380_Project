@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -7,16 +8,27 @@
 
 	<!-- Link to css file -->
 	<link rel="stylesheet" type="text/css" href="../../css/purchase.css">
-	
+
 	<!-- Boxicons CDN Link -->
 	<link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
 
 
 </head>
+
 <body>
-	
+
 	<?php include('navbar.php'); ?>
-	
+	<?php
+	require_once "../../php/config.php";
+	$sql = "SELECT * FROM `Purchase Request` WHERE Status = ?";
+	$status = 'Pending';
+	$stmt = $conn->prepare("SELECT * FROM `Purchase Request` WHERE Status = ?");
+	$stmt->bind_param("s", $status);
+	$stmt->execute();
+	$result = $stmt->get_result();
+	$rows = $result->fetch_all(MYSQLI_ASSOC);
+	?>
+
 	<!-- Page Content Begins -->
 	<!-- Begin Dashboard Content -->
 	<section class="dashboard">
@@ -34,22 +46,22 @@
 						<span class="number">2</span>
 					</div>
 					<div class="box box2">
-						<i class='bx bx-check-square' ></i>
+						<i class='bx bx-check-square'></i>
 						<span class="text">Amount Approved</span>
 						<span class="number">$325,000</span>
 					</div>
 					<div class="box box3">
-						<i class='bx bx-message-alt-x' ></i>
+						<i class='bx bx-message-alt-x'></i>
 						<span class="text">Amount Rejected</span>
 						<span class="number">$23,600</span>
 					</div>
 				</div>
 			</div>
-	<!-- End Dashboard content -->
-	<!-- Recent Activity Content Begins -->
+			<!-- End Dashboard content -->
+			<!-- Recent Activity Content Begins -->
 			<div class="activity">
 				<div class="title">
-					<i class='bx bx-time' ></i>
+					<i class='bx bx-time'></i>
 					<span class="text">Recent Requests</span>
 				</div>
 
@@ -107,20 +119,21 @@
 						<span class="data-list">06-02-06</span>
 						<span class="data-list">05-31-06</span>
 						<span class="data-list">05-07-06</span>
-					</div>					
+					</div>
 				</div>
 			</div>
-	<!-- Recent Activity Content Ends -->
+			<!-- Recent Activity Content Ends -->
 		</div>
 	</section>
 	<!-- Page Content Ends -->
 
-	
-	
 
-	
+
+
+
 
 
 
 </body>
+
 </html>
