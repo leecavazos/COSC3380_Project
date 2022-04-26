@@ -17,13 +17,12 @@
 
 <!-- Determining the maximum productID -->
 <?php
-include('navbar.php');
-include('../php/config.php');
+	include('navbar.php');
 
-$query = "SELECT max(Product_ID) as max FROM Product";
-$result = mysqli_query($conn, $query);
-$row = mysqli_fetch_assoc($result);
-$max_id = (int)$row['max'];
+	$query = "SELECT max(Product_ID) as max FROM Product";
+	$result = mysqli_query($conn, $query);
+	$row = mysqli_fetch_assoc($result);
+	$max_id = (int)$row['max'];
 ?>
 	<!-- Page Content Begins -->
 	<!-- Begin Title Content -->
@@ -70,7 +69,6 @@ $max_id = (int)$row['max'];
 			echo "{$rowf['Product_ID']} {$rowf['Product_name']}";
 			echo "<br>";
 		}
-		
 
 	?>
 	</section>

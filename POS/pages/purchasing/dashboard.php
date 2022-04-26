@@ -15,7 +15,13 @@
 </head>
 <body>
 	
-	<?php include('navbar.php'); ?>
+	<?php 
+		include('navbar.php');
+		require_once '../../php/config.php';
+		$sql = "SELECT * FROM `Purchase Request` WHERE Status = 'Pending'";
+		$result = mysql_query($conn, $sql) or die(mysqli_error);
+		$num_rows = mysql_num_rows($result);
+	?>
 	
 	<!-- Page Content Begins -->
 	<!-- Begin Dashboard Content -->
@@ -31,7 +37,7 @@
 					<div class="box box1">
 						<i class='bx bx-message-square-error'></i>
 						<span class="text">Pending Requests</span>
-						<span class="number">2</span>
+						<span class="number"><?= $num_rows ?></span>
 					</div>
 					<div class="box box2">
 						<i class='bx bx-check-square' ></i>
