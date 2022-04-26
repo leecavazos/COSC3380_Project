@@ -63,9 +63,9 @@ include('../../php/AdminloginAction.php');
 			<li>
 				<a href="purchaseRequest.php">
                 <i class='bx bx-money-withdraw' ></i>
-					<span class="links_name">Purchase Requests</span>
+					<span class="links_name">Requests</span>
 				</a>
-				<span class="tooltip">Purchase Requests</span>
+				<span class="tooltip">Requests</span>
 			</li>
 			<!-- <li>
 				<a href="reports.php">
