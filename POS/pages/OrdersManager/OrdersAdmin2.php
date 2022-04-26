@@ -31,6 +31,9 @@ include('navbar.php');
         text-align: center;
         margin-top: 10px;
     }
+    body{
+        overflow: scroll;
+    }
 </style>
 <body>
 <section class="dashboard">
@@ -94,7 +97,7 @@ include('navbar.php');
                 </form>
             </span>
             <!-- OUTOUT OF THE DB BEGINS -->
-			<div class="activity-data" style="overflow-y: scroll;">                
+			<div class="activity-data">                
                 <div class="data ID">
                     <span class="data-title">Order ID</span>
                     <?php 
